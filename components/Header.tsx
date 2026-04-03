@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -45,22 +46,18 @@ export default function Header() {
       </div>
 
       {/* Main navigation */}
-      <nav className="container-custom py-4">
+      <nav className="container-custom py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-12 h-12 bg-spot-navy rounded-full flex items-center justify-center">
-              <span className="text-spot-orange font-bold text-xl">S</span>
-              <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-3 h-4 bg-spot-orange rounded-sm" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display text-2xl text-spot-navy font-bold leading-tight">
-                the<span className="text-spot-orange">Spot</span>
-              </span>
-              <span className="text-xs text-spot-purple font-medium tracking-wider uppercase">
-                Catering
-              </span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/Spot Cafe and Catering logo.jpg"
+              alt="The Spot Catering"
+              width={70}
+              height={70}
+              className="rounded-full"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

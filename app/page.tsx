@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Building2,
   PartyPopper,
@@ -10,7 +11,6 @@ import {
   UtensilsCrossed,
   Award,
   Heart,
-  ChefHat,
   Star,
   ArrowRight,
   CheckCircle
@@ -82,13 +82,19 @@ const certifications = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-spot-navy via-spot-navy to-spot-purple">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-spot-orange/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-spot-purple/20 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-spot-teal/10 rounded-full blur-3xl" />
+      {/* Hero Section with Background Image */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Full Menu photo.jpg"
+            alt="Corporate catering spread"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-spot-navy/95 via-spot-navy/80 to-spot-navy/60" />
         </div>
 
         <div className="container-custom relative z-10 py-20">
@@ -141,7 +147,7 @@ export default function HomePage() {
                 <Link href="/contact" className="btn-primary flex items-center gap-2">
                   Book Your Event <ArrowRight size={18} />
                 </Link>
-                <Link href="/menus" className="btn-outline">
+                <Link href="/menus" className="btn-outline border-white text-white hover:bg-white hover:text-spot-navy">
                   View Our Menus
                 </Link>
               </motion.div>
@@ -168,23 +174,28 @@ export default function HomePage() {
               </motion.div>
             </motion.div>
 
-            {/* Hero Image/Visual */}
+            {/* Hero Image/Visual - Featured Food Box */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative hidden lg:block"
             >
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
-                {/* Placeholder for hero image - replace with actual food image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-spot-orange to-spot-purple rounded-3xl transform rotate-3 opacity-20" />
-                <div className="absolute inset-4 bg-gradient-to-br from-spot-orange/80 to-spot-purple/80 rounded-3xl flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <ChefHat size={80} className="mx-auto mb-4 opacity-80" />
-                    <p className="font-display text-2xl">Your Hero Image</p>
-                    <p className="text-sm opacity-70">Beautiful food photo here</p>
+              <div className="relative w-full max-w-lg mx-auto">
+                <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
+                  <Image
+                    src="/images/IMG_4319.jpg"
+                    alt="Delicious catering spread"
+                    width={500}
+                    height={350}
+                    className="rounded-2xl shadow-2xl"
+                  />
+                  <div className="mt-6 text-center text-white">
+                    <p className="font-display text-2xl mb-2">Denver&apos;s Favorite</p>
+                    <p className="text-spot-orange font-semibold">Corporate Caterer</p>
                   </div>
                 </div>
+
                 {/* Floating elements */}
                 <motion.div
                   animate={{ y: [-10, 10, -10] }}
