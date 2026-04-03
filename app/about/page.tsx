@@ -19,31 +19,37 @@ const timeline = [
     year: 'The Beginning',
     title: 'Sales & Marketing at Crock Spot',
     description: 'Mandy started her journey in the food industry working in sales and marketing, learning the ins and outs of the business.',
+    image: '/images/20220528_185532.jpg',
   },
   {
     year: 'The Opportunity',
     title: 'Saw an Empty Cafe',
     description: 'At a catering job, Mandy spotted an empty cafe space. She saw the potential and took the leap — taking "the spot."',
+    image: '/images/Char Cups Catering.jpg',
   },
   {
     year: 'Growth',
     title: 'One Became Three',
     description: 'That single location grew into three successful restaurant locations, building a reputation for great food and service.',
+    image: '/images/Full Menu photo.jpg',
   },
   {
     year: 'The Pivot',
     title: 'Following Her Passion',
     description: 'Mandy\'s love for catering led to a strategic decision: downsize to one restaurant and focus on what she loved most — making people feel special through creative catering experiences.',
+    image: '/images/IMG_4205.jpg',
   },
   {
     year: 'March 2020',
     title: 'One Month Before COVID',
     description: 'The timing seemed impossible. But as the dining landscape changed, Mandy saw opportunity instead of obstacles and rolled with it.',
+    image: '/images/20221114_134142.jpg',
   },
   {
     year: 'Today',
     title: 'The Corporate Catering Queen',
     description: 'A thriving woman-owned corporate catering business, serving Denver\'s top companies and creating memorable experiences every day.',
+    image: '/images/IMG_4319.jpg',
   },
 ]
 
@@ -107,7 +113,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mandy's Story */}
+      {/* Mandy's Story - Timeline Cards */}
       <section className="section bg-white">
         <div className="container-custom">
           <motion.div
@@ -124,40 +130,48 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-spot-orange/30 transform md:-translate-x-1/2" />
+          {/* Timeline Cards Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {timeline.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl group h-[350px]"
+              >
+                {/* Background Image with Greyscale */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover grayscale-[60%] group-hover:grayscale-[40%] transition-all duration-500 group-hover:scale-105"
+                  />
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/95 via-spot-navy/70 to-spot-navy/40" />
+                </div>
 
-            <div className="space-y-12">
-              {timeline.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`relative flex flex-col md:flex-row gap-8 ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-spot-orange rounded-full transform -translate-x-1/2 mt-2 z-10" />
+                {/* Content */}
+                <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
+                  <span className="inline-block bg-spot-orange text-spot-navy font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full mb-3 w-fit">
+                    {item.year}
+                  </span>
+                  <h3 className="font-display text-2xl font-bold mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-200 text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
 
-                  {/* Content */}
-                  <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
-                    <span className="text-spot-orange font-bold text-sm uppercase tracking-wider">
-                      {item.year}
-                    </span>
-                    <h3 className="font-display text-2xl text-spot-navy mt-1 mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                {/* Step Number */}
+                <div className="absolute top-4 right-4 w-10 h-10 bg-spot-orange rounded-full flex items-center justify-center">
+                  <span className="font-display font-bold text-spot-navy">{index + 1}</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
