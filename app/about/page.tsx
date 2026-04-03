@@ -113,7 +113,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mandy's Story - Timeline Cards */}
+      {/* Mandy's Story - Timeline with Image Cards */}
       <section className="section bg-white">
         <div className="container-custom">
           <motion.div
@@ -130,48 +130,66 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* Timeline Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative rounded-2xl overflow-hidden shadow-xl group h-[350px]"
-              >
-                {/* Background Image with Greyscale */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover grayscale-[60%] group-hover:grayscale-[40%] transition-all duration-500 group-hover:scale-105"
-                  />
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/95 via-spot-navy/70 to-spot-navy/40" />
-                </div>
+          <div className="relative">
+            {/* Timeline line - center on desktop, left on mobile */}
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-spot-orange via-spot-purple to-spot-navy transform md:-translate-x-1/2" />
 
-                {/* Content */}
-                <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
-                  <span className="inline-block bg-spot-orange text-spot-navy font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full mb-3 w-fit">
-                    {item.year}
-                  </span>
-                  <h3 className="font-display text-2xl font-bold mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-200 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+            <div className="space-y-16">
+              {timeline.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`relative flex flex-col md:flex-row items-start md:items-center gap-8 ${
+                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-6 md:left-1/2 w-4 h-4 bg-spot-orange rounded-full transform -translate-x-1/2 border-4 border-white shadow-lg z-10"
+                       style={{ top: '2rem' }} />
 
-                {/* Step Number */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-spot-orange rounded-full flex items-center justify-center">
-                  <span className="font-display font-bold text-spot-navy">{index + 1}</span>
-                </div>
-              </motion.div>
-            ))}
+                  {/* Image Card */}
+                  <div className={`ml-16 md:ml-0 md:w-[calc(50%-3rem)] ${index % 2 === 0 ? 'md:pr-0' : 'md:pl-0'}`}>
+                    <div className="relative rounded-2xl overflow-hidden shadow-xl group h-[280px]">
+                      {/* Background Image with Greyscale */}
+                      <div className="absolute inset-0">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          className="object-cover grayscale-[50%] group-hover:grayscale-[30%] transition-all duration-500 group-hover:scale-105"
+                        />
+                        {/* Dark Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/90 via-spot-navy/60 to-spot-navy/30" />
+                      </div>
+
+                      {/* Content */}
+                      <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
+                        <span className="inline-block bg-spot-orange text-spot-navy font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full mb-3 w-fit">
+                          {item.year}
+                        </span>
+                        <h3 className="font-display text-2xl font-bold mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-gray-200 text-sm leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      {/* Step Number */}
+                      <div className="absolute top-4 right-4 w-10 h-10 bg-spot-orange rounded-full flex items-center justify-center shadow-lg">
+                        <span className="font-display font-bold text-spot-navy">{index + 1}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Empty space for the other side on desktop */}
+                  <div className="hidden md:block md:w-[calc(50%-3rem)]" />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

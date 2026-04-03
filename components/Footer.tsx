@@ -37,17 +37,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link href="/" className="flex items-center">
-              <div className="w-[100px] h-[100px] rounded-full overflow-hidden bg-spot-navy border-2 border-spot-orange">
-                <Image
-                  src="/images/Spot Cafe and Catering logo.jpg"
-                  alt="The Spot Catering"
-                  width={100}
-                  height={100}
-                  className="rounded-full scale-110"
-                  style={{ marginTop: '-5px', marginLeft: '-5px' }}
-                />
-              </div>
+            <Link href="/" className="inline-block bg-white rounded-2xl p-2 shadow-lg hover:shadow-xl transition-shadow">
+              <Image
+                src="/images/Spot Cafe and Catering logo.jpg"
+                alt="The Spot Catering"
+                width={90}
+                height={90}
+              />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               Denver&apos;s Corporate Catering Queen. We know how to <span className="text-spot-orange font-semibold">hit the spot</span> with
