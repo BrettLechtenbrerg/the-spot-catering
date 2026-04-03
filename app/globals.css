@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
+
+:root {
+  /* The Spot Catering Brand Colors */
+  --spot-orange: #FAAA44;
+  --spot-orange-hover: #E89A35;
+  --spot-navy: #262262;
+  --spot-navy-light: #3A3A8C;
+  --spot-purple: #9E1F63;
+  --spot-purple-hover: #B82573;
+  --spot-teal: #8CBEC0;
+  --spot-blue-gray: #879FAF;
+  --spot-orange-red: #D34F1D;
+
+  --background: #ffffff;
+  --background-alt: #f5f5f5;
+  --foreground: #262262;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: var(--spot-orange);
+  color: var(--spot-navy);
+}
+
+/* Headings use display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Button base styles */
+.btn-primary {
+  @apply bg-spot-orange text-spot-navy font-semibold px-6 py-3 rounded-lg
+         hover:bg-spot-orange-hover transition-all duration-300
+         transform hover:scale-105 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply bg-spot-navy text-white font-semibold px-6 py-3 rounded-lg
+         hover:bg-spot-navy-light transition-all duration-300
+         border-2 border-spot-navy hover:border-spot-navy-light;
+}
+
+.btn-outline {
+  @apply bg-transparent border-2 border-spot-orange text-spot-orange
+         font-semibold px-6 py-3 rounded-lg hover:bg-spot-orange
+         hover:text-spot-navy transition-all duration-300;
+}
+
+/* Section styling */
+.section {
+  @apply py-16 md:py-24;
+}
+
+.section-alt {
+  @apply py-16 md:py-24 bg-background-alt;
+}
+
+/* Container */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-spot-orange via-spot-purple to-spot-navy;
+}
+
+/* Card styling */
+.card {
+  @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden;
+}
+
+.card-hover {
+  @apply card transform hover:-translate-y-2 transition-all duration-300;
+}
+
+/* Animated underline for links */
+.link-underline {
+  @apply relative;
+}
+
+.link-underline::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-spot-orange transition-all duration-300;
+}
+
+.link-underline:hover::after {
+  @apply w-full;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-spot-orange;
+}
+
+/* Certification badge styling */
+.cert-badge {
+  @apply inline-flex items-center gap-2 bg-spot-navy/10 text-spot-navy
+         px-3 py-1 rounded-full text-sm font-medium;
+}
+
+/* Fun pun highlight */
+.pun-highlight {
+  @apply relative inline-block;
+}
+
+.pun-highlight::before {
+  content: '';
+  @apply absolute -bottom-1 left-0 w-full h-2 bg-spot-orange/30 -skew-x-3 -z-10;
+}
