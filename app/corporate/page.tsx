@@ -13,7 +13,6 @@ import {
   CheckCircle,
   ArrowRight,
   Award,
-  Clock,
   Sparkles
 } from 'lucide-react'
 
@@ -22,31 +21,37 @@ const services = [
     icon: Users,
     title: 'Team Training Events',
     description: 'Keep your team energized and focused during training sessions with our perfectly timed meal service.',
+    image: '/images/20221114_134142.jpg',
   },
   {
     icon: Building2,
     title: 'Board Meetings',
     description: 'Impress stakeholders with premium catering that reflects your company\'s commitment to excellence.',
+    image: '/images/IMG_4205.jpg',
   },
   {
     icon: Calendar,
     title: 'Team Appreciation',
     description: 'Show your team they\'re valued with special catering for recognition events and milestones.',
+    image: '/images/20220528_185532.jpg',
   },
   {
     icon: Coffee,
     title: 'Breakfast Meetings',
     description: 'Start the day right with our famous breakfast boards and coffee service. More espresso, less depresso!',
+    image: '/images/Char Cups Catering.jpg',
   },
   {
     icon: Utensils,
     title: 'Working Lunches',
     description: 'Productive meetings deserve great food. Our boxed lunches and buffets keep things moving.',
+    image: '/images/Full Menu photo.jpg',
   },
   {
     icon: Sparkles,
     title: 'Client Events',
     description: 'Make lasting impressions on your clients with catering that shows you care about every detail.',
+    image: '/images/IMG_4319.jpg',
   },
 ]
 
@@ -66,7 +71,7 @@ export default function CorporatePage() {
         title="Corporate Catering"
         highlight="That Hits The Spot"
         subtitle="From team trainings to board meetings, we make corporate events deliciously memorable. Let us handle the food while you focus on business."
-        backgroundImage="/images/Full Menu photo.jpg"
+        backgroundImage="/images/IMG_4205.jpg"
         ctaText="Request A Quote"
         ctaLink="/contact"
         secondaryCtaText="View Menus"
@@ -98,17 +103,32 @@ export default function CorporatePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-hover p-8"
+                className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[320px]"
               >
-                <div className="w-14 h-14 bg-spot-orange/10 rounded-xl flex items-center justify-center mb-4">
-                  <service.icon className="text-spot-orange" size={28} />
+                {/* Greyscale Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover grayscale group-hover:grayscale-[70%] transition-all duration-500 group-hover:scale-105"
+                  />
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/95 via-spot-navy/70 to-spot-navy/40 group-hover:from-spot-navy/90 group-hover:via-spot-navy/60 transition-all duration-300" />
                 </div>
-                <h3 className="font-display text-xl text-spot-navy mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
+
+                {/* Content */}
+                <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
+                  <div className="w-12 h-12 bg-spot-orange rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <service.icon className="text-white" size={24} />
+                  </div>
+                  <h3 className="font-display text-2xl mb-2 group-hover:text-spot-orange transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -160,7 +180,7 @@ export default function CorporatePage() {
               className="relative"
             >
               <Image
-                src="/images/IMG_4205.jpg"
+                src="/images/IMG_4319.jpg"
                 alt="Corporate catering spread"
                 width={600}
                 height={400}
