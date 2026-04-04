@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import HeroSection from '@/components/HeroSection'
 import {
   Coffee,
@@ -9,7 +10,8 @@ import {
   Wine,
   PartyPopper,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Flame
 } from 'lucide-react'
 
 const menuCategories = [
@@ -17,6 +19,9 @@ const menuCategories = [
     icon: Coffee,
     title: 'Breakfast',
     tagline: 'More Espresso, Less Depresso',
+    color: 'from-amber-500 to-orange-600',
+    accentColor: 'bg-amber-500',
+    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=600&fit=crop', // Coffee shop morning vibes
     items: [
       {
         name: 'Breakfast Boards',
@@ -36,6 +41,9 @@ const menuCategories = [
     icon: Utensils,
     title: 'Lunch',
     tagline: 'Fuel Your Team',
+    color: 'from-emerald-500 to-teal-600',
+    accentColor: 'bg-emerald-500',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop', // Restaurant/team lunch vibes
     items: [
       {
         name: 'Individually Packaged Lunches',
@@ -51,6 +59,9 @@ const menuCategories = [
     icon: Wine,
     title: 'Happy Hour',
     tagline: 'After Hours Magic',
+    color: 'from-purple-500 to-pink-600',
+    accentColor: 'bg-purple-500',
+    image: 'https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=800&h=600&fit=crop', // Elegant happy hour vibes
     items: [
       {
         name: 'Charcuterie Boards',
@@ -66,6 +77,9 @@ const menuCategories = [
     icon: PartyPopper,
     title: 'Themed Meals',
     tagline: 'The Sky\'s The Limit',
+    color: 'from-red-500 to-orange-600',
+    accentColor: 'bg-red-500',
+    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop', // Party celebration vibes
     items: [
       {
         name: 'Taco & Chili Bars',
@@ -117,7 +131,7 @@ export default function MenusPage() {
             </p>
           </motion.div>
 
-          <div className="space-y-16">
+          <div className="space-y-12">
             {menuCategories.map((category, catIndex) => (
               <motion.div
                 key={category.title}
@@ -125,41 +139,63 @@ export default function MenusPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: catIndex * 0.1 }}
+                className="relative rounded-3xl overflow-hidden shadow-xl group"
               >
-                {/* Category Header */}
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-14 h-14 bg-spot-navy rounded-xl flex items-center justify-center">
-                    <category.icon className="text-spot-orange" size={28} />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-3xl text-spot-navy">
-                      {category.title}
-                    </h3>
-                    <p className="text-spot-orange font-medium italic">
-                      {category.tagline}
-                    </p>
-                  </div>
+                {/* Background Image with Gradient Overlay */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    className="object-cover grayscale group-hover:grayscale-[30%] transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-80 group-hover:opacity-75 transition-opacity duration-300`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
 
-                {/* Menu Items */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  {category.items.map((item, itemIndex) => (
+                {/* Content */}
+                <div className="relative z-10 p-8 md:p-12">
+                  {/* Category Header */}
+                  <div className="flex items-center gap-4 mb-8">
                     <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: itemIndex * 0.05 }}
-                      className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                      whileHover={{ rotate: 12, scale: 1.1 }}
+                      className={`w-16 h-16 ${category.accentColor} rounded-2xl flex items-center justify-center shadow-lg`}
                     >
-                      <h4 className="font-display text-xl text-spot-navy mb-3">
-                        {item.name}
-                      </h4>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {item.description}
-                      </p>
+                      <category.icon className="text-white" size={32} />
                     </motion.div>
-                  ))}
+                    <div>
+                      <h3 className="font-display text-4xl text-white drop-shadow-lg">
+                        {category.title}
+                      </h3>
+                      <p className="text-white/90 font-medium italic text-lg flex items-center gap-2">
+                        <Flame size={16} className="text-yellow-300" />
+                        {category.tagline}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Menu Items */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {category.items.map((item, itemIndex) => (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: itemIndex * 0.1 }}
+                        whileHover={{ scale: 1.02, x: 5 }}
+                        className="bg-white/95 backdrop-blur-sm rounded-xl p-5 hover:shadow-2xl transition-all duration-300 border-l-4 border-spot-orange"
+                      >
+                        <h4 className="font-display text-xl text-spot-navy mb-2 flex items-center gap-2">
+                          <span className="w-2 h-2 bg-spot-orange rounded-full"></span>
+                          {item.name}
+                        </h4>
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                          {item.description}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}

@@ -20,21 +20,29 @@ const popUpTypes = [
     title: 'Holiday Pop-Ups',
     description: 'Special seasonal experiences around major holidays. Think Valentine\'s treats, Halloween spooky snacks, and festive holiday spreads.',
     icon: Calendar,
+    color: 'bg-red-500',
+    image: 'https://images.unsplash.com/photo-1543934638-bd2e138430c4?w=600&h=400&fit=crop', // Holiday celebration/decorations
   },
   {
     title: 'Community Events',
     description: 'We love being part of local Denver events, festivals, and community gatherings. Great food brings people together!',
     icon: Users,
+    color: 'bg-teal-500',
+    image: 'https://images.unsplash.com/photo-1529543544277-750e1a889090?w=600&h=400&fit=crop', // Community festival/gathering
   },
   {
     title: 'Office Building Events',
     description: 'Bring excitement to your building lobby or common areas with a surprise pop-up catering experience.',
     icon: MapPin,
+    color: 'bg-blue-500',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop', // Modern office building lobby
   },
   {
     title: 'Flash Sales & Specials',
     description: 'Follow us on social media for surprise pop-up locations and exclusive one-day-only menu items!',
     icon: Zap,
+    color: 'bg-amber-500',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50e2fd87?w=600&h=400&fit=crop', // Excited crowd/event energy
   },
 ]
 
@@ -95,16 +103,29 @@ export default function PopUpPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-hover p-8 flex gap-6"
+                className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[240px]"
               >
-                <div className="w-14 h-14 bg-spot-purple/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <type.icon className="text-spot-purple" size={28} />
+                {/* Greyscale Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={type.image}
+                    alt={type.title}
+                    fill
+                    className="object-cover grayscale group-hover:grayscale-[50%] transition-all duration-500 group-hover:scale-105"
+                  />
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/95 via-spot-navy/70 to-spot-navy/40 group-hover:from-spot-navy/90 group-hover:via-spot-navy/60 transition-all duration-300" />
                 </div>
-                <div>
-                  <h3 className="font-display text-xl text-spot-navy mb-2">
+
+                {/* Content */}
+                <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
+                  <div className={`w-12 h-12 ${type.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
+                    <type.icon className="text-white" size={24} />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-spot-orange transition-colors">
                     {type.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     {type.description}
                   </p>
                 </div>
