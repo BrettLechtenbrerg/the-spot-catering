@@ -37,14 +37,14 @@ const themes = [
     title: 'Oktoberfest',
     description: 'Bratwurst, pretzels, and German-inspired fare. Prost to great food!',
     color: 'bg-amber-600',
-    image: 'https://images.unsplash.com/photo-1569025743873-ea3a9ber?w=400&h=300&fit=crop', // Beer festival
+    image: 'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=400&h=300&fit=crop', // Oktoberfest beer celebration
   },
   {
     icon: Palmtree,
     title: 'Luau Party',
     description: 'Tropical flavors and island vibes. Hawaiian shirts optional but encouraged!',
     color: 'bg-teal-500',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop', // Tropical beach scene
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=300&fit=crop', // Tropical party celebration
   },
   {
     icon: TreePine,
