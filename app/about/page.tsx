@@ -224,8 +224,118 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mandy's Story - Timeline with Image Cards */}
+      {/* Mandy's Story - Personal Narrative */}
       <section className="section bg-white">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-5 gap-12 items-start">
+            {/* Story Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-3 prose prose-lg max-w-none"
+            >
+              <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-8">
+                The Story Behind <span className="text-spot-orange">The Spot</span>
+              </h2>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                Every great business starts with a moment of clarity. For Mandy Smith, that moment came
+                during a catering job when she spotted an empty cafe space. While others might have seen
+                just four walls, Mandy saw <em>opportunity</em>. She saw potential. She saw &quot;the spot.&quot;
+              </p>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                But Mandy&apos;s journey didn&apos;t start there. She had already spent years in the food industry,
+                cutting her teeth in sales and marketing at Crock Spot. It was there she learned not just
+                about food, but about <strong className="text-spot-navy">people</strong> — what makes them feel
+                welcomed, what makes an event memorable, and most importantly, what makes people feel special.
+              </p>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                When she finally took the leap and claimed that empty cafe, something magical happened.
+                One location became two. Then three. Mandy had built not just a business, but a reputation
+                for exceptional food and warm, genuine service that Denver couldn&apos;t get enough of.
+              </p>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                But here&apos;s the thing about Mandy — she follows her heart. And her heart kept pulling her
+                toward catering. There was something about those corporate events, the team celebrations,
+                the holiday parties that lit her up in a way restaurants never quite did. So she made a
+                bold decision: <strong className="text-spot-navy">downsize to one restaurant and go all-in on catering</strong>.
+              </p>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                The timing? March 2020 — exactly one month before the world changed forever. But where
+                others saw disaster, Mandy saw opportunity. As the dining landscape shifted, she pivoted,
+                adapted, and actually <em>thrived</em>. She served the National Guard meals for 36 consecutive
+                days during the pandemic. She became the go-to caterer for companies navigating the new
+                normal of corporate gatherings.
+              </p>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                Today, Mandy Smith is known as Denver&apos;s Corporate Catering Queen — a title she&apos;s earned
+                through years of hard work, countless events, and an unwavering commitment to making every
+                single person feel special. Her company, MNS Worldwide LLC, is a certified MWBE, DBE, EBE,
+                and SBEC — but more than any certification, it&apos;s Mandy&apos;s personal touch that sets The Spot apart.
+              </p>
+
+              <p className="text-spot-navy text-xl font-semibold italic">
+                &quot;I didn&apos;t just find a spot. I created a place where every event becomes a memory,
+                every meal becomes a moment, and every client becomes family.&quot;
+              </p>
+            </motion.div>
+
+            {/* Side Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="lg:col-span-2 sticky top-24"
+            >
+              <div className="relative">
+                {/* Main Image - Placeholder for Mandy's photo */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=700&fit=crop"
+                    alt="Mandy Smith - Founder of The Spot Catering"
+                    width={400}
+                    height={500}
+                    className="w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/50 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 text-white">
+                    <p className="font-display text-2xl font-bold">Mandy Smith</p>
+                    <p className="text-spot-orange">Founder & CEO</p>
+                  </div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-spot-orange/20 rounded-full blur-2xl" />
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-spot-purple/20 rounded-full blur-2xl" />
+
+                {/* Stats Card */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="absolute -bottom-8 -right-8 bg-white rounded-2xl shadow-xl p-6"
+                >
+                  <div className="text-center">
+                    <p className="font-display text-3xl text-spot-orange font-bold">15+</p>
+                    <p className="text-gray-600 text-sm">Years of Experience</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mandy's Journey - Timeline with Image Cards */}
+      <section className="section bg-gray-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -234,10 +344,10 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              Mandy&apos;s <span className="text-spot-orange">Journey</span>
+              The <span className="text-spot-orange">Journey</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              A woman who saw an opportunity, bet on herself, and built something amazing.
+              From sales and marketing to building Denver&apos;s premier corporate catering company — here&apos;s how it all unfolded.
             </p>
           </motion.div>
 
