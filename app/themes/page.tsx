@@ -23,48 +23,56 @@ const themes = [
     title: 'Taco & Chili Bars',
     description: 'Build-your-own taco stations and hearty chili bars that bring the fiesta to your event.',
     color: 'bg-orange-500',
+    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=300&fit=crop', // Fiesta/party scene
   },
   {
     icon: Sun,
     title: 'BBQ Cookout',
     description: 'Smoky, savory BBQ spreads with all the classic fixings. Perfect for summer gatherings.',
     color: 'bg-red-500',
+    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop', // Outdoor BBQ gathering
   },
   {
     icon: Beer,
     title: 'Oktoberfest',
     description: 'Bratwurst, pretzels, and German-inspired fare. Prost to great food!',
     color: 'bg-amber-600',
+    image: 'https://images.unsplash.com/photo-1569025743873-ea3a9ber?w=400&h=300&fit=crop', // Beer festival
   },
   {
     icon: Palmtree,
     title: 'Luau Party',
     description: 'Tropical flavors and island vibes. Hawaiian shirts optional but encouraged!',
     color: 'bg-teal-500',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop', // Tropical beach scene
   },
   {
     icon: TreePine,
     title: 'Holiday Celebrations',
     description: 'Thanksgiving feasts, Christmas dinners, and New Year\'s spreads done right.',
     color: 'bg-green-600',
+    image: 'https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=400&h=300&fit=crop', // Holiday decorations
   },
   {
     icon: Heart,
     title: 'Valentine\'s & Love',
     description: 'Romantic spreads for team appreciation or special celebrations.',
     color: 'bg-pink-500',
+    image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400&h=300&fit=crop', // Romantic setting
   },
   {
     icon: Snowflake,
     title: 'Winter Wonderland',
     description: 'Cozy comfort foods and warming drinks for cold weather events.',
     color: 'bg-blue-400',
+    image: 'https://images.unsplash.com/photo-1491002052546-bf38f186af56?w=400&h=300&fit=crop', // Winter/snow scene
   },
   {
     icon: Sparkles,
     title: 'Custom Themes',
     description: 'Have a unique idea? We love creating custom themed experiences!',
     color: 'bg-purple-500',
+    image: 'https://images.unsplash.com/photo-1496843916299-590492c751f4?w=400&h=300&fit=crop', // Party celebration
   },
 ]
 
@@ -120,17 +128,32 @@ export default function ThemesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="card-hover p-6 group"
+                className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[280px]"
               >
-                <div className={`w-12 h-12 ${theme.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <theme.icon className="text-white" size={24} />
+                {/* Greyscale Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={theme.image}
+                    alt={theme.title}
+                    fill
+                    className="object-cover grayscale group-hover:grayscale-[50%] transition-all duration-500 group-hover:scale-105"
+                  />
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/95 via-spot-navy/70 to-spot-navy/40 group-hover:from-spot-navy/90 group-hover:via-spot-navy/60 transition-all duration-300" />
                 </div>
-                <h3 className="font-display text-lg text-spot-navy mb-2 group-hover:text-spot-orange transition-colors">
-                  {theme.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {theme.description}
-                </p>
+
+                {/* Content */}
+                <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
+                  <div className={`w-12 h-12 ${theme.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
+                    <theme.icon className="text-white" size={24} />
+                  </div>
+                  <h3 className="font-display text-xl font-bold mb-2 group-hover:text-spot-orange transition-colors">
+                    {theme.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {theme.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
