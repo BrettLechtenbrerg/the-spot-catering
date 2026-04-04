@@ -37,12 +37,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link href="/" className="inline-block bg-white rounded-2xl p-2 shadow-lg hover:shadow-xl transition-shadow">
+            <Link href="/" className="inline-block hover:opacity-90 transition-opacity">
               <Image
                 src="/images/Spot Cafe and Catering logo.jpg"
                 alt="The Spot Catering"
                 width={90}
                 height={90}
+                className="rounded-full"
               />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -163,6 +164,15 @@ export default function Footer() {
             <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} The Spot Catering. All rights reserved.
             </p>
+            <div className="flex items-center gap-4 text-sm">
+              <Link href="/privacy" className="text-gray-400 hover:text-spot-orange transition-colors">
+                Privacy Policy
+              </Link>
+              <span className="text-gray-600">|</span>
+              <Link href="/terms" className="text-gray-400 hover:text-spot-orange transition-colors">
+                Terms of Service
+              </Link>
+            </div>
             <p className="text-gray-400 text-sm">
               MNS Worldwide LLC — <span className="text-spot-orange">Majority Woman-Owned Business</span>
             </p>

@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import HeroSection from '@/components/HeroSection'
 import {
   Heart,
   Award,
@@ -11,7 +10,8 @@ import {
   Users,
   ArrowRight,
   Quote,
-  Star
+  Star,
+  Crown
 } from 'lucide-react'
 
 const timeline = [
@@ -86,14 +86,125 @@ const certifications = [
 export default function AboutPage() {
   return (
     <>
-      <HeroSection
-        title="Meet The Corporate"
-        highlight="Catering Queen"
-        subtitle="The story of how one woman's passion for making people feel special turned into Denver's go-to corporate catering company."
-        backgroundImage="/images/20220528_185532.jpg"
-        ctaText="Work With Us"
-        ctaLink="/contact"
-      />
+      {/* Custom Hero Section with Featured Image */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/20220528_185532.jpg"
+            alt="Catering event"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-spot-navy/95 via-spot-navy/80 to-spot-navy/60" />
+        </div>
+
+        <div className="container-custom relative z-10 py-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Hero Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-white"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6"
+              >
+                <Crown size={18} className="text-spot-orange" />
+                <span className="text-sm font-medium">Denver&apos;s Corporate Catering Queen</span>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+              >
+                Meet The Corporate
+                <br />
+                <span className="text-spot-orange">Catering Queen</span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed"
+              >
+                The story of how one woman&apos;s passion for making people feel special
+                turned into Denver&apos;s go-to corporate catering company.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap gap-4"
+              >
+                <Link href="/contact" className="btn-primary flex items-center gap-2">
+                  Work With Us <ArrowRight size={18} />
+                </Link>
+                <Link href="/menus" className="btn-outline border-white text-white hover:bg-white hover:text-spot-navy">
+                  View Our Menus
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            {/* Featured Image Box - Placeholder for Mandy's photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative hidden lg:block"
+            >
+              <div className="relative w-full max-w-lg mx-auto">
+                <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
+                  {/* Placeholder image - REPLACE WITH MANDY'S PHOTO */}
+                  <div className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=600&fit=crop"
+                      alt="Placeholder - Replace with Mandy's photo"
+                      fill
+                      className="object-cover"
+                    />
+                    {/* Subtle overlay to blend with site colors */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/30 to-transparent" />
+                  </div>
+                  <div className="mt-6 text-center text-white">
+                    <p className="font-display text-2xl mb-2">Mandy Smith</p>
+                    <p className="text-spot-orange font-semibold">Founder & CEO</p>
+                  </div>
+                </div>
+
+                {/* Floating elements */}
+                <motion.div
+                  animate={{ y: [-10, 10, -10] }}
+                  transition={{ repeat: Infinity, duration: 4 }}
+                  className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4"
+                >
+                  <div className="flex items-center gap-2">
+                    <Award className="text-spot-orange" size={20} />
+                    <span className="font-bold text-spot-navy text-sm">MWBE</span>
+                  </div>
+                </motion.div>
+                <motion.div
+                  animate={{ y: [10, -10, 10] }}
+                  transition={{ repeat: Infinity, duration: 4, delay: 1 }}
+                  className="absolute -bottom-4 -left-4 bg-spot-orange rounded-2xl shadow-xl p-4"
+                >
+                  <Crown className="text-white" size={24} />
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* Mission Statement */}
       <section className="py-16 bg-spot-orange">
