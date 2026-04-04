@@ -21,17 +21,14 @@ const menuCategories = [
       {
         name: 'Breakfast Boards',
         description: 'A medley of continental style breakfast bites. Pastries, yogurt, fruit, eggs, muffins, cheese, etc. We can design one specifically for your needs.',
-        price: '$9.50 per person',
       },
       {
         name: 'Breakfast Burrito Platter',
         description: 'House made breakfast burritos, served with salsa & our famous Sriracha Sour Cream. Available flavors: Bacon, Chorizo or Veggie. GF or Vegan options available!',
-        price: '$8.50 per person',
       },
       {
         name: 'In Room Coffee Service',
         description: 'Drip coffee set up in your room. Includes disposable cups, napkins & sugars and creamers. We can also set up a coffee tab at our Cafe for folks who prefer espresso drinks.',
-        price: '$5.00 per person',
       },
     ],
   },
@@ -43,12 +40,10 @@ const menuCategories = [
       {
         name: 'Individually Packaged Lunches',
         description: 'After serving the National Guard meals for 36 days straight during the Pandemic, we\'ve got individually packaged meals down. From salads, to wraps, rice bowls, adult lunchables... you name it. Add drinks or desserts!',
-        price: 'Starting at $12 per person',
       },
       {
         name: 'Buffet Style Lunch',
         description: 'Any of our Cafe Menu options, served in a buffet style. Salad bars, Build your own Rice Bowls, Build your own Wraps, etc.',
-        price: '$13-$15 per person',
       },
     ],
   },
@@ -60,12 +55,10 @@ const menuCategories = [
       {
         name: 'Charcuterie Boards',
         description: 'Beautifully crafted charcuterie and grazing boards, perfect for your after hours meeting or special event.',
-        price: 'Custom pricing',
       },
       {
         name: 'Grazing Tables',
         description: 'Stunning displays perfect for larger gatherings. A feast for the eyes and the appetite!',
-        price: 'Custom pricing',
       },
     ],
   },
@@ -77,12 +70,10 @@ const menuCategories = [
       {
         name: 'Taco & Chili Bars',
         description: 'Build-your-own stations with all the fixings. Perfect for casual team events.',
-        price: 'Custom pricing',
       },
       {
         name: 'BBQ, Luau, Oktoberfest & More',
         description: 'We\'ve catered hundreds of corporate events and themed parties throughout the years. From BBQ to holidays to international themes.',
-        price: 'Custom pricing',
       },
     ],
   },
@@ -122,7 +113,7 @@ export default function MenusPage() {
               Catering <span className="text-spot-orange">Menu Options</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              All prices are starting points — we love creating custom menus tailored to your specific needs!
+              We love creating custom menus tailored to your specific needs — contact us for a personalized quote!
             </p>
           </motion.div>
 
@@ -161,14 +152,9 @@ export default function MenusPage() {
                       transition={{ delay: itemIndex * 0.05 }}
                       className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow"
                     >
-                      <div className="flex justify-between items-start mb-3">
-                        <h4 className="font-display text-xl text-spot-navy">
-                          {item.name}
-                        </h4>
-                        <span className="text-spot-orange font-bold whitespace-nowrap ml-4">
-                          {item.price}
-                        </span>
-                      </div>
+                      <h4 className="font-display text-xl text-spot-navy mb-3">
+                        {item.name}
+                      </h4>
                       <p className="text-gray-600 text-sm leading-relaxed">
                         {item.description}
                       </p>

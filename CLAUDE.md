@@ -64,8 +64,10 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 | Corporate | `/corporate` | ✅ Complete | Services grid, benefits, certifications |
 | Themed Events | `/themes` | ✅ Complete | 8 theme cards, holiday list, 3-step process |
 | Pop-Up Events | `/pop-up` | ✅ Complete | Pop-up types, benefits, social CTAs |
-| Menus | `/menus` | ✅ Complete | 4 categories with pricing, extras |
-| About | `/about` | ✅ Complete | Timeline, values, certifications |
+| Menus | `/menus` | ✅ Complete | 4 categories (no prices), extras |
+| About | `/about` | ✅ Complete | Personal story, timeline, Mandy's photo, values, certifications |
+| Privacy | `/privacy` | ✅ Complete | Privacy policy with Colorado Privacy Act compliance |
+| Terms | `/terms` | ✅ Complete | Terms of service with catering-specific clauses |
 | Contact | `/contact` | ✅ Complete | Form, contact info, social links |
 
 ## Service Categories
@@ -77,11 +79,13 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 - Client Meetings
 
 ### Meal Types
-- Breakfast Boards ($9.50/person)
-- Breakfast Burrito Platter ($8.50/person)
-- In Room Coffee Service ($5.00/person)
-- Individually Packaged Lunches ($12+/person)
-- Buffet Style Lunch ($13-$15/person)
+- Breakfast Boards
+- Breakfast Burrito Platter
+- In Room Coffee Service
+- Individually Packaged Lunches
+- Buffet Style Lunch
+
+*Note: Prices are not displayed on the website — contact for custom quotes.*
 
 ### Themed Events
 - Holiday Parties (all major holidays)
@@ -104,10 +108,12 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 - [x] Tech stack configured
 - [x] Vercel project connected
 - [x] Homepage built
-- [x] All 7 pages built
-- [x] Images uploaded (12 images)
+- [x] All 9 pages built (including Privacy & Terms)
+- [x] Images uploaded (13 images including Mandy's photo)
 - [x] SEO optimized (metadata in layout.tsx)
 - [x] Mobile responsive (Tailwind responsive classes)
+- [x] Prices removed from all pages (contact for quotes)
+- [x] Mandy's photo added to About page
 - [ ] Contact form backend (currently frontend-only)
 - [ ] Analytics integration
 - [ ] Custom domain
@@ -130,14 +136,16 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
   /corporate/page.tsx     # Corporate catering
   /themes/page.tsx        # Themed events
   /pop-up/page.tsx        # Pop-up events
-  /menus/page.tsx         # Menu/pricing
+  /menus/page.tsx         # Menu options (no prices)
   /about/page.tsx         # About Mandy & story
   /contact/page.tsx       # Contact form
+  /privacy/page.tsx       # Privacy policy
+  /terms/page.tsx         # Terms of service
 /components
   Header.tsx              # Site header
   Footer.tsx              # Site footer
   HeroSection.tsx         # Reusable hero
-/public/images            # 12 brand photos + logo
+/public/images            # 13 photos (including meet-mandy.jpg)
 ```
 
 ## Deployment Commands

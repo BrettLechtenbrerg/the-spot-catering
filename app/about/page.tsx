@@ -165,13 +165,13 @@ export default function AboutPage() {
             >
               <div className="relative w-full max-w-lg mx-auto">
                 <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
-                  {/* Placeholder image - REPLACE WITH MANDY'S PHOTO */}
+                  {/* Mandy's Photo */}
                   <div className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=600&fit=crop"
-                      alt="Placeholder - Replace with Mandy's photo"
+                      src="/images/meet-mandy.jpg"
+                      alt="Mandy Smith - The Corporate Catering Queen"
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                     />
                     {/* Subtle overlay to blend with site colors */}
                     <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/30 to-transparent" />
@@ -295,14 +295,14 @@ export default function AboutPage() {
               className="lg:col-span-2 sticky top-24"
             >
               <div className="relative">
-                {/* Main Image - Placeholder for Mandy's photo */}
+                {/* Mandy's Photo */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=700&fit=crop"
+                    src="/images/meet-mandy.jpg"
                     alt="Mandy Smith - Founder of The Spot Catering"
                     width={400}
                     height={500}
-                    className="w-full object-cover"
+                    className="w-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/50 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">

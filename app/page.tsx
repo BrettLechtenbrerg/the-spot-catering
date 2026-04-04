@@ -400,20 +400,20 @@ export default function HomePage() {
             {[
               {
                 title: 'Breakfast',
-                price: 'From $5/person',
+                tagline: 'Start the day right',
                 items: ['Breakfast Boards', 'Burrito Platters', 'Coffee Service'],
                 icon: Coffee,
               },
               {
                 title: 'Lunch',
-                price: 'From $12/person',
+                tagline: 'Fuel your team',
                 items: ['Individual Packages', 'Buffet Style', 'Build Your Own'],
                 icon: UtensilsCrossed,
                 featured: true,
               },
               {
                 title: 'Happy Hour',
-                price: 'Custom Pricing',
+                tagline: 'After hours magic',
                 items: ['Charcuterie Boards', 'Grazing Tables', 'Themed Spreads'],
                 icon: PartyPopper,
               },
@@ -435,10 +435,10 @@ export default function HomePage() {
                   className={menu.featured ? 'text-spot-orange mb-4' : 'text-spot-purple mb-4'}
                 />
                 <h3 className="font-display text-2xl mb-2">{menu.title}</h3>
-                <p className={`text-lg font-semibold mb-4 ${
+                <p className={`text-sm font-medium mb-4 ${
                   menu.featured ? 'text-spot-orange' : 'text-spot-orange'
                 }`}>
-                  {menu.price}
+                  {menu.tagline}
                 </p>
                 <ul className="space-y-2">
                   {menu.items.map((item) => (
