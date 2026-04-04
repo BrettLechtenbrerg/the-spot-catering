@@ -60,15 +60,30 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 
 | Page | Route | Status | Features |
 |------|-------|--------|----------|
-| Home | `/` | ✅ Complete | Hero, services, stats, menu preview, CTAs |
-| Corporate | `/corporate` | ✅ Complete | Services grid, benefits, certifications |
-| Themed Events | `/themes` | ✅ Complete | 8 theme cards, holiday list, 3-step process |
-| Pop-Up Events | `/pop-up` | ✅ Complete | Pop-up types, benefits, social CTAs |
-| Menus | `/menus` | ✅ Complete | 4 categories (no prices), extras |
+| Home | `/` | ✅ Complete | Hero with featured image, services, stats, menu preview, CTAs |
+| Corporate | `/corporate` | ✅ Complete | Services grid with greyscale images, benefits, certifications |
+| Themed Events | `/themes` | ✅ Complete | 8 theme cards with greyscale images, holiday list, 3-step process |
+| Pop-Up Events | `/pop-up` | ✅ Complete | 4 pop-up types with greyscale images, benefits, social CTAs |
+| Menus | `/menus` | ✅ Complete | 4 categories with gradient cards + images (no prices), extras |
 | About | `/about` | ✅ Complete | Personal story, timeline, Mandy's photo, values, certifications |
 | Privacy | `/privacy` | ✅ Complete | Privacy policy with Colorado Privacy Act compliance |
 | Terms | `/terms` | ✅ Complete | Terms of service with catering-specific clauses |
 | Contact | `/contact` | ✅ Complete | Form, contact info, social links |
+
+## Visual Design Features
+
+### Greyscale Image Cards (Used across site)
+- Cards have greyscale background images that colorize on hover
+- Dark gradient overlays for text readability
+- Smooth scale-up animation on hover
+- Used on: Corporate, Themes, Pop-Up pages
+
+### Menus Page (Spicy Design!)
+- Full-bleed gradient cards with greyscale background images
+- Vibrant gradient overlays: amber (Breakfast), emerald (Lunch), purple (Happy Hour), red (Themed)
+- Animated icons that rotate on hover
+- Flame icon accents next to taglines
+- White menu item cards with orange left border
 
 ## Service Categories
 
@@ -107,16 +122,20 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 - [x] CLAUDE.md created
 - [x] Tech stack configured
 - [x] Vercel project connected
-- [x] Homepage built
+- [x] Homepage built (with featured image hero)
 - [x] All 9 pages built (including Privacy & Terms)
 - [x] Images uploaded (13 images including Mandy's photo)
 - [x] SEO optimized (metadata in layout.tsx)
 - [x] Mobile responsive (Tailwind responsive classes)
 - [x] Prices removed from all pages (contact for quotes)
 - [x] Mandy's photo added to About page
+- [x] Greyscale image cards on Corporate, Themes, Pop-Up pages
+- [x] Spicy gradient design on Menus page
+- [x] Footer logo fixed (no white square)
 - [ ] Contact form backend (currently frontend-only)
 - [ ] Analytics integration
 - [ ] Custom domain
+- [ ] Verify pandemic/National Guard reference with Mandy
 - [ ] Ready for Mandy's GitHub transfer
 
 ## Components
@@ -124,7 +143,7 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 | Component | File | Purpose |
 |-----------|------|---------|
 | Header | `components/Header.tsx` | Navigation with top bar, mobile menu |
-| Footer | `components/Footer.tsx` | 4-column footer with links, contact, certs |
+| Footer | `components/Footer.tsx` | 4-column footer with links, contact, certs (logo rounded-full) |
 | HeroSection | `components/HeroSection.tsx` | Reusable hero with customizable props |
 
 ## Key Files
@@ -133,10 +152,10 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
   layout.tsx              # Root layout with SEO metadata
   globals.css             # Tailwind + custom styles
   page.tsx                # Homepage
-  /corporate/page.tsx     # Corporate catering
-  /themes/page.tsx        # Themed events
-  /pop-up/page.tsx        # Pop-up events
-  /menus/page.tsx         # Menu options (no prices)
+  /corporate/page.tsx     # Corporate catering (greyscale image cards)
+  /themes/page.tsx        # Themed events (8 greyscale image cards)
+  /pop-up/page.tsx        # Pop-up events (4 greyscale image cards)
+  /menus/page.tsx         # Menu options (gradient cards, no prices)
   /about/page.tsx         # About Mandy & story
   /contact/page.tsx       # Contact form
   /privacy/page.tsx       # Privacy policy
@@ -175,6 +194,18 @@ Mandy started in sales and marketing for Crock Spot. She saw an empty cafe at a 
 This pivot happened one month before COVID hit. As the dining landscape changed, Mandy saw opportunity and rolled with it. A woman-owned business that bet on herself and created a thriving corporate catering empire.
 
 **Mission**: We make food fun, social, and special for everyone.
+
+## Session Notes
+
+### April 3, 2026 Session
+- Fixed broken Oktoberfest and Luau images on Themes page
+- Added spicy gradient design to Menus page with animated icons
+- Added greyscale image cards to Pop-Up Events page (4 cards)
+- Fixed Community Events and Flash Sales images
+- All external images use Unsplash URLs
+
+### Pending Verification
+- **Pandemic Reference**: The Lunch menu mentions "serving the National Guard meals for 36 days straight during the Pandemic" - verify this is accurate with Mandy before launch
 
 ---
 

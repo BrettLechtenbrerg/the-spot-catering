@@ -28,7 +28,7 @@ const popUpTypes = [
     description: 'We love being part of local Denver events, festivals, and community gatherings. Great food brings people together!',
     icon: Users,
     color: 'bg-teal-500',
-    image: 'https://images.unsplash.com/photo-1529543544277-750e1a889090?w=600&h=400&fit=crop', // Community festival/gathering
+    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop', // Community festival/gathering
   },
   {
     title: 'Office Building Events',
@@ -42,7 +42,7 @@ const popUpTypes = [
     description: 'Follow us on social media for surprise pop-up locations and exclusive one-day-only menu items!',
     icon: Zap,
     color: 'bg-amber-500',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50e2fd87?w=600&h=400&fit=crop', // Excited crowd/event energy
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop', // Exciting event energy
   },
 ]
 
