@@ -179,12 +179,12 @@ export default function AboutPage() {
               <div className="relative w-full max-w-lg mx-auto">
                 <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
                   {/* Mandy's Photo */}
-                  <div className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                  <div className="relative w-full h-[480px] rounded-2xl overflow-hidden shadow-2xl">
                     <Image
                       src="/images/mandy-about.jpg"
                       alt="Mandy Smith - The Corporate Catering Queen"
                       fill
-                      className="object-cover object-top"
+                      className="object-contain"
                     />
                     {/* Subtle overlay to blend with site colors */}
                     <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/30 to-transparent" />
