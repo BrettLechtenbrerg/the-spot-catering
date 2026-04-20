@@ -131,16 +131,16 @@ export default function ThemesPage() {
                 transition={{ delay: index * 0.05 }}
                 className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[240px]"
               >
-                {/* Greyscale Background Image */}
+                {/* Background Image with Color */}
                 <div className="absolute inset-0">
                   <Image
                     src={theme.image}
                     alt={theme.title}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-[25%] transition-all duration-500 group-hover:scale-105"
+                    className="object-cover grayscale-[25%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                   />
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/95 via-spot-navy/70 to-spot-navy/40 group-hover:from-spot-navy/90 group-hover:via-spot-navy/60 transition-all duration-300" />
+                  {/* Lighter Overlay for more color */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/90 via-spot-navy/50 to-spot-navy/20 group-hover:from-spot-navy/85 group-hover:via-spot-navy/40 group-hover:to-transparent transition-all duration-300" />
                 </div>
 
                 {/* Content */}
