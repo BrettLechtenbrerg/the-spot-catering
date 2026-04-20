@@ -395,7 +395,7 @@ export default function AboutPage() {
                           src={item.image}
                           alt={item.title}
                           fill
-                          className="object-cover grayscale-[50%] group-hover:grayscale-[15%] transition-all duration-500 group-hover:scale-105"
+                          className="object-cover grayscale-[25%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                         />
                         {/* Dark Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/90 via-spot-navy/60 to-spot-navy/30" />
