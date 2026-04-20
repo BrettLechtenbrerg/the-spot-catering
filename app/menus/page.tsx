@@ -22,6 +22,7 @@ const menuCategories = [
     bgColor: 'bg-spot-orange',
     textColor: 'text-spot-navy',
     accentColor: 'bg-spot-navy',
+    iconColor: 'text-white',
     items: [
       {
         name: 'Breakfast Buffets',
@@ -52,6 +53,7 @@ const menuCategories = [
     bgColor: 'bg-emerald-600',
     textColor: 'text-white',
     accentColor: 'bg-white',
+    iconColor: 'text-emerald-600',
     items: [
       {
         name: 'Lunch Platters',
@@ -81,7 +83,8 @@ const menuCategories = [
     tagline: 'After Hours Magic',
     bgColor: 'bg-spot-purple',
     textColor: 'text-white',
-    accentColor: 'bg-spot-orange',
+    accentColor: 'bg-white',
+    iconColor: 'text-spot-purple',
     items: [
       {
         name: 'Charcuterie Boards',
@@ -101,7 +104,8 @@ const menuCategories = [
     tagline: 'Build Your Own Adventure',
     bgColor: 'bg-spot-navy',
     textColor: 'text-white',
-    accentColor: 'bg-spot-orange',
+    accentColor: 'bg-white',
+    iconColor: 'text-spot-navy',
     items: [
       {
         name: 'Taco Bar',
@@ -182,7 +186,7 @@ export default function MenusPage() {
                       whileHover={{ rotate: 12, scale: 1.1 }}
                       className={`w-16 h-16 ${category.accentColor} rounded-2xl flex items-center justify-center shadow-lg`}
                     >
-                      <category.icon className={category.bgColor === 'bg-spot-orange' ? 'text-spot-navy' : 'text-spot-orange'} size={32} />
+                      <category.icon className={category.iconColor} size={32} />
                     </motion.div>
                     <div>
                       <h3 className={`font-display text-4xl ${category.textColor} drop-shadow-lg`}>
