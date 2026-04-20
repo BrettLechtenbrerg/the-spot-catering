@@ -82,8 +82,8 @@ const popUpTypes = [
     color: 'bg-blue-500',
   },
   {
-    title: 'Flash Sales & Specials',
-    description: 'Follow us on social media for surprise pop-up locations and exclusive one-day-only menu items!',
+    title: 'Retreats & Trainings',
+    description: 'Keep your team energized during off-site retreats and all-day training sessions with perfectly timed meals.',
     icon: Zap,
     color: 'bg-amber-500',
   },
