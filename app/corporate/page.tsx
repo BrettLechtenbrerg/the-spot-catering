@@ -193,13 +193,13 @@ export default function CorporatePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-spot-navy rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white/20"
               >
-                <div className={`w-12 h-12 ${type.color} rounded-xl flex items-center justify-center mb-4`}>
+                <div className={`w-12 h-12 ${type.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
                   <type.icon className="text-white" size={24} />
                 </div>
-                <h3 className="font-display text-lg text-spot-navy mb-2">{type.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{type.description}</p>
+                <h3 className="font-display text-lg text-white mb-2">{type.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{type.description}</p>
               </motion.div>
             ))}
           </div>
