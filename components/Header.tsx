@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Corporate', href: '/corporate' },
   { name: 'Services', href: '/services' },
   { name: 'Themed Events', href: '/themes' },
+  { name: 'Gallery', href: '/gallery' },
   { name: 'Menus', href: '/menus' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },

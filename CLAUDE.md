@@ -63,6 +63,7 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 | Home | `/` | ✅ Complete | Hero with featured image, services, stats, menu preview, CTAs |
 | Corporate | `/corporate` | ✅ Complete | Services grid with greyscale images, benefits, certifications |
 | Themed Events | `/themes` | ✅ Complete | 8 theme cards with greyscale images, holiday list, 3-step process |
+| **Gallery** | `/gallery` | ✅ Complete | **17 real food photos, masonry grid, category filters, lightbox modal** |
 | Pop-Up Events | `/pop-up` | ✅ Complete | 4 pop-up types with greyscale images, benefits, social CTAs |
 | Menus | `/menus` | ✅ Complete | 4 categories with gradient cards + images (no prices), extras |
 | About | `/about` | ✅ Complete | Personal story, timeline, Mandy's photo, values, certifications |
@@ -197,6 +198,22 @@ This pivot happened one month before COVID hit. As the dining landscape changed,
 
 ## Session Notes
 
+### April 20, 2026 Session (Morning)
+- Enhanced home page with vibrant brand colors
+- Added Crock Spot food truck partner page
+- Styled Crock Spot nav link with branded pill button
+- Adjusted grayscale hover effects (50% more color)
+- Removed all prices from menus page
+- Fixed menu category icons for proper contrast
+
+### April 20, 2026 Session (Afternoon)
+- **NEW: Created /gallery page** - "Feast Your Eyes" food gallery
+- Added 17 real food photos from Mandy's collection
+- Features: Masonry grid, category filters (All, Grazing, Breakfast, Lunch, Holiday, Desserts)
+- Lightbox modal for full-size viewing
+- Hover effects with glow, scale, and content overlays
+- Added Gallery link to main navigation
+
 ### April 3, 2026 Session
 - Fixed broken Oktoberfest and Luau images on Themes page
 - Added spicy gradient design to Menus page with animated icons
@@ -209,4 +226,4 @@ This pivot happened one month before COVID hit. As the dining landscape changed,
 
 ---
 
-**Last Updated**: April 3, 2026
+**Last Updated**: April 20, 2026
