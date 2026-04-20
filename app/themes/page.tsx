@@ -170,14 +170,14 @@ export default function ThemesPage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="font-display text-3xl text-spot-navy font-bold mb-6">
+            <h3 className="font-display text-3xl text-spot-navy font-bold mb-8">
               Holiday Events We Love Catering
             </h3>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
               {holidays.map((holiday) => (
                 <span
                   key={holiday}
-                  className="bg-white/90 text-spot-navy px-4 py-2 rounded-full font-medium text-sm shadow-md"
+                  className="bg-white/90 text-spot-navy px-4 py-3 rounded-full font-medium text-sm shadow-md text-center"
                 >
                   {holiday}
                 </span>
