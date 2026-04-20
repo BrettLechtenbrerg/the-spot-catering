@@ -313,7 +313,7 @@ export default function AboutPage() {
                 {/* Mandy's Photo */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/mandy-about.jpg"
+                    src="/images/meet-mandy.jpg"
                     alt="Mandy Smith - Founder of The Spot Catering"
                     width={400}
                     height={500}
