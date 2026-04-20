@@ -13,7 +13,11 @@ import {
   CheckCircle,
   ArrowRight,
   Award,
-  Sparkles
+  Sparkles,
+  MapPin,
+  Zap,
+  Star,
+  Heart
 } from 'lucide-react'
 
 const services = [
@@ -62,6 +66,33 @@ const whyChooseUs = [
   'We work with your needs and budget — not the other way around',
   'Excellence from first call to final cleanup',
   'Creative menus for any theme — the sky\'s the limit!',
+]
+
+const popUpTypes = [
+  {
+    title: 'Holiday Pop-Ups',
+    description: 'Special seasonal experiences around major holidays. Think Valentine\'s treats, Halloween spooky snacks, and festive holiday spreads.',
+    icon: Calendar,
+    color: 'bg-red-500',
+  },
+  {
+    title: 'Office Building Events',
+    description: 'Bring excitement to your building lobby or common areas with a surprise pop-up catering experience.',
+    icon: MapPin,
+    color: 'bg-blue-500',
+  },
+  {
+    title: 'Flash Sales & Specials',
+    description: 'Follow us on social media for surprise pop-up locations and exclusive one-day-only menu items!',
+    icon: Zap,
+    color: 'bg-amber-500',
+  },
+  {
+    title: 'Community Events',
+    description: 'We love being part of local Denver events, festivals, and community gatherings. Great food brings people together!',
+    icon: Users,
+    color: 'bg-teal-500',
+  },
 ]
 
 export default function CorporatePage() {
@@ -131,6 +162,123 @@ export default function CorporatePage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pop-Up Events Section */}
+      <section className="py-16 bg-spot-orange">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <Sparkles className="mx-auto text-spot-navy mb-4" size={40} />
+            <h2 className="font-display text-4xl md:text-5xl text-spot-navy font-bold mb-4">
+              Surprise & Delight Pop-Ups
+            </h2>
+            <p className="text-spot-navy/80 max-w-2xl mx-auto text-lg">
+              Want to create unexpected joy in your workplace? Our pop-up events bring delicious food
+              and memorable moments to any location.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {popUpTypes.map((type, index) => (
+              <motion.div
+                key={type.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className={`w-12 h-12 ${type.color} rounded-xl flex items-center justify-center mb-4`}>
+                  <type.icon className="text-white" size={24} />
+                </div>
+                <h3 className="font-display text-lg text-spot-navy mb-2">{type.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{type.description}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-10"
+          >
+            <Link href="/contact" className="bg-spot-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-spot-navy-light transition-colors inline-flex items-center gap-2">
+              Book A Pop-Up <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Why Pop-Ups Work */}
+      <section className="section bg-white">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-6">
+                Why Pop-Ups <span className="text-spot-orange">Work Magic</span>
+              </h2>
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                There&apos;s something special about unexpected food experiences.
+                Pop-up events create excitement, build community, and give people
+                something to talk about.
+              </p>
+
+              <div className="space-y-6">
+                {[
+                  { icon: Star, title: 'Unique Experience', description: 'Pop-ups create buzz and excitement that regular catering can\'t match.' },
+                  { icon: Heart, title: 'Community Connection', description: 'Perfect for building relationships with employees, neighbors, or customers.' },
+                  { icon: Sparkles, title: 'Memorable Moments', description: 'Unexpected food experiences create lasting memories and talking points.' },
+                ].map((benefit, index) => (
+                  <motion.div
+                    key={benefit.title}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex gap-4"
+                  >
+                    <div className="w-12 h-12 bg-spot-orange rounded-xl flex items-center justify-center flex-shrink-0">
+                      <benefit.icon className="text-white" size={24} />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg text-spot-navy mb-1">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <Image
+                src="/images/Char Cups Catering.jpg"
+                alt="Pop-up event catering"
+                width={600}
+                height={400}
+                className="rounded-2xl shadow-2xl"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
