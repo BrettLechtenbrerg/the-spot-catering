@@ -6,7 +6,6 @@ import Image from 'next/image'
 import {
   Building2,
   PartyPopper,
-  Sparkles,
   Coffee,
   UtensilsCrossed,
   Award,
@@ -48,13 +47,6 @@ const services = [
     color: 'bg-spot-purple',
   },
   {
-    icon: Sparkles,
-    title: 'Pop-Up Events',
-    description: 'Holiday pop-ups and community events that create memorable moments.',
-    href: '/pop-up',
-    color: 'bg-spot-orange-red',
-  },
-  {
     icon: Coffee,
     title: 'Happy Hour',
     description: 'Beautiful charcuterie boards and grazing tables for after-hours magic.',
@@ -87,7 +79,7 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Full Menu photo.jpg"
+            src="/images/20220528_185532.jpg"
             alt="Corporate catering spread"
             fill
             className="object-cover"
@@ -122,9 +114,9 @@ export default function HomePage() {
                 transition={{ delay: 0.3 }}
                 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
               >
-                We Know How To
+                We Know What
                 <br />
-                <span className="text-spot-orange">Hit The Spot</span>
+                <span className="text-spot-orange">Hits The Spot</span>
               </motion.h1>
 
               <motion.p
@@ -259,7 +251,7 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
             {services.map((service, index) => (
               <motion.div
