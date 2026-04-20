@@ -175,13 +175,14 @@ export default function HomePage() {
             >
               <div className="relative w-full max-w-lg mx-auto">
                 <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
-                  <Image
-                    src="/images/20220528_185532.jpg"
-                    alt="Delicious catering spread"
-                    width={500}
-                    height={350}
-                    className="rounded-2xl shadow-2xl"
-                  />
+                  <div className="relative w-full h-[350px] rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="/images/meet-mandy.jpg"
+                      alt="Mandy Smith - The Corporate Catering Queen"
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
                   <div className="mt-6 text-center text-white">
                     <p className="font-display text-2xl mb-2">Denver&apos;s Favorite</p>
                     <p className="text-spot-orange font-semibold">Corporate Caterer</p>
