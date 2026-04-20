@@ -14,7 +14,6 @@ const navigation = [
   { name: 'Menus', href: '/menus' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Crock Spot', href: '/crock-spot' },
 ]
 
 export default function Header() {
@@ -72,6 +71,13 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+            <Link
+              href="/crock-spot"
+              className="px-4 py-2 rounded-full border-2 border-[#2F2744] bg-white hover:bg-[#2F2744] transition-colors group"
+            >
+              <span className="font-bold text-[#2F2744] group-hover:text-white">CROCK</span>
+              <span className="font-bold text-[#F49220]">Spot</span>
+            </Link>
             <Link href="/contact" className="btn-primary">
               Book Now
             </Link>
@@ -107,6 +113,15 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
+              <Link
+                href="/crock-spot"
+                className="block py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="font-bold text-[#2F2744]">CROCK</span>
+                <span className="font-bold text-[#F49220]">Spot</span>
+                <span className="text-gray-500 text-sm ml-2">→ Food Truck Partner</span>
+              </Link>
               <Link
                 href="/contact"
                 className="btn-primary block text-center"
