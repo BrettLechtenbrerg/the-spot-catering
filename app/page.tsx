@@ -308,21 +308,22 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-6">
-                Why We&apos;re <span className="text-spot-orange">Spot On</span>
+                The <span className="text-spot-orange">Royal Treatment</span>
               </h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                When you work with The Spot Catering, you get more than great food —
-                you get a partner who handles the heavy lifting so you can focus on
-                what matters: your guests.
+                The Corporate Catering Queen treats every client like royalty.
+                When you work with The Spot, you get more than great food —
+                you get a partner committed to excellence in every detail.
               </p>
 
               <ul className="space-y-4">
                 {[
-                  'Professional, stress-free event coordination',
-                  'Creative menus tailored to your vision',
-                  'Woman-owned with certified diversity credentials',
-                  'Served the National Guard for 36 days during COVID',
-                  'From intimate meetings to large celebrations',
+                  'Always on time or ahead of schedule — never stress about timing',
+                  'We do what we say, when we say — integrity you can count on',
+                  'Fun, positive energy that makes every event memorable',
+                  'We work with your needs and budget — not the other way around',
+                  'Excellence from booking to presentation to the last bite',
+                  'Creative menus — the sky\'s the limit!',
                 ].map((item, index) => (
                   <motion.li
                     key={index}

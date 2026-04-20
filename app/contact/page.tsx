@@ -85,7 +85,7 @@ export default function ContactPage() {
       <HeroSection
         title="Let's Make Your Event"
         highlight="Hit The Spot"
-        subtitle="Ready to create something delicious? Get in touch with Mandy and the team to start planning your perfect catering experience."
+        subtitle="Ready for the royal treatment? Get in touch with Denver's Corporate Catering Queen and let's create something unforgettable together."
         backgroundImage="/images/20240417_110447.jpg"
       />
 

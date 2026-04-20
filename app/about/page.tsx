@@ -4,13 +4,15 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
-  Heart,
+  Clock,
+  Shield,
+  Smile,
+  Handshake,
+  Trophy,
+  Lightbulb,
   Award,
-  TrendingUp,
-  Users,
   ArrowRight,
   Quote,
-  Star,
   Crown
 } from 'lucide-react'
 
@@ -55,24 +57,34 @@ const timeline = [
 
 const values = [
   {
-    icon: Heart,
-    title: 'Make People Feel Special',
-    description: 'Every event is an opportunity to create joy and connection through great food.',
+    icon: Clock,
+    title: 'Timeliness',
+    description: 'Always on time or ahead of schedule, so our clients never have to stress.',
   },
   {
-    icon: Star,
-    title: 'Quality Without Compromise',
-    description: 'From ingredients to presentation, we never cut corners on quality.',
+    icon: Shield,
+    title: 'Integrity',
+    description: 'We do what we say we will do, when we say we will do it. Period.',
   },
   {
-    icon: Users,
-    title: 'Community First',
-    description: 'We\'re proud to be part of Denver\'s business community and love giving back.',
+    icon: Smile,
+    title: 'Fun & Positivity',
+    description: 'We bring a fun, positive demeanor to every client interaction and themed event we create.',
   },
   {
-    icon: TrendingUp,
-    title: 'Always Growing',
-    description: 'We\'re constantly evolving, learning, and finding new ways to delight our clients.',
+    icon: Handshake,
+    title: 'Workability',
+    description: 'We work with you and your needs and budget — not the other way around.',
+  },
+  {
+    icon: Trophy,
+    title: 'Excellence',
+    description: 'From the ease of booking to delicious food to stunning presentation — excellence is everything.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Creativity',
+    description: 'We can create just about anything for our clients. The sky\'s the limit!',
   },
 ]
 
@@ -137,8 +149,9 @@ export default function AboutPage() {
                 transition={{ delay: 0.4 }}
                 className="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed"
               >
-                The story of how one woman&apos;s passion for making people feel special
-                turned into Denver&apos;s go-to corporate catering company.
+                The Corporate Catering Queen who treats every client like
+                <span className="text-spot-orange font-semibold"> royalty</span>.
+                This is the story of passion, persistence, and making people feel special.
               </motion.p>
 
               <motion.div
@@ -274,15 +287,17 @@ export default function AboutPage() {
               </p>
 
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Today, Mandy Smith is known as Denver&apos;s Corporate Catering Queen — a title she&apos;s earned
-                through years of hard work, countless events, and an unwavering commitment to making every
-                single person feel special. Her company, MNS Worldwide LLC, is a certified MWBE, DBE, EBE,
-                and SBEC — but more than any certification, it&apos;s Mandy&apos;s personal touch that sets The Spot apart.
+                Today, Mandy Smith is known as Denver&apos;s Corporate Catering Queen — and like any good queen,
+                she treats her clients like <strong className="text-spot-navy">royalty</strong>. Every event
+                receives the royal treatment: always on time, always with integrity, always with that signature
+                fun and positivity that makes The Spot different. Her company, MNS Worldwide LLC, is a certified
+                MWBE, DBE, EBE, and SBEC — but more than any certification, it&apos;s Mandy&apos;s commitment to
+                excellence and creativity that sets The Spot apart.
               </p>
 
               <p className="text-spot-navy text-xl font-semibold italic">
-                &quot;I didn&apos;t just find a spot. I created a place where every event becomes a memory,
-                every meal becomes a moment, and every client becomes family.&quot;
+                &quot;I didn&apos;t just find a spot. I created a place where every client is treated like royalty,
+                every event becomes a memory, and every meal becomes a moment worth celebrating.&quot;
               </p>
             </motion.div>
 
@@ -424,12 +439,17 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <Crown className="mx-auto text-spot-orange mb-4" size={48} />
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              What We <span className="text-spot-orange">Stand For</span>
+              The <span className="text-spot-orange">Royal Treatment</span>
             </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              As the Corporate Catering Queen, Mandy treats every client like royalty.
+              These are the values that make it happen.
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}

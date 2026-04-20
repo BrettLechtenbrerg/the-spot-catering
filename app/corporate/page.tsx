@@ -56,12 +56,12 @@ const services = [
 ]
 
 const whyChooseUs = [
-  'Professional setup and breakdown - we handle everything',
-  'Flexible scheduling for your business needs',
-  'Dietary accommodations (GF, vegan, allergies)',
-  'Consistent quality you can count on',
-  'Woman-owned with certified diversity credentials',
-  'Served 36 consecutive days during the pandemic',
+  'Always on time or ahead of schedule — you\'ll never stress about timing',
+  'We do what we say, when we say — integrity you can count on',
+  'Fun, positive energy that elevates every corporate event',
+  'We work with your needs and budget — not the other way around',
+  'Excellence from first call to final cleanup',
+  'Creative menus for any theme — the sky\'s the limit!',
 ]
 
 export default function CorporatePage() {
