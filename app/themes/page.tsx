@@ -137,7 +137,7 @@ export default function ThemesPage() {
                     src={theme.image}
                     alt={theme.title}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-[50%] transition-all duration-500 group-hover:scale-105"
+                    className="object-cover grayscale group-hover:grayscale-[25%] transition-all duration-500 group-hover:scale-105"
                   />
                   {/* Dark Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/95 via-spot-navy/70 to-spot-navy/40 group-hover:from-spot-navy/90 group-hover:via-spot-navy/60 transition-all duration-300" />
