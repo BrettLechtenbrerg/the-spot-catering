@@ -129,7 +129,7 @@ export default function ThemesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[280px]"
+                className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[240px]"
               >
                 {/* Greyscale Background Image */}
                 <div className="absolute inset-0">
