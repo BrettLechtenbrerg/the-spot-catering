@@ -176,7 +176,7 @@ export default function HomePage() {
               <div className="relative w-full max-w-lg mx-auto">
                 <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
                   <Image
-                    src="/images/IMG_4319.jpg"
+                    src="/images/20220528_185532.jpg"
                     alt="Delicious catering spread"
                     width={500}
                     height={350}
