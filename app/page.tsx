@@ -360,12 +360,12 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl shadow-lg p-6 text-center"
+                  className="bg-spot-navy rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition-transform border-2 border-spot-orange/30"
                 >
                   <div className="font-display text-4xl text-spot-orange font-bold mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-gray-600 text-sm">{stat.label}</div>
+                  <div className="text-gray-300 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -396,14 +396,14 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gray-50 rounded-2xl p-8"
+              className="bg-gradient-to-br from-spot-navy to-spot-purple rounded-2xl p-8 text-white shadow-xl"
             >
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={18} className="text-spot-orange fill-spot-orange" />
                 ))}
               </div>
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-gray-300 leading-relaxed mb-6">
                 &ldquo;Mandy and The Spot Cafe have been an absolute go-to for us over the past five years.
                 From day one, she has delivered not only incredible food, but an experience that is thoughtful,
                 reliable, and consistently above expectations. Her menus are always fresh, high quality, and
@@ -411,12 +411,12 @@ export default function HomePage() {
                 positive attitude and professionalism.&rdquo;
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-spot-navy rounded-full flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 bg-spot-orange rounded-full flex items-center justify-center text-white font-bold">
                   KF
                 </div>
                 <div>
-                  <p className="font-semibold text-spot-navy">Kristina Frey</p>
-                  <p className="text-sm text-gray-500">Executive Administrative Assistant, Diablo Media</p>
+                  <p className="font-semibold text-white">Kristina Frey</p>
+                  <p className="text-sm text-gray-400">Executive Administrative Assistant, Diablo Media</p>
                 </div>
               </div>
             </motion.div>
@@ -427,14 +427,14 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-gray-50 rounded-2xl p-8"
+              className="bg-spot-orange rounded-2xl p-8 shadow-xl"
             >
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} className="text-spot-orange fill-spot-orange" />
+                  <Star key={i} size={18} className="text-spot-navy fill-spot-navy" />
                 ))}
               </div>
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-spot-navy/80 leading-relaxed mb-6">
                 &ldquo;I have used Spot Café multiple times for catering lunch meetings in my office —
                 sometimes for internal meetings and others with key Customers and Suppliers. Mandy always
                 helps with the menu, number of attendees, and keeping to budget. My Staff always comments
@@ -442,12 +442,12 @@ export default function HomePage() {
                 She makes me look so good the Team has been known to run around the office shouting my name!&rdquo;
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-spot-purple rounded-full flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 bg-spot-navy rounded-full flex items-center justify-center text-white font-bold">
                   AG
                 </div>
                 <div>
                   <p className="font-semibold text-spot-navy">Andrew Gacek</p>
-                  <p className="text-sm text-gray-500">Director, District Sales — Avnet</p>
+                  <p className="text-sm text-spot-navy/70">Director, District Sales — Avnet</p>
                 </div>
               </div>
             </motion.div>
@@ -503,7 +503,7 @@ export default function HomePage() {
                 className={`rounded-2xl p-8 ${
                   menu.featured
                     ? 'bg-spot-navy text-white transform scale-105 shadow-2xl'
-                    : 'bg-gray-50'
+                    : 'bg-white shadow-xl border-2 border-spot-navy/10 hover:border-spot-orange/50 transition-colors'
                 }`}
               >
                 <menu.icon
