@@ -12,7 +12,7 @@ import {
   Beer,
   Heart,
   Palmtree,
-  Snowflake,
+  Crown,
   ArrowRight,
   Sparkles
 } from 'lucide-react'
@@ -61,11 +61,11 @@ const themes = [
     image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400&h=300&fit=crop', // Romantic setting
   },
   {
-    icon: Snowflake,
-    title: 'Winter Wonderland',
-    description: 'Cozy comfort foods and warming drinks for cold weather events.',
-    color: 'bg-blue-400',
-    image: 'https://images.unsplash.com/photo-1491002052546-bf38f186af56?w=400&h=300&fit=crop', // Winter/snow scene
+    icon: Crown,
+    title: 'Mardi Gras',
+    description: 'Laissez les bons temps rouler! Cajun flavors, king cake, and New Orleans flair.',
+    color: 'bg-purple-600',
+    image: 'https://images.unsplash.com/photo-1550184658-ff6132a71714?w=400&h=300&fit=crop', // Mardi Gras celebration
   },
   {
     icon: Sparkles,
@@ -78,6 +78,7 @@ const themes = [
 
 const holidays = [
   'New Year\'s Day',
+  'Mardi Gras',
   'Valentine\'s Day',
   'St. Patrick\'s Day',
   'Cinco de Mayo',
