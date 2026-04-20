@@ -218,7 +218,7 @@ export default function CorporatePage() {
       </section>
 
       {/* Why Pop-Ups Work */}
-      <section className="section bg-white">
+      <section className="section bg-gradient-to-br from-spot-navy via-spot-navy to-spot-purple">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -226,16 +226,16 @@ export default function CorporatePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-6">
+              <h2 className="font-display text-4xl md:text-5xl text-white mb-6">
                 Why Pop-Ups <span className="text-spot-orange">Work Magic</span>
               </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
                 There&apos;s something special about unexpected food experiences.
                 Pop-up events create excitement, build community, and give people
                 something to talk about.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {[
                   { icon: Star, title: 'Unique Experience', description: 'Pop-ups create buzz and excitement that regular catering can\'t match.' },
                   { icon: Heart, title: 'Community Connection', description: 'Perfect for building relationships with employees, neighbors, or customers.' },
@@ -247,16 +247,16 @@ export default function CorporatePage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex gap-4"
+                    className="flex gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-colors"
                   >
-                    <div className="w-12 h-12 bg-spot-orange rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-spot-orange rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
                       <benefit.icon className="text-white" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-display text-lg text-spot-navy mb-1">
+                      <h3 className="font-display text-lg text-white mb-1">
                         {benefit.title}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-300 text-sm">
                         {benefit.description}
                       </p>
                     </div>
@@ -271,13 +271,23 @@ export default function CorporatePage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <Image
-                src="/images/Char Cups Catering.jpg"
-                alt="Pop-up event catering"
-                width={600}
-                height={400}
-                className="rounded-2xl shadow-2xl"
-              />
+              <div className="rounded-2xl overflow-hidden border-4 border-white/30 shadow-2xl">
+                <Image
+                  src="/images/Char Cups Catering.jpg"
+                  alt="Pop-up event catering"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto"
+                />
+              </div>
+              {/* Floating accent */}
+              <motion.div
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ repeat: Infinity, duration: 4 }}
+                className="absolute -bottom-4 -right-4 bg-spot-orange rounded-2xl shadow-xl p-4"
+              >
+                <Sparkles className="text-white" size={24} />
+              </motion.div>
             </motion.div>
           </div>
         </div>
