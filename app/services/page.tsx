@@ -18,7 +18,8 @@ import {
   CheckCircle,
   ArrowRight,
   Sparkles,
-  Heart
+  Heart,
+  Award
 } from 'lucide-react'
 
 const grabGoItems = [
@@ -199,23 +200,30 @@ export default function ServicesPage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1"
+              className="order-2 lg:order-1 relative"
             >
-              {/* Bartending Image Card */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              {/* Bartending Certification */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-white p-4">
                 <Image
-                  src="/images/IMG_4319.jpg"
-                  alt="Bartending services"
+                  src="/images/bartending-cert.png"
+                  alt="Colorado Responsible Alcohol Beverage Vendor Training Certificate - Mandy Smith"
                   width={600}
                   height={450}
-                  className="w-full object-cover"
+                  className="w-full object-contain rounded-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/80 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <p className="font-display text-2xl mb-2">Professional Bartending</p>
-                  <p className="text-spot-orange font-semibold">For Any Corporate Event</p>
-                </div>
               </div>
+
+              {/* Certification Badge */}
+              <motion.div
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ repeat: Infinity, duration: 4 }}
+                className="absolute -top-4 -right-4 bg-spot-purple rounded-2xl shadow-xl p-4"
+              >
+                <div className="flex items-center gap-2">
+                  <Award className="text-white" size={20} />
+                  <span className="font-bold text-white text-sm">Certified</span>
+                </div>
+              </motion.div>
 
               {/* Floating elements */}
               <motion.div
@@ -247,8 +255,10 @@ export default function ServicesPage() {
 
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                 Take your corporate events to the next level with professional bartending services.
-                Whether it&apos;s a happy hour, holiday party, or client event, our skilled bartenders
-                bring the same excellence and fun energy that defines The Spot.
+                Mandy is <strong className="text-spot-navy">Colorado Certified</strong> in Responsible
+                Alcohol Beverage Vendor Training — so whether it&apos;s a happy hour, holiday party,
+                or client event, you get skilled, professional service with the same excellence
+                and fun energy that defines The Spot.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4 mb-8">

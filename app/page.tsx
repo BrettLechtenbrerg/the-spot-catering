@@ -373,8 +373,90 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Menu Preview */}
+      {/* Testimonials Section */}
       <section className="section bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
+              What Our <span className="text-spot-orange">Clients Say</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Don&apos;t just take our word for it — hear from the companies we serve.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Testimonial 1 - Diablo Media */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gray-50 rounded-2xl p-8"
+            >
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={18} className="text-spot-orange fill-spot-orange" />
+                ))}
+              </div>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                &ldquo;Mandy and The Spot Cafe have been an absolute go-to for us over the past five years.
+                From day one, she has delivered not only incredible food, but an experience that is thoughtful,
+                reliable, and consistently above expectations. Her menus are always fresh, high quality, and
+                beautifully executed — especially her charcuterie boards. What we appreciate most is her
+                positive attitude and professionalism.&rdquo;
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-spot-navy rounded-full flex items-center justify-center text-white font-bold">
+                  KF
+                </div>
+                <div>
+                  <p className="font-semibold text-spot-navy">Kristina Frey</p>
+                  <p className="text-sm text-gray-500">Executive Administrative Assistant, Diablo Media</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Testimonial 2 - Avnet */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-gray-50 rounded-2xl p-8"
+            >
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={18} className="text-spot-orange fill-spot-orange" />
+                ))}
+              </div>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                &ldquo;I have used Spot Café multiple times for catering lunch meetings in my office —
+                sometimes for internal meetings and others with key Customers and Suppliers. Mandy always
+                helps with the menu, number of attendees, and keeping to budget. My Staff always comments
+                on how great the food is! Mandy is always on schedule and the presentation always impresses.
+                She makes me look so good the Team has been known to run around the office shouting my name!&rdquo;
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-spot-purple rounded-full flex items-center justify-center text-white font-bold">
+                  AG
+                </div>
+                <div>
+                  <p className="font-semibold text-spot-navy">Andrew Gacek</p>
+                  <p className="text-sm text-gray-500">Director, District Sales — Avnet</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Menu Preview */}
+      <section className="section bg-gray-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
