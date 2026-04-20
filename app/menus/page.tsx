@@ -26,25 +26,21 @@ const menuCategories = [
       {
         name: 'Breakfast Buffets',
         description: 'English style with eggs, sausage, roasted potatoes, beans & mushrooms. Or Colorado style with cheesy scrambled eggs, sausage, green chili potatoes & tortillas.',
-        price: '$12-15/person',
         image: '/images/20221114_134142.jpg',
       },
       {
         name: 'The Continental Board',
         description: 'A medley of mini croissants, egg bites, fresh fruits, yogurts & granola, cheeses, mini muffins & pastries.',
-        price: '$10-12/person',
         image: '/images/Char Cups Catering.jpg',
       },
       {
         name: 'Bagel Board',
         description: 'A delicious spread of fresh bagels with cream cheeses, peanut butter, jam, and ham.',
-        price: '$10-12/person',
         image: '/images/IMG_4319.jpg',
       },
       {
         name: 'Breakfast Burrito Board',
         description: 'A medley of meat and vegetarian burritos, served with salsa & our famous sour cream.',
-        price: '$10-12/person',
         image: '/images/20220528_185532.jpg',
       },
     ],
@@ -60,25 +56,21 @@ const menuCategories = [
       {
         name: 'Lunch Platters',
         description: 'Our signature sandwiches and wraps served family style. Includes your choice of chips or side salad and a cookie.',
-        price: '$12-15/person',
         image: '/images/Full Menu photo.jpg',
       },
       {
         name: 'Signature Wraps',
         description: 'Buffalo Chicken, Italian Chop, Crispy Chicken Crunch, Mediterranean Gyro — all packed with flavor and fresh ingredients.',
-        price: '$12-15/person',
         image: '/images/IMG_4205.jpg',
       },
       {
         name: 'Premium Hoagies',
         description: 'Roast Beef & Provolone Grinder, Turkey Bacon Avocado, or our famous Garden Veggie Hoagie with hummus and avocado velvet.',
-        price: '$12-15/person',
         image: '/images/20240417_110447.jpg',
       },
       {
         name: 'Build-A-Bowl',
         description: 'Choose your base (sesame rice, quinoa, couscous), protein (chicken, pork, beef, tofu), sauce, and toppers. Served via Crock Spot food truck or buffet!',
-        price: '$15-17/person',
         image: '/images/Couscous Salad.jpg',
       },
     ],
@@ -94,13 +86,11 @@ const menuCategories = [
       {
         name: 'Charcuterie Boards',
         description: 'Beautifully crafted boards featuring premium meats, artisan cheeses, fresh fruits, nuts, and accompaniments.',
-        price: 'Custom pricing',
         image: '/images/AA3DF640-.jpg',
       },
       {
         name: 'Grazing Tables',
         description: 'Stunning, Instagram-worthy displays perfect for larger gatherings. A feast for the eyes and the appetite!',
-        price: 'Custom pricing',
         image: '/images/IMG_28681.jpg',
       },
     ],
@@ -116,25 +106,21 @@ const menuCategories = [
       {
         name: 'Taco Bar',
         description: 'Street taco tortillas, cilantro lime rice, southwest chicken, ground beef, fajita veggies, all the toppings, chips & guacamole.',
-        price: '$12-15/person',
         image: '/images/20220528_185532.jpg',
       },
       {
         name: 'Mediterranean Bar',
         description: 'Build a pita or salad with gyro meat, feta spanakopita, pita bread, Greek olives, hummus, tzatziki, and tabouli salad.',
-        price: '$12-15/person',
         image: '/images/Couscous Salad.jpg',
       },
       {
         name: 'BBQ Sandwich Bar',
         description: 'Tangy Carolina pulled pork, smoked chicken or cheddar brats, mac salad, cole slaw, baked beans, corn on the cob, hoagies.',
-        price: '$12-15/person',
         image: '/images/20240417_110447.jpg',
       },
       {
         name: 'Soup & Salad Bar',
         description: 'Choice of 2 soups (Tomato Bisque, Chicken Tortilla, Baked Potato, Red Chili) plus a full salad spread with proteins and cornbread.',
-        price: '$12-15/person',
         image: '/images/IMG_4205.jpg',
       },
     ],
@@ -234,14 +220,9 @@ export default function MenusPage() {
 
                         {/* Content */}
                         <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
-                          <div className="flex items-center justify-between mb-2">
-                            <h4 className="font-display text-2xl group-hover:text-spot-orange transition-colors">
-                              {item.name}
-                            </h4>
-                            <span className="bg-spot-orange text-spot-navy px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                              {item.price}
-                            </span>
-                          </div>
+                          <h4 className="font-display text-2xl group-hover:text-spot-orange transition-colors mb-2">
+                            {item.name}
+                          </h4>
                           <p className="text-gray-200 text-sm leading-relaxed">
                             {item.description}
                           </p>
