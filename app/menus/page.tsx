@@ -37,7 +37,7 @@ const menuCategories = [
       {
         name: 'Bagel Board',
         description: 'A delicious spread of fresh bagels with cream cheeses, peanut butter, jam, and ham.',
-        image: '/images/gallery/full-menu-spread.jpg',
+        image: '/images/bagel-display.png',
       },
       {
         name: 'Breakfast Burrito Board',
@@ -110,7 +110,7 @@ const menuCategories = [
       {
         name: 'Taco Bar',
         description: 'Street taco tortillas, cilantro lime rice, southwest chicken, ground beef, fajita veggies, all the toppings, chips & guacamole.',
-        image: '/images/gallery/casino-night-spread.jpg',
+        image: '/images/taco-bar.png',
       },
       {
         name: 'Mediterranean Bar',

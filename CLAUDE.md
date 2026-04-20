@@ -206,6 +206,11 @@ This pivot happened one month before COVID hit. As the dining landscape changed,
 - Removed all prices from menus page
 - Fixed menu category icons for proper contrast
 
+### April 20, 2026 Session (Late Morning)
+- Updated Taco Bar image on Menus page with Mandy's real taco-bar.png
+- Updated Bagel Board image on Menus page with Mandy's real bagel-display.png
+- Full sync to GitHub completed
+
 ### April 20, 2026 Session (Afternoon)
 - **NEW: Created /gallery page** - "Feast Your Eyes" food gallery
 - Added 17 real food photos from Mandy's collection
