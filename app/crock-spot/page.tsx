@@ -75,13 +75,18 @@ export default function CrockSpotPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#2F2744]">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, #F49220 0, #F49220 1px, transparent 0, transparent 50%)',
-            backgroundSize: '20px 20px'
-          }} />
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/crockspot-truck.jpg"
+            alt="Crock Spot Food Truck"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2F2744]/95 via-[#2F2744]/85 to-[#2F2744]/70" />
         </div>
 
         <div className="container-custom relative z-10 py-20">
