@@ -27,22 +27,22 @@ const menuCategories = [
       {
         name: 'Breakfast Buffets',
         description: 'English style with eggs, sausage, roasted potatoes, beans & mushrooms. Or Colorado style with cheesy scrambled eggs, sausage, green chili potatoes & tortillas.',
-        image: '/images/20221114_134142.jpg',
+        image: '/images/gallery/breakfast-board-parfaits.jpg',
       },
       {
         name: 'The Continental Board',
         description: 'A medley of mini croissants, egg bites, fresh fruits, yogurts & granola, cheeses, mini muffins & pastries.',
-        image: '/images/Char Cups Catering.jpg',
+        image: '/images/gallery/breakfast-board-croissants.jpg',
       },
       {
         name: 'Bagel Board',
         description: 'A delicious spread of fresh bagels with cream cheeses, peanut butter, jam, and ham.',
-        image: '/images/IMG_4319.jpg',
+        image: '/images/gallery/full-menu-spread.jpg',
       },
       {
         name: 'Breakfast Burrito Board',
         description: 'A medley of meat and vegetarian burritos, served with salsa & our famous sour cream.',
-        image: '/images/20220528_185532.jpg',
+        image: '/images/gallery/wrap-trays-variety.jpg',
       },
     ],
   },
@@ -58,22 +58,22 @@ const menuCategories = [
       {
         name: 'Lunch Platters',
         description: 'Our signature sandwiches and wraps served family style. Includes your choice of chips or side salad and a cookie.',
-        image: '/images/Full Menu photo.jpg',
+        image: '/images/gallery/wrap-platter-chips.jpg',
       },
       {
         name: 'Signature Wraps',
         description: 'Buffalo Chicken, Italian Chop, Crispy Chicken Crunch, Mediterranean Gyro — all packed with flavor and fresh ingredients.',
-        image: '/images/IMG_4205.jpg',
+        image: '/images/gallery/wrap-trays-variety.jpg',
       },
       {
         name: 'Premium Hoagies',
         description: 'Roast Beef & Provolone Grinder, Turkey Bacon Avocado, or our famous Garden Veggie Hoagie with hummus and avocado velvet.',
-        image: '/images/20240417_110447.jpg',
+        image: '/images/gallery/full-menu-spread.jpg',
       },
       {
         name: 'Build-A-Bowl',
         description: 'Choose your base (sesame rice, quinoa, couscous), protein (chicken, pork, beef, tofu), sauce, and toppers. Served via Crock Spot food truck or buffet!',
-        image: '/images/Couscous Salad.jpg',
+        image: '/images/gallery/boxed-lunches-rice.jpg',
       },
     ],
   },
@@ -89,12 +89,12 @@ const menuCategories = [
       {
         name: 'Charcuterie Boards',
         description: 'Beautifully crafted boards featuring premium meats, artisan cheeses, fresh fruits, nuts, and accompaniments.',
-        image: '/images/AA3DF640-.jpg',
+        image: '/images/gallery/double-grazing-boards.jpg',
       },
       {
         name: 'Grazing Tables',
         description: 'Stunning, Instagram-worthy displays perfect for larger gatherings. A feast for the eyes and the appetite!',
-        image: '/images/IMG_28681.jpg',
+        image: '/images/gallery/grazing-table-epic.jpg',
       },
     ],
   },
@@ -110,22 +110,22 @@ const menuCategories = [
       {
         name: 'Taco Bar',
         description: 'Street taco tortillas, cilantro lime rice, southwest chicken, ground beef, fajita veggies, all the toppings, chips & guacamole.',
-        image: '/images/20220528_185532.jpg',
+        image: '/images/gallery/casino-night-spread.jpg',
       },
       {
         name: 'Mediterranean Bar',
         description: 'Build a pita or salad with gyro meat, feta spanakopita, pita bread, Greek olives, hummus, tzatziki, and tabouli salad.',
-        image: '/images/Couscous Salad.jpg',
+        image: '/images/gallery/couscous-salad.jpg',
       },
       {
         name: 'BBQ Sandwich Bar',
         description: 'Tangy Carolina pulled pork, smoked chicken or cheddar brats, mac salad, cole slaw, baked beans, corn on the cob, hoagies.',
-        image: '/images/20240417_110447.jpg',
+        image: '/images/gallery/wrap-platter-chips.jpg',
       },
       {
         name: 'Soup & Salad Bar',
         description: 'Choice of 2 soups (Tomato Bisque, Chicken Tortilla, Baked Potato, Red Chili) plus a full salad spread with proteins and cornbread.',
-        image: '/images/IMG_4205.jpg',
+        image: '/images/gallery/grab-go-salad.jpg',
       },
     ],
   },
@@ -210,16 +210,16 @@ export default function MenusPage() {
                         transition={{ delay: itemIndex * 0.1 }}
                         className="relative rounded-2xl overflow-hidden h-[280px] group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300"
                       >
-                        {/* Background Image with Grayscale Effect */}
+                        {/* Background Image with Color */}
                         <div className="absolute inset-0">
                           <Image
                             src={item.image}
                             alt={item.name}
                             fill
-                            className="object-cover grayscale group-hover:grayscale-[15%] transition-all duration-500 group-hover:scale-105"
+                            className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                           />
-                          {/* Dark Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 group-hover:from-black/80 group-hover:via-black/50 transition-all duration-300" />
+                          {/* Lighter Overlay for more color */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10 group-hover:from-black/75 group-hover:via-black/30 group-hover:to-transparent transition-all duration-300" />
                         </div>
 
                         {/* Content */}
