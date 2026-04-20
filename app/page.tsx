@@ -479,6 +479,11 @@ export default function HomePage() {
                 tagline: 'Start the day right',
                 items: ['Breakfast Boards', 'Burrito Platters', 'Coffee Service'],
                 icon: Coffee,
+                cardStyle: 'bg-spot-orange text-spot-navy',
+                iconColor: 'text-spot-navy',
+                taglineColor: 'text-spot-navy/80',
+                itemColor: 'text-spot-navy/70',
+                checkColor: 'text-spot-navy',
               },
               {
                 title: 'Lunch',
@@ -486,12 +491,22 @@ export default function HomePage() {
                 items: ['Individual Packages', 'Buffet Style', 'Build Your Own'],
                 icon: UtensilsCrossed,
                 featured: true,
+                cardStyle: 'bg-spot-navy text-white transform scale-105',
+                iconColor: 'text-spot-orange',
+                taglineColor: 'text-spot-orange',
+                itemColor: 'text-gray-300',
+                checkColor: 'text-spot-orange',
               },
               {
                 title: 'Happy Hour',
                 tagline: 'After hours magic',
                 items: ['Charcuterie Boards', 'Grazing Tables', 'Themed Spreads'],
                 icon: PartyPopper,
+                cardStyle: 'bg-spot-purple text-white',
+                iconColor: 'text-spot-orange',
+                taglineColor: 'text-spot-orange',
+                itemColor: 'text-gray-300',
+                checkColor: 'text-spot-orange',
               },
             ].map((menu, index) => (
               <motion.div
@@ -500,31 +515,23 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`rounded-2xl p-8 ${
-                  menu.featured
-                    ? 'bg-spot-navy text-white transform scale-105 shadow-2xl'
-                    : 'bg-white shadow-xl border-2 border-spot-navy/10 hover:border-spot-orange/50 transition-colors'
-                }`}
+                className={`rounded-2xl p-8 shadow-2xl hover:scale-105 transition-transform ${menu.cardStyle}`}
               >
                 <menu.icon
                   size={40}
-                  className={menu.featured ? 'text-spot-orange mb-4' : 'text-spot-purple mb-4'}
+                  className={`${menu.iconColor} mb-4`}
                 />
                 <h3 className="font-display text-2xl mb-2">{menu.title}</h3>
-                <p className={`text-sm font-medium mb-4 ${
-                  menu.featured ? 'text-spot-orange' : 'text-spot-orange'
-                }`}>
+                <p className={`text-sm font-medium mb-4 ${menu.taglineColor}`}>
                   {menu.tagline}
                 </p>
                 <ul className="space-y-2">
                   {menu.items.map((item) => (
                     <li
                       key={item}
-                      className={`flex items-center gap-2 ${
-                        menu.featured ? 'text-gray-300' : 'text-gray-600'
-                      }`}
+                      className={`flex items-center gap-2 ${menu.itemColor}`}
                     >
-                      <CheckCircle size={16} className="text-spot-orange" />
+                      <CheckCircle size={16} className={menu.checkColor} />
                       {item}
                     </li>
                   ))}
