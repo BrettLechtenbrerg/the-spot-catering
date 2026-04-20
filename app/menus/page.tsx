@@ -8,7 +8,7 @@ import {
   Coffee,
   Utensils,
   Wine,
-  PartyPopper,
+  ChefHat,
   ArrowRight,
   CheckCircle,
   Flame
@@ -19,21 +19,33 @@ const menuCategories = [
     icon: Coffee,
     title: 'Breakfast',
     tagline: 'More Espresso, Less Depresso',
-    color: 'from-amber-500 to-orange-600',
-    accentColor: 'bg-amber-500',
-    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=600&fit=crop', // Coffee shop morning vibes
+    bgColor: 'bg-spot-orange',
+    textColor: 'text-spot-navy',
+    accentColor: 'bg-spot-navy',
     items: [
       {
-        name: 'Breakfast Boards',
-        description: 'A medley of continental style breakfast bites. Pastries, yogurt, fruit, eggs, muffins, cheese, etc. We can design one specifically for your needs.',
+        name: 'Breakfast Buffets',
+        description: 'English style with eggs, sausage, roasted potatoes, beans & mushrooms. Or Colorado style with cheesy scrambled eggs, sausage, green chili potatoes & tortillas.',
+        price: '$12-15/person',
+        image: '/images/20221114_134142.jpg',
       },
       {
-        name: 'Breakfast Burrito Platter',
-        description: 'House made breakfast burritos, served with salsa & our famous Sriracha Sour Cream. Available flavors: Bacon, Chorizo or Veggie. GF or Vegan options available!',
+        name: 'The Continental Board',
+        description: 'A medley of mini croissants, egg bites, fresh fruits, yogurts & granola, cheeses, mini muffins & pastries.',
+        price: '$10-12/person',
+        image: '/images/Char Cups Catering.jpg',
       },
       {
-        name: 'In Room Coffee Service',
-        description: 'Drip coffee set up in your room. Includes disposable cups, napkins & sugars and creamers. We can also set up a coffee tab at our Cafe for folks who prefer espresso drinks.',
+        name: 'Bagel Board',
+        description: 'A delicious spread of fresh bagels with cream cheeses, peanut butter, jam, and ham.',
+        price: '$10-12/person',
+        image: '/images/IMG_4319.jpg',
+      },
+      {
+        name: 'Breakfast Burrito Board',
+        description: 'A medley of meat and vegetarian burritos, served with salsa & our famous sour cream.',
+        price: '$10-12/person',
+        image: '/images/20220528_185532.jpg',
       },
     ],
   },
@@ -41,17 +53,33 @@ const menuCategories = [
     icon: Utensils,
     title: 'Lunch',
     tagline: 'Fuel Your Team',
-    color: 'from-emerald-500 to-teal-600',
-    accentColor: 'bg-emerald-500',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop', // Restaurant/team lunch vibes
+    bgColor: 'bg-emerald-600',
+    textColor: 'text-white',
+    accentColor: 'bg-white',
     items: [
       {
-        name: 'Individually Packaged Lunches',
-        description: 'After serving the National Guard meals for 36 days straight during the Pandemic, we\'ve got individually packaged meals down. From salads, to wraps, rice bowls, adult lunchables... you name it. Add drinks or desserts!',
+        name: 'Lunch Platters',
+        description: 'Our signature sandwiches and wraps served family style. Includes your choice of chips or side salad and a cookie.',
+        price: '$12-15/person',
+        image: '/images/Full Menu photo.jpg',
       },
       {
-        name: 'Buffet Style Lunch',
-        description: 'Any of our Cafe Menu options, served in a buffet style. Salad bars, Build your own Rice Bowls, Build your own Wraps, etc.',
+        name: 'Signature Wraps',
+        description: 'Buffalo Chicken, Italian Chop, Crispy Chicken Crunch, Mediterranean Gyro — all packed with flavor and fresh ingredients.',
+        price: '$12-15/person',
+        image: '/images/IMG_4205.jpg',
+      },
+      {
+        name: 'Premium Hoagies',
+        description: 'Roast Beef & Provolone Grinder, Turkey Bacon Avocado, or our famous Garden Veggie Hoagie with hummus and avocado velvet.',
+        price: '$12-15/person',
+        image: '/images/20240417_110447.jpg',
+      },
+      {
+        name: 'Build-A-Bowl',
+        description: 'Choose your base (sesame rice, quinoa, couscous), protein (chicken, pork, beef, tofu), sauce, and toppers. Served via Crock Spot food truck or buffet!',
+        price: '$15-17/person',
+        image: '/images/Couscous Salad.jpg',
       },
     ],
   },
@@ -59,35 +87,55 @@ const menuCategories = [
     icon: Wine,
     title: 'Happy Hour',
     tagline: 'After Hours Magic',
-    color: 'from-purple-500 to-pink-600',
-    accentColor: 'bg-purple-500',
-    image: 'https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=800&h=600&fit=crop', // Elegant happy hour vibes
+    bgColor: 'bg-spot-purple',
+    textColor: 'text-white',
+    accentColor: 'bg-spot-orange',
     items: [
       {
         name: 'Charcuterie Boards',
-        description: 'Beautifully crafted charcuterie and grazing boards, perfect for your after hours meeting or special event.',
+        description: 'Beautifully crafted boards featuring premium meats, artisan cheeses, fresh fruits, nuts, and accompaniments.',
+        price: 'Custom pricing',
+        image: '/images/AA3DF640-.jpg',
       },
       {
         name: 'Grazing Tables',
-        description: 'Stunning displays perfect for larger gatherings. A feast for the eyes and the appetite!',
+        description: 'Stunning, Instagram-worthy displays perfect for larger gatherings. A feast for the eyes and the appetite!',
+        price: 'Custom pricing',
+        image: '/images/IMG_28681.jpg',
       },
     ],
   },
   {
-    icon: PartyPopper,
-    title: 'Themed Meals',
-    tagline: 'The Sky\'s The Limit',
-    color: 'from-red-500 to-orange-600',
-    accentColor: 'bg-red-500',
-    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop', // Party celebration vibes
+    icon: ChefHat,
+    title: 'BYO Bars',
+    tagline: 'Build Your Own Adventure',
+    bgColor: 'bg-spot-navy',
+    textColor: 'text-white',
+    accentColor: 'bg-spot-orange',
     items: [
       {
-        name: 'Taco & Chili Bars',
-        description: 'Build-your-own stations with all the fixings. Perfect for casual team events.',
+        name: 'Taco Bar',
+        description: 'Street taco tortillas, cilantro lime rice, southwest chicken, ground beef, fajita veggies, all the toppings, chips & guacamole.',
+        price: '$12-15/person',
+        image: '/images/20220528_185532.jpg',
       },
       {
-        name: 'BBQ, Luau, Oktoberfest & More',
-        description: 'We\'ve catered hundreds of corporate events and themed parties throughout the years. From BBQ to holidays to international themes.',
+        name: 'Mediterranean Bar',
+        description: 'Build a pita or salad with gyro meat, feta spanakopita, pita bread, Greek olives, hummus, tzatziki, and tabouli salad.',
+        price: '$12-15/person',
+        image: '/images/Couscous Salad.jpg',
+      },
+      {
+        name: 'BBQ Sandwich Bar',
+        description: 'Tangy Carolina pulled pork, smoked chicken or cheddar brats, mac salad, cole slaw, baked beans, corn on the cob, hoagies.',
+        price: '$12-15/person',
+        image: '/images/20240417_110447.jpg',
+      },
+      {
+        name: 'Soup & Salad Bar',
+        description: 'Choice of 2 soups (Tomato Bisque, Chicken Tortilla, Baked Potato, Red Chili) plus a full salad spread with proteins and cornbread.',
+        price: '$12-15/person',
+        image: '/images/IMG_4205.jpg',
       },
     ],
   },
@@ -131,7 +179,7 @@ export default function MenusPage() {
             </p>
           </motion.div>
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {menuCategories.map((category, catIndex) => (
               <motion.div
                 key={category.title}
@@ -139,60 +187,65 @@ export default function MenusPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: catIndex * 0.1 }}
-                className="relative rounded-3xl overflow-hidden shadow-xl group"
+                className={`rounded-3xl overflow-hidden shadow-xl ${category.bgColor}`}
               >
-                {/* Background Image with Gradient Overlay */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={category.image}
-                    alt={category.title}
-                    fill
-                    className="object-cover grayscale group-hover:grayscale-[15%] transition-all duration-700 group-hover:scale-105"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-80 group-hover:opacity-75 transition-opacity duration-300`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 p-8 md:p-12">
-                  {/* Category Header */}
+                {/* Category Header */}
+                <div className="p-8 md:p-10">
                   <div className="flex items-center gap-4 mb-8">
                     <motion.div
                       whileHover={{ rotate: 12, scale: 1.1 }}
                       className={`w-16 h-16 ${category.accentColor} rounded-2xl flex items-center justify-center shadow-lg`}
                     >
-                      <category.icon className="text-white" size={32} />
+                      <category.icon className={category.bgColor === 'bg-spot-orange' ? 'text-spot-navy' : 'text-spot-orange'} size={32} />
                     </motion.div>
                     <div>
-                      <h3 className="font-display text-4xl text-white drop-shadow-lg">
+                      <h3 className={`font-display text-4xl ${category.textColor} drop-shadow-lg`}>
                         {category.title}
                       </h3>
-                      <p className="text-white/90 font-medium italic text-lg flex items-center gap-2">
+                      <p className={`${category.textColor} opacity-90 font-medium italic text-lg flex items-center gap-2`}>
                         <Flame size={16} className="text-yellow-300" />
                         {category.tagline}
                       </p>
                     </div>
                   </div>
 
-                  {/* Menu Items */}
-                  <div className="grid md:grid-cols-2 gap-4">
+                  {/* Menu Items Grid with Image Backgrounds */}
+                  <div className="grid md:grid-cols-2 gap-6">
                     {category.items.map((item, itemIndex) => (
                       <motion.div
                         key={item.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: itemIndex * 0.1 }}
-                        whileHover={{ scale: 1.02, x: 5 }}
-                        className="bg-white/95 backdrop-blur-sm rounded-xl p-5 hover:shadow-2xl transition-all duration-300 border-l-4 border-spot-orange"
+                        className="relative rounded-2xl overflow-hidden h-[280px] group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300"
                       >
-                        <h4 className="font-display text-xl text-spot-navy mb-2 flex items-center gap-2">
-                          <span className="w-2 h-2 bg-spot-orange rounded-full"></span>
-                          {item.name}
-                        </h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          {item.description}
-                        </p>
+                        {/* Background Image with Grayscale Effect */}
+                        <div className="absolute inset-0">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            fill
+                            className="object-cover grayscale group-hover:grayscale-[15%] transition-all duration-500 group-hover:scale-105"
+                          />
+                          {/* Dark Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 group-hover:from-black/80 group-hover:via-black/50 transition-all duration-300" />
+                        </div>
+
+                        {/* Content */}
+                        <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-display text-2xl group-hover:text-spot-orange transition-colors">
+                              {item.name}
+                            </h4>
+                            <span className="bg-spot-orange text-spot-navy px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                              {item.price}
+                            </span>
+                          </div>
+                          <p className="text-gray-200 text-sm leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
