@@ -248,6 +248,37 @@ const galleryImages: GalleryImage[] = [
     title: 'Snowmen Skewers',
     description: 'Adorable winter-themed fruit skewers — a festive touch guests will remember.',
   },
+  // --- Latest additions ---
+  {
+    src: '/images/gallery/mandy-feature-1.jpg',
+    alt: 'The Spot Catering featured creation',
+    category: ['grazing'],
+    title: 'Signature Creation',
+    description: 'One of Mandy\'s latest featured spreads — thoughtfully styled and beautifully presented.',
+    tall: true,
+  },
+  {
+    src: '/images/gallery/mandy-feature-2.jpg',
+    alt: 'The Spot Catering event spread',
+    category: ['grazing', 'lunch'],
+    title: 'Event Spotlight',
+    description: 'A recent catering showcase — fresh, vibrant, and made to impress.',
+  },
+  {
+    src: '/images/gallery/mandy-feature-3.jpg',
+    alt: 'The Spot Catering display',
+    category: ['grazing', 'lunch'],
+    title: 'Fresh Off The Line',
+    description: 'Another gorgeous spread from Mandy\'s kitchen — catering done with heart and style.',
+  },
+  {
+    src: '/images/gallery/mandy-feature-4.jpg',
+    alt: 'The Spot Catering detail shot',
+    category: ['grazing'],
+    title: 'Crafted With Care',
+    description: 'Every detail matters — from plating to presentation, The Spot hits the spot every time.',
+    tall: true,
+  },
 ]
 
 const categories: { id: Category; label: string }[] = [
