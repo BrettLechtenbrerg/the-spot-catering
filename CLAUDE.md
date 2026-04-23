@@ -172,7 +172,7 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 
 ```bash
 # Navigate to project
-cd /Users/brettlechtenberg/Documents/agent-girl/chat-dd71e03e/the-spot-catering
+cd /Users/brettlechtenberg/Code/the-spot-catering
 
 # Development
 npm install
@@ -186,8 +186,9 @@ git add -A && git commit -m "Description" && git push origin main
 ```
 
 ## Assets Location
-- **Project (current)**: `/Users/brettlechtenberg/Documents/agent-girl/chat-dd71e03e/the-spot-catering/`
+- **Project (current)**: `/Users/brettlechtenberg/Code/the-spot-catering/`
 - **Branding Source**: `/Users/brettlechtenberg/Desktop/Mandy Smith/`
+- **Restart doc**: See `RESUME.md` for the canonical resume prompt and service links.
 
 ## Mandy's Story (Reference)
 Mandy started in sales and marketing for Crock Spot. She saw an empty cafe at a catering job and took the spot - turning one location into three restaurants. Her love for catering led her to downsize to one restaurant plus dedicated catering operations, focusing on making people feel special through creative catering experiences.
@@ -231,4 +232,4 @@ This pivot happened one month before COVID hit. As the dining landscape changed,
 
 ---
 
-**Last Updated**: April 20, 2026
+**Last Updated**: April 23, 2026 (project relocated to ~/Code/the-spot-catering)
