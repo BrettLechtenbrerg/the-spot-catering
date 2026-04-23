@@ -20,8 +20,10 @@ import {
   RefreshCw,
   Lock,
   ImagePlus,
+  UtensilsCrossed,
 } from 'lucide-react';
 import AddToGalleryModal from '@/components/power-hub/AddToGalleryModal';
+import AddToMenuModal from '@/components/power-hub/AddToMenuModal';
 
 interface MediaFile {
   id: string;
@@ -49,6 +51,7 @@ export default function MediaPage() {
   const [loadError, setLoadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState('');
   const [galleryImage, setGalleryImage] = useState<MediaFile | null>(null);
+  const [menuImage, setMenuImage] = useState<MediaFile | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -439,20 +442,31 @@ export default function MediaPage() {
                       )}
                     </button>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={() => setGalleryImage(file)}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-[#FAAA44] text-white text-sm rounded-lg hover:bg-[#E89A35] transition-colors"
+                      className="flex items-center justify-center gap-1.5 py-2 bg-[#FAAA44] text-white text-sm rounded-lg hover:bg-[#E89A35] transition-colors"
                       title="Add this image to the public Gallery page"
                     >
                       <ImagePlus size={14} />
-                      Add to Gallery
+                      Gallery
                     </button>
+                    <button
+                      onClick={() => setMenuImage(file)}
+                      className="flex items-center justify-center gap-1.5 py-2 bg-spot-navy text-white text-sm rounded-lg hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: '#262262' }}
+                      title="Add this image as an item on the Menus page"
+                    >
+                      <UtensilsCrossed size={14} />
+                      Menu
+                    </button>
+                  </div>
+                  <div className="flex justify-end mt-2">
                     {file.editable ? (
                       <button
                         onClick={() => deleteFile(file.id, file.url)}
                         className="p-2 border border-gray-200 rounded-lg hover:bg-red-50 hover:border-red-200 transition-colors"
-                        title="Delete"
+                        title="Delete upload"
                       >
                         <Trash2 size={14} className="text-red-500" />
                       </button>
@@ -534,7 +548,16 @@ export default function MediaPage() {
                     title="Add this image to the public Gallery page"
                   >
                     <ImagePlus size={14} />
-                    Add to Gallery
+                    Gallery
+                  </button>
+                  <button
+                    onClick={() => setMenuImage(file)}
+                    className="flex items-center gap-1.5 px-3 py-2 text-white text-sm rounded-lg hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: '#262262' }}
+                    title="Add this image as an item on the Menus page"
+                  >
+                    <UtensilsCrossed size={14} />
+                    Menu
                   </button>
                   {file.editable ? (
                     <button
@@ -563,6 +586,12 @@ export default function MediaPage() {
         open={galleryImage !== null}
         onClose={() => setGalleryImage(null)}
         image={galleryImage}
+      />
+
+      <AddToMenuModal
+        open={menuImage !== null}
+        onClose={() => setMenuImage(null)}
+        image={menuImage}
       />
     </div>
   );
