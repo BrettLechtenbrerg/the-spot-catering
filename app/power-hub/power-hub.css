@@ -1,0 +1,19 @@
+/* Hide the public site's Header and Footer on Power Hub pages */
+/* The root layout (app/layout.tsx) renders <Header /> and <Footer /> around {children}.
+   When a Power Hub page is rendered inside {children}, :has() lets us hide those siblings. */
+
+body:has(.power-hub-wrapper) > header,
+body:has(.power-hub-wrapper) header.sticky {
+  display: none !important;
+}
+
+body:has(.power-hub-wrapper) > footer,
+body:has(.power-hub-wrapper) footer {
+  display: none !important;
+}
+
+/* Remove any top padding meant for the sticky header */
+body:has(.power-hub-wrapper) > main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}

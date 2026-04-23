@@ -1,0 +1,151 @@
+{
+  "hero": {
+    "title": "Our Menus",
+    "highlight": "Something For Everyone",
+    "subtitle": "From breakfast boards to happy hour spreads, we've got delicious options for every occasion and budget.",
+    "backgroundImage": "/images/Couscous Salad.jpg",
+    "ctaText": "Get A Custom Quote",
+    "ctaLink": "/contact"
+  },
+  "intro": {
+    "headlineLine1": "Catering",
+    "headlineHighlight": "Menu Options",
+    "subheadline": "We love creating custom menus tailored to your specific needs — contact us for a personalized quote!"
+  },
+  "menuCategories": [
+    {
+      "icon": "Coffee",
+      "title": "Breakfast",
+      "tagline": "More Espresso, Less Depresso",
+      "bgColor": "bg-spot-orange",
+      "textColor": "text-spot-navy",
+      "accentColor": "bg-spot-navy",
+      "iconColor": "text-white",
+      "items": [
+        {
+          "name": "Breakfast Buffets",
+          "description": "English style with eggs, sausage, roasted potatoes, beans & mushrooms. Or Colorado style with cheesy scrambled eggs, sausage, green chili potatoes & tortillas.",
+          "image": "/images/gallery/breakfast-board-parfaits.jpg"
+        },
+        {
+          "name": "The Continental Board",
+          "description": "A medley of mini croissants, egg bites, fresh fruits, yogurts & granola, cheeses, mini muffins & pastries.",
+          "image": "/images/gallery/breakfast-board-croissants.jpg"
+        },
+        {
+          "name": "Bagel Board",
+          "description": "A delicious spread of fresh bagels with cream cheeses, peanut butter, jam, and ham.",
+          "image": "/images/bagel-display.png"
+        },
+        {
+          "name": "Breakfast Burrito Board",
+          "description": "A medley of meat and vegetarian burritos, served with salsa & our famous sour cream.",
+          "image": "/images/gallery/wrap-trays-variety.jpg"
+        }
+      ]
+    },
+    {
+      "icon": "Utensils",
+      "title": "Lunch",
+      "tagline": "Fuel Your Team",
+      "bgColor": "bg-emerald-600",
+      "textColor": "text-white",
+      "accentColor": "bg-white",
+      "iconColor": "text-emerald-600",
+      "items": [
+        {
+          "name": "Lunch Platters",
+          "description": "Our signature sandwiches and wraps served family style. Includes your choice of chips or side salad and a cookie.",
+          "image": "/images/gallery/wrap-platter-chips.jpg"
+        },
+        {
+          "name": "Signature Wraps",
+          "description": "Buffalo Chicken, Italian Chop, Crispy Chicken Crunch, Mediterranean Gyro — all packed with flavor and fresh ingredients.",
+          "image": "/images/gallery/wrap-trays-variety.jpg"
+        },
+        {
+          "name": "Premium Hoagies",
+          "description": "Roast Beef & Provolone Grinder, Turkey Bacon Avocado, or our famous Garden Veggie Hoagie with hummus and avocado velvet.",
+          "image": "/images/gallery/full-menu-spread.jpg"
+        },
+        {
+          "name": "Build-A-Bowl",
+          "description": "Choose your base (sesame rice, quinoa, couscous), protein (chicken, pork, beef, tofu), sauce, and toppers. Served via Crock Spot food truck or buffet!",
+          "image": "/images/gallery/boxed-lunches-rice.jpg"
+        }
+      ]
+    },
+    {
+      "icon": "Wine",
+      "title": "Happy Hour",
+      "tagline": "After Hours Magic",
+      "bgColor": "bg-spot-purple",
+      "textColor": "text-white",
+      "accentColor": "bg-white",
+      "iconColor": "text-spot-purple",
+      "items": [
+        {
+          "name": "Charcuterie Boards",
+          "description": "Beautifully crafted boards featuring premium meats, artisan cheeses, fresh fruits, nuts, and accompaniments.",
+          "image": "/images/gallery/double-grazing-boards.jpg"
+        },
+        {
+          "name": "Grazing Tables",
+          "description": "Stunning, Instagram-worthy displays perfect for larger gatherings. A feast for the eyes and the appetite!",
+          "image": "/images/gallery/grazing-table-epic.jpg"
+        }
+      ]
+    },
+    {
+      "icon": "ChefHat",
+      "title": "BYO Bars",
+      "tagline": "Build Your Own Adventure",
+      "bgColor": "bg-spot-navy",
+      "textColor": "text-white",
+      "accentColor": "bg-white",
+      "iconColor": "text-spot-navy",
+      "items": [
+        {
+          "name": "Taco Bar",
+          "description": "Street taco tortillas, cilantro lime rice, southwest chicken, ground beef, fajita veggies, all the toppings, chips & guacamole.",
+          "image": "/images/taco-bar.png"
+        },
+        {
+          "name": "Mediterranean Bar",
+          "description": "Build a pita or salad with gyro meat, feta spanakopita, pita bread, Greek olives, hummus, tzatziki, and tabouli salad.",
+          "image": "/images/gallery/couscous-salad.jpg"
+        },
+        {
+          "name": "BBQ Sandwich Bar",
+          "description": "Tangy Carolina pulled pork, smoked chicken or cheddar brats, mac salad, cole slaw, baked beans, corn on the cob, hoagies.",
+          "image": "/images/gallery/wrap-platter-chips.jpg"
+        },
+        {
+          "name": "Soup & Salad Bar",
+          "description": "Choice of 2 soups (Tomato Bisque, Chicken Tortilla, Baked Potato, Red Chili) plus a full salad spread with proteins and cornbread.",
+          "image": "/images/gallery/grab-go-salad.jpg"
+        }
+      ]
+    }
+  ],
+  "extras": {
+    "heading": "What's Always Included",
+    "items": [
+      "Drinks & Desserts available to add",
+      "GF, Vegan, and allergy accommodations",
+      "Custom menus available",
+      "Setup and cleanup included",
+      "Professional presentation",
+      "Flexible delivery times"
+    ]
+  },
+  "finalCta": {
+    "headlineLine1": "Ready to",
+    "headlineHighlight": "Hit The Spot",
+    "subheadline": "Tell us about your event and we'll create a custom menu and quote that fits your needs perfectly.",
+    "ctaPrimary": "Get A Quote",
+    "ctaPrimaryLink": "/contact",
+    "phoneText": "Call Mandy: 925-699-6629",
+    "phoneNumber": "925-699-6629"
+  }
+}

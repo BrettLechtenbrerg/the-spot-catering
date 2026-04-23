@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "backgroundImage": "/images/crockspot-truck.jpg",
+    "backgroundAlt": "Crock Spot Food Truck",
+    "logoImage": "/images/crock-spot-logo-white.png",
+    "logoAlt": "Crock Spot - Slow Cooked Gourmet Cuisine",
+    "tagline": "Let Us Crock Your World",
+    "subheadlinePrefix": "Voted ",
+    "subheadlineHighlight": "\"Best Food Truck in Denver\"",
+    "subheadlineSuffix": " by 5280 Magazine. Slow-cooked gourmet cuisine that fills you up without bogging you down.",
+    "ctaPrimary": "Book Crock Spot",
+    "ctaPrimaryHref": "mailto:Steven@thecrockspot.com",
+    "ctaSecondary": "Visit Website",
+    "ctaSecondaryHref": "https://www.thecrockspot.com",
+    "badgeTitle": "Award-Winning",
+    "badgeSubtitle": "Food Truck Catering",
+    "badgeItems": [
+      { "icon": "Truck", "text": "15+ Years Food Truck Experience" },
+      { "icon": "Zap", "text": "100 People Per Hour Capacity" },
+      { "icon": "FileCheck", "text": "Government Contract Ready" }
+    ]
+  },
+  "familyBanner": {
+    "headline": "A Family Affair — Steven & Mandy Smith",
+    "description": "Crock Spot is owned by Steven Smith, husband of The Spot's own Mandy Smith. Two great catering options, one family passion for great food!"
+  },
+  "whyCrockSpot": {
+    "headlineLine1": "Why Choose",
+    "headlineHighlight": "Crock Spot",
+    "subheadline": "Fast, delicious, and built for high-volume events. Perfect for corporate gatherings, government contracts, and large-scale catering.",
+    "items": [
+      {
+        "icon": "Clock",
+        "title": "Lightning Fast Service",
+        "description": "Our quick-serve concept serves guests in 25 seconds or less — perfect for time-sensitive events."
+      },
+      {
+        "icon": "Users",
+        "title": "High Volume Capacity",
+        "description": "We can serve up to 100 people per hour from our food trucks. No long lines, no waiting."
+      },
+      {
+        "icon": "FileCheck",
+        "title": "Government Contract Ready",
+        "description": "Fully equipped to handle government contracts with proper certifications and compliance."
+      },
+      {
+        "icon": "Truck",
+        "title": "Mobile Convenience",
+        "description": "15 years of food truck experience. We bring the kitchen to you — anywhere in Denver Metro."
+      }
+    ]
+  },
+  "menuSection": {
+    "headlineLine1": "The",
+    "headlineHighlight": "Crock Spot Menu",
+    "description": "Our \"choose your own adventure\" concept lets guests customize their perfect meal. Slow-cooked proteins over healthy grain bases, topped with international sauces. All dietary needs welcome — including vegetarian and vegan options!",
+    "highlights": [
+      {
+        "title": "Build-A-Bowl",
+        "description": "Choose your base, protein, sauce, and toppings. Served in 25 seconds or less!",
+        "icon": "Utensils"
+      },
+      {
+        "title": "Breakfast Options",
+        "description": "English & Colorado style buffets, continental boards, bagel boards, and breakfast burritos.",
+        "icon": "ChefHat"
+      },
+      {
+        "title": "BYO Bars",
+        "description": "Taco, tostada, nacho, chili, and mac n cheese bars with all the fixings.",
+        "icon": "Star"
+      },
+      {
+        "title": "Grazing Tables",
+        "description": "Stunning charcuterie spreads with cheeses, fruits, crackers, and hot appetizers.",
+        "icon": "Leaf"
+      }
+    ],
+    "serviceOptionsTitle": "Service Options",
+    "serviceTypes": [
+      { "name": "Food Truck Service", "price": "$16-18/person", "description": "Our signature mobile experience" },
+      { "name": "Buffet Style", "price": "$18-20/person", "description": "Indoor setup with full service" },
+      { "name": "Breakfast Buffets", "price": "$15-17/person", "description": "English or Colorado style" },
+      { "name": "Lunch Boxes", "price": "$17.50/person", "description": "Grab-n-go artisan boxes" }
+    ],
+    "serviceOptionsFootnote": "Custom menus available for any event size",
+    "mobileBadgeText": "Mobile!"
+  },
+  "governmentSection": {
+    "headline": "Government Contract Ready",
+    "description": "Crock Spot is fully equipped to handle government contracts and large-scale corporate events. We have the capacity, the certifications, and 15+ years of experience delivering high-volume catering with precision timing.",
+    "pills": [
+      "100+ People/Hour",
+      "25-Second Service",
+      "Flexible Locations"
+    ]
+  },
+  "finalCta": {
+    "headlineLine1": "Ready to",
+    "headlineHighlight": "Crock",
+    "headlineSuffix": "?",
+    "subheadline": "Whether it's a corporate lunch, government event, or community gathering — Crock Spot brings award-winning food truck catering to you.",
+    "ctaPrimary": "Email Steven@thecrockspot.com",
+    "ctaPrimaryHref": "mailto:Steven@thecrockspot.com",
+    "ctaSecondary": "Contact The Spot",
+    "ctaSecondaryHref": "/contact"
+  }
+}

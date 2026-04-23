@@ -78,10 +78,13 @@ See `CLAUDE.md` for full brand colors, typography, pages, and component map.
 
 ## Current Status (as of 2026-04-23)
 
-All 10 pages built & deployed:
-Home · Corporate · Themes · Gallery · Pop-Up · Menus · About · Crock Spot · Privacy · Terms · Contact.
+All 11 pages built & deployed:
+Home · Corporate · Services · Themes · Gallery · Menus · About · Crock Spot · Privacy · Terms · Contact.
 
-Latest commit on `main`: `ee9e539` — "Add 4 new photos to gallery from Mandy's latest collection".
+**Power Hub CMS** is now live at `/power-hub`. All page content is stored in
+`/content/*.json` and consumed at build time. Owners/staff edit content
+through the Power Hub UI — each save is a commit to GitHub on `main`, which
+triggers a Vercel auto-deploy (~5 min to live).
 
 ### Open to-do
 - [ ] Contact form backend (currently frontend-only — does NOT send email)
@@ -89,6 +92,41 @@ Latest commit on `main`: `ee9e539` — "Add 4 new photos to gallery from Mandy's
 - [ ] Custom domain setup (still on `vercel.app`)
 - [ ] Verify with Mandy: Lunch menu claim about "serving National Guard meals for 36 days during the Pandemic"
 - [ ] Transfer repo to Mandy's GitHub (`CrockSpotCatering`) when ready
+
+---
+
+## Power Hub (CMS)
+
+**URL**: `/power-hub` on the live site (or `http://localhost:3000/power-hub` in dev).
+**Default login**: `thespot` / `thespot2026` (change immediately from Settings after first login).
+**Auth key**: `the_spot_power_hub_auth` in `localStorage` (single-tenant, same login for all staff).
+
+### Pages inside the hub
+- **Dashboard** — stats + quick links to every public page
+- **Content** — lists every editable JSON file in `content/` (recursive editor with array reorder + add/delete)
+- **Media** — upload / list / delete / copy-URL for images in `public/images/uploads/`
+- **Settings** — change username + password
+
+### How it works
+- Content store: JSON files in `/content/` (one per page + `shared.json` + `credentials.json`). No database.
+- Commits go to `BrettLechtenbrerg/the-spot-catering` on `main` via the GitHub Contents API (PAT-based).
+- Vercel auto-deploys on every push to `main`. Live site updates in ~5 minutes.
+
+### Required environment variable
+| Name | Purpose |
+|---|---|
+| `GITHUB_TOKEN` | Classic PAT with `repo` scope. Set in Vercel Env Vars (Production + Preview + Development) and in local `.env.local`. |
+
+Local pull of Vercel env vars:
+```bash
+vercel env pull .env.local
+```
+
+### Files — Power Hub quick map
+- `app/power-hub/` — login + dashboard pages
+- `app/api/power-hub/` — content / credentials / media / upload routes
+- `components/power-hub/` — Sidebar + Header UI components
+- `content/*.json` — the editable source of truth for every page
 
 ---
 

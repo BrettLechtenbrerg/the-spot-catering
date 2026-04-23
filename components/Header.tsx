@@ -5,17 +5,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import shared from '@/content/shared.json'
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Corporate', href: '/corporate' },
-  { name: 'Services', href: '/services' },
-  { name: 'Themed Events', href: '/themes' },
-  { name: 'Gallery', href: '/gallery' },
-  { name: 'Menus', href: '/menus' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-]
+const { header, contact } = shared
+const navigation = header.navigation
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -26,21 +19,21 @@ export default function Header() {
       <div className="bg-spot-navy text-white py-2">
         <div className="container-custom flex justify-between items-center text-sm">
           <div className="flex items-center gap-4">
-            <a href="tel:925-699-6629" className="flex items-center gap-1 hover:text-spot-orange transition-colors">
+            <a href={`tel:${contact.phone}`} className="flex items-center gap-1 hover:text-spot-orange transition-colors">
               <Phone size={14} />
-              <span className="hidden sm:inline">925-699-6629</span>
+              <span className="hidden sm:inline">{contact.phone}</span>
             </a>
-            <a href="mailto:spotcafes@gmail.com" className="flex items-center gap-1 hover:text-spot-orange transition-colors">
+            <a href={`mailto:${contact.email}`} className="flex items-center gap-1 hover:text-spot-orange transition-colors">
               <Mail size={14} />
-              <span className="hidden sm:inline">spotcafes@gmail.com</span>
+              <span className="hidden sm:inline">{contact.email}</span>
             </a>
           </div>
           <div className="flex items-center gap-2">
             <span className="cert-badge bg-white/10 text-white text-xs">
-              Woman-Owned
+              {header.topBarBadge1}
             </span>
             <span className="cert-badge bg-white/10 text-white text-xs hidden sm:inline-flex">
-              MWBE Certified
+              {header.topBarBadge2}
             </span>
           </div>
         </div>
@@ -52,8 +45,8 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/Spot Cafe and Catering logo.jpg"
-              alt="The Spot Catering"
+              src={header.logo}
+              alt={header.logoAlt}
               width={70}
               height={70}
               className="rounded-full"
@@ -79,8 +72,8 @@ export default function Header() {
               <span className="font-bold text-[#2F2744] group-hover:text-white">CROCK</span>
               <span className="font-bold text-[#F49220]">Spot</span>
             </Link>
-            <Link href="/contact" className="btn-primary">
-              Book Now
+            <Link href={header.ctaLink} className="btn-primary">
+              {header.ctaLabel}
             </Link>
           </div>
 
@@ -124,11 +117,11 @@ export default function Header() {
                 <span className="text-gray-500 text-sm ml-2">→ Food Truck Partner</span>
               </Link>
               <Link
-                href="/contact"
+                href={header.ctaLink}
                 className="btn-primary block text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Book Now
+                {header.ctaLabel}
               </Link>
             </div>
           </motion.div>

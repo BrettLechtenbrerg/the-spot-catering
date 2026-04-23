@@ -1,0 +1,134 @@
+{
+  "hero": {
+    "badge": "Woman-Owned & Certified",
+    "headlineLine1": "We Know What",
+    "headlineLine2": "Hits The Spot",
+    "subheadline": "Denver's Corporate Catering Queen. Professional, creative, and spot on catering that makes every event unforgettable.",
+    "subheadlineHighlight": "spot on",
+    "ctaPrimary": "Book Your Event",
+    "ctaPrimaryLink": "/contact",
+    "ctaSecondary": "View Our Menus",
+    "ctaSecondaryLink": "/menus",
+    "backgroundImage": "/images/20220528_185532.jpg",
+    "featuredImage": "/images/meet-mandy.jpg",
+    "featuredImageCaption": "Denver's Favorite",
+    "featuredImageSubcaption": "Corporate Caterer"
+  },
+  "certifications": [
+    { "abbr": "MWBE", "name": "Minority Women's Business Enterprise" },
+    { "abbr": "DBE", "name": "Disadvantaged Business Enterprise" },
+    { "abbr": "EBE", "name": "Emerging Business Enterprise" },
+    { "abbr": "SBEC", "name": "Small Business Enterprise Concessionaire" }
+  ],
+  "services": {
+    "headlineLine1": "You've Found Your",
+    "headlineHighlight": "Spot",
+    "subheadline": "From corporate breakfasts to themed celebrations, we make food fun, social, and special for everyone.",
+    "items": [
+      {
+        "icon": "Building2",
+        "title": "Corporate Events",
+        "description": "Team trainings, meetings, and retreats that make your company culture shine.",
+        "href": "/corporate",
+        "color": "bg-spot-navy"
+      },
+      {
+        "icon": "PartyPopper",
+        "title": "Themed Events",
+        "description": "Taco bars, Oktoberfest, BBQ, holidays — the sky's the limit!",
+        "href": "/themes",
+        "color": "bg-spot-purple"
+      },
+      {
+        "icon": "Coffee",
+        "title": "Happy Hour",
+        "description": "Beautiful charcuterie boards and grazing tables for after-hours magic.",
+        "href": "/menus",
+        "color": "bg-spot-teal"
+      }
+    ]
+  },
+  "motto": {
+    "quote": "More Espresso, Less Depresso",
+    "attribution": "— Our motto for breakfast events ☕"
+  },
+  "whyChooseUs": {
+    "headlineLine1": "The",
+    "headlineHighlight": "Royal Treatment",
+    "description": "The Corporate Catering Queen treats every client like royalty. When you work with The Spot, you get more than great food — you get a partner committed to excellence in every detail.",
+    "bullets": [
+      "Always on time or ahead of schedule — never stress about timing",
+      "We do what we say, when we say — integrity you can count on",
+      "Fun, positive energy that makes every event memorable",
+      "We work with your needs and budget — not the other way around",
+      "Excellence from booking to presentation to the last bite",
+      "Creative menus — the sky's the limit!"
+    ],
+    "ctaText": "Our Story",
+    "ctaLink": "/about"
+  },
+  "stats": [
+    { "value": "100+", "label": "Corporate Clients" },
+    { "value": "500+", "label": "Events Catered" },
+    { "value": "15+", "label": "Years Experience" },
+    { "value": "100%", "label": "Satisfaction" }
+  ],
+  "testimonials": {
+    "headlineLine1": "What Our",
+    "headlineHighlight": "Clients Say",
+    "subheadline": "Don't just take our word for it — hear from the companies we serve.",
+    "items": [
+      {
+        "quote": "Mandy and The Spot Cafe have been an absolute go-to for us over the past five years. From day one, she has delivered not only incredible food, but an experience that is thoughtful, reliable, and consistently above expectations. Her menus are always fresh, high quality, and beautifully executed — especially her charcuterie boards. What we appreciate most is her positive attitude and professionalism.",
+        "initials": "KF",
+        "name": "Kristina Frey",
+        "title": "Executive Administrative Assistant, Diablo Media"
+      },
+      {
+        "quote": "I have used Spot Café multiple times for catering lunch meetings in my office — sometimes for internal meetings and others with key Customers and Suppliers. Mandy always helps with the menu, number of attendees, and keeping to budget. My Staff always comments on how great the food is! Mandy is always on schedule and the presentation always impresses. She makes me look so good the Team has been known to run around the office shouting my name!",
+        "initials": "AG",
+        "name": "Andrew Gacek",
+        "title": "Director, District Sales — Avnet"
+      }
+    ]
+  },
+  "menuPreview": {
+    "headlineLine1": "Catering That",
+    "headlineHighlight": "Hits Different",
+    "subheadline": "From breakfast boards to happy hour spreads — we've got you covered.",
+    "items": [
+      {
+        "title": "Breakfast",
+        "tagline": "Start the day right",
+        "items": ["Breakfast Boards", "Burrito Platters", "Coffee Service"],
+        "icon": "Coffee",
+        "style": "orange"
+      },
+      {
+        "title": "Lunch",
+        "tagline": "Fuel your team",
+        "items": ["Individual Packages", "Buffet Style", "Build Your Own"],
+        "icon": "UtensilsCrossed",
+        "style": "navy"
+      },
+      {
+        "title": "Happy Hour",
+        "tagline": "After hours magic",
+        "items": ["Charcuterie Boards", "Grazing Tables", "Themed Spreads"],
+        "icon": "PartyPopper",
+        "style": "purple"
+      }
+    ],
+    "ctaText": "View Full Menu",
+    "ctaLink": "/menus"
+  },
+  "finalCta": {
+    "headlineLine1": "Ready to Find Your",
+    "headlineHighlight": "Spot",
+    "subheadline": "Let's make your next corporate event extra delicious. Contact Mandy today for a custom quote.",
+    "ctaPrimary": "Get A Quote",
+    "ctaPrimaryLink": "/contact",
+    "phoneText": "Call 925-699-6629",
+    "phoneNumber": "925-699-6629"
+  }
+}

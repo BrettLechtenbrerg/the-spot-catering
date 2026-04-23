@@ -11,49 +11,22 @@ import {
   Send,
   Facebook,
   Instagram,
-  CheckCircle
+  CheckCircle,
+  type LucideIcon,
 } from 'lucide-react'
+import contactContent from '@/content/contact.json'
 
-const contactInfo = [
-  {
-    icon: Phone,
-    title: 'Phone',
-    value: '925-699-6629',
-    href: 'tel:925-699-6629',
-  },
-  {
-    icon: Mail,
-    title: 'Email',
-    value: 'spotcafes@gmail.com',
-    href: 'mailto:spotcafes@gmail.com',
-  },
-  {
-    icon: MapPin,
-    title: 'Location',
-    value: 'Denver, Colorado',
-    href: null,
-  },
-  {
-    icon: Clock,
-    title: 'Response Time',
-    value: 'Within 24 hours',
-    href: null,
-  },
-]
-
-const eventTypes = [
-  'Corporate Meeting',
-  'Team Training',
-  'Board Meeting',
-  'Team Appreciation',
-  'Themed Event',
-  'Holiday Party',
-  'Pop-Up Event',
-  'Happy Hour',
-  'Other',
-]
+// Icon mapping — converts JSON string to Lucide component
+const iconMap: Record<string, LucideIcon> = {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+}
 
 export default function ContactPage() {
+  const { hero, getInTouch, contactInfo, social, form, success, quickContact } = contactContent
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -83,10 +56,10 @@ export default function ContactPage() {
   return (
     <>
       <HeroSection
-        title="Let's Make Your Event"
-        highlight="Hit The Spot"
-        subtitle="Ready for the royal treatment? Get in touch with Denver's Corporate Catering Queen and let's create something unforgettable together."
-        backgroundImage="/images/20240417_110447.jpg"
+        title={hero.title}
+        highlight={hero.highlight}
+        subtitle={hero.subtitle}
+        backgroundImage={hero.backgroundImage}
       />
 
       {/* Contact Section */}
@@ -101,42 +74,44 @@ export default function ContactPage() {
               className="lg:col-span-1"
             >
               <h2 className="font-display text-3xl text-spot-navy mb-6">
-                Get In <span className="text-spot-orange">Touch</span>
+                {getInTouch.headlineLine1} <span className="text-spot-orange">{getInTouch.headlineHighlight}</span>
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Have questions? Ready to book? Just want to chat about food?
-                We&apos;d love to hear from you!
+                {getInTouch.body}
               </p>
 
               <div className="space-y-6 mb-8">
-                {contactInfo.map((item) => (
-                  <div key={item.title} className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-spot-orange/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <item.icon className="text-spot-orange" size={24} />
+                {contactInfo.map((item) => {
+                  const Icon = iconMap[item.icon] ?? Phone
+                  return (
+                    <div key={item.title} className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-spot-orange/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Icon className="text-spot-orange" size={24} />
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-500 mb-1">{item.title}</div>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            className="text-spot-navy font-semibold hover:text-spot-orange transition-colors"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <span className="text-spot-navy font-semibold">{item.value}</span>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-sm text-gray-500 mb-1">{item.title}</div>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="text-spot-navy font-semibold hover:text-spot-orange transition-colors"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <span className="text-spot-navy font-semibold">{item.value}</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
 
               {/* Social Links */}
               <div>
-                <h3 className="font-display text-lg text-spot-navy mb-4">Follow Us</h3>
+                <h3 className="font-display text-lg text-spot-navy mb-4">{social.heading}</h3>
                 <div className="flex gap-4">
                   <a
-                    href="https://www.facebook.com/thespotcafes"
+                    href={social.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-spot-navy rounded-xl flex items-center justify-center text-white hover:bg-spot-orange transition-colors"
@@ -144,7 +119,7 @@ export default function ContactPage() {
                     <Facebook size={24} />
                   </a>
                   <a
-                    href="https://www.instagram.com/spotcafes/"
+                    href={social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-spot-navy rounded-xl flex items-center justify-center text-white hover:bg-spot-orange transition-colors"
@@ -166,29 +141,29 @@ export default function ContactPage() {
                 <div className="bg-green-50 border border-green-200 rounded-2xl p-12 text-center">
                   <CheckCircle className="mx-auto text-green-500 mb-4" size={48} />
                   <h3 className="font-display text-2xl text-spot-navy mb-2">
-                    Message Sent!
+                    {success.heading}
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    Thanks for reaching out! Mandy will get back to you within 24 hours.
+                    {success.body}
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
                     className="text-spot-orange font-semibold hover:underline"
                   >
-                    Send Another Message
+                    {success.buttonLabel}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="bg-gray-50 rounded-2xl p-8">
                   <h3 className="font-display text-2xl text-spot-navy mb-6">
-                    Request A Quote
+                    {form.heading}
                   </h3>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Name */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Your Name *
+                        {form.fields.name.label}
                       </label>
                       <input
                         type="text"
@@ -197,14 +172,14 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors"
-                        placeholder="John Smith"
+                        placeholder={form.fields.name.placeholder}
                       />
                     </div>
 
                     {/* Email */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email Address *
+                        {form.fields.email.label}
                       </label>
                       <input
                         type="email"
@@ -213,14 +188,14 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors"
-                        placeholder="john@company.com"
+                        placeholder={form.fields.email.placeholder}
                       />
                     </div>
 
                     {/* Phone */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone Number
+                        {form.fields.phone.label}
                       </label>
                       <input
                         type="tel"
@@ -228,14 +203,14 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors"
-                        placeholder="(555) 123-4567"
+                        placeholder={form.fields.phone.placeholder}
                       />
                     </div>
 
                     {/* Company */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Company Name
+                        {form.fields.company.label}
                       </label>
                       <input
                         type="text"
@@ -243,14 +218,14 @@ export default function ContactPage() {
                         value={formData.company}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors"
-                        placeholder="Acme Inc."
+                        placeholder={form.fields.company.placeholder}
                       />
                     </div>
 
                     {/* Event Type */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Event Type *
+                        {form.fields.eventType.label}
                       </label>
                       <select
                         name="eventType"
@@ -259,8 +234,8 @@ export default function ContactPage() {
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors"
                       >
-                        <option value="">Select an event type</option>
-                        {eventTypes.map((type) => (
+                        <option value="">{form.fields.eventType.placeholder}</option>
+                        {form.eventTypes.map((type) => (
                           <option key={type} value={type}>
                             {type}
                           </option>
@@ -271,7 +246,7 @@ export default function ContactPage() {
                     {/* Event Date */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Event Date
+                        {form.fields.eventDate.label}
                       </label>
                       <input
                         type="date"
@@ -285,7 +260,7 @@ export default function ContactPage() {
                     {/* Guest Count */}
                     <div className="md:col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Estimated Guest Count
+                        {form.fields.guestCount.label}
                       </label>
                       <input
                         type="number"
@@ -293,14 +268,14 @@ export default function ContactPage() {
                         value={formData.guestCount}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors"
-                        placeholder="25"
+                        placeholder={form.fields.guestCount.placeholder}
                       />
                     </div>
 
                     {/* Message */}
                     <div className="md:col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Tell Us About Your Event *
+                        {form.fields.message.label}
                       </label>
                       <textarea
                         name="message"
@@ -309,7 +284,7 @@ export default function ContactPage() {
                         value={formData.message}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors resize-none"
-                        placeholder="Tell us about your event, any dietary requirements, theme ideas, or questions you have..."
+                        placeholder={form.fields.message.placeholder}
                       />
                     </div>
                   </div>
@@ -319,7 +294,7 @@ export default function ContactPage() {
                     className="mt-6 btn-primary w-full flex items-center justify-center gap-2"
                   >
                     <Send size={18} />
-                    Send Message
+                    {form.submitLabel}
                   </button>
                 </form>
               )}
@@ -334,18 +309,18 @@ export default function ContactPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="font-display text-2xl mb-2">
-                Need a Quick Answer?
+                {quickContact.heading}
               </h3>
               <p className="text-gray-300">
-                Call or text Mandy directly for immediate assistance.
+                {quickContact.subtext}
               </p>
             </div>
             <a
-              href="tel:925-699-6629"
+              href={`tel:${quickContact.phoneNumber}`}
               className="btn-primary flex items-center gap-2"
             >
               <Phone size={18} />
-              925-699-6629
+              {quickContact.phoneLabel}
             </a>
           </div>
         </div>

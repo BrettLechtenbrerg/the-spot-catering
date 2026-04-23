@@ -17,96 +17,39 @@ import {
   MapPin,
   Zap,
   Star,
-  Heart
+  Heart,
+  type LucideIcon,
 } from 'lucide-react'
+import corporateContent from '@/content/corporate.json'
 
-const services = [
-  {
-    icon: Users,
-    title: 'Team Training Events',
-    description: 'Keep your team energized and focused during training sessions with our perfectly timed meal service.',
-    image: '/images/20221114_134142.jpg',
-  },
-  {
-    icon: Building2,
-    title: 'Board Meetings',
-    description: 'Impress stakeholders with premium catering that reflects your company\'s commitment to excellence.',
-    image: '/images/IMG_4205.jpg',
-  },
-  {
-    icon: Calendar,
-    title: 'Team Appreciation',
-    description: 'Show your team they\'re valued with special catering for recognition events and milestones.',
-    image: '/images/20220528_185532.jpg',
-  },
-  {
-    icon: Coffee,
-    title: 'Breakfast Meetings',
-    description: 'Start the day right with our famous breakfast boards and coffee service. More espresso, less depresso!',
-    image: '/images/Char Cups Catering.jpg',
-  },
-  {
-    icon: Utensils,
-    title: 'Working Lunches',
-    description: 'Productive meetings deserve great food. Our boxed lunches and buffets keep things moving.',
-    image: '/images/Full Menu photo.jpg',
-  },
-  {
-    icon: Sparkles,
-    title: 'Client Events',
-    description: 'Make lasting impressions on your clients with catering that shows you care about every detail.',
-    image: '/images/IMG_4319.jpg',
-  },
-]
-
-const whyChooseUs = [
-  'Always on time or ahead of schedule — you\'ll never stress about timing',
-  'We do what we say, when we say — integrity you can count on',
-  'Fun, positive energy that elevates every corporate event',
-  'We work with your needs and budget — not the other way around',
-  'Excellence from first call to final cleanup',
-  'Creative menus for any theme — the sky\'s the limit!',
-]
-
-const popUpTypes = [
-  {
-    title: 'Holiday Pop-Ups',
-    description: 'Special seasonal experiences around major holidays. Think Valentine\'s treats, Halloween spooky snacks, and festive holiday spreads.',
-    icon: Calendar,
-    color: 'bg-red-500',
-  },
-  {
-    title: 'Office Building Events',
-    description: 'Bring excitement to your building lobby or common areas with a surprise pop-up catering experience.',
-    icon: MapPin,
-    color: 'bg-blue-500',
-  },
-  {
-    title: 'Retreats & Trainings',
-    description: 'Keep your team energized during off-site retreats and all-day training sessions with perfectly timed meals.',
-    icon: Zap,
-    color: 'bg-amber-500',
-  },
-  {
-    title: 'Community Events',
-    description: 'We love being part of local Denver events, festivals, and community gatherings. Great food brings people together!',
-    icon: Users,
-    color: 'bg-teal-500',
-  },
-]
+// Icon mapping — converts JSON string to Lucide component
+const iconMap: Record<string, LucideIcon> = {
+  Building2,
+  Users,
+  Coffee,
+  Utensils,
+  Calendar,
+  Sparkles,
+  MapPin,
+  Zap,
+  Star,
+  Heart,
+}
 
 export default function CorporatePage() {
+  const { hero, services, popUps, whyPopUpsWork, whyChooseUs, finalCta } = corporateContent
+
   return (
     <>
       <HeroSection
-        title="Corporate Catering"
-        highlight="That Hits The Spot"
-        subtitle="From team trainings to board meetings, we make corporate events deliciously memorable. Let us handle the food while you focus on business."
-        backgroundImage="/images/IMG_4205.jpg"
-        ctaText="Request A Quote"
-        ctaLink="/contact"
-        secondaryCtaText="View Menus"
-        secondaryCtaLink="/menus"
+        title={hero.title}
+        highlight={hero.highlight}
+        subtitle={hero.subtitle}
+        backgroundImage={hero.backgroundImage}
+        ctaText={hero.ctaText}
+        ctaLink={hero.ctaLink}
+        secondaryCtaText={hero.secondaryCtaText}
+        secondaryCtaLink={hero.secondaryCtaLink}
       />
 
       {/* Services Grid */}
@@ -119,49 +62,52 @@ export default function CorporatePage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              We&apos;re <span className="text-spot-orange">Spot On</span> For Any Corporate Event
+              {services.headlineLine1} <span className="text-spot-orange">{services.headlineHighlight}</span> {services.headlineLine2}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Whatever your corporate catering needs, we&apos;ve got you covered with professional service and amazing food.
+              {services.subheadline}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[320px]"
-              >
-                {/* Background Image with Color */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover grayscale-[25%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                  />
-                  {/* Lighter Overlay for more color */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/90 via-spot-navy/50 to-spot-navy/20 group-hover:from-spot-navy/85 group-hover:via-spot-navy/40 group-hover:to-transparent transition-all duration-300" />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
-                  <div className="w-12 h-12 bg-spot-orange rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <service.icon className="text-white" size={24} />
+            {services.items.map((service, index) => {
+              const Icon = iconMap[service.icon] ?? Building2
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[320px]"
+                >
+                  {/* Background Image with Color */}
+                  <div className="absolute inset-0">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover grayscale-[25%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                    />
+                    {/* Lighter Overlay for more color */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/90 via-spot-navy/50 to-spot-navy/20 group-hover:from-spot-navy/85 group-hover:via-spot-navy/40 group-hover:to-transparent transition-all duration-300" />
                   </div>
-                  <h3 className="font-display text-2xl mb-2 group-hover:text-spot-orange transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+
+                  {/* Content */}
+                  <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
+                    <div className="w-12 h-12 bg-spot-orange rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon className="text-white" size={24} />
+                    </div>
+                    <h3 className="font-display text-2xl mb-2 group-hover:text-spot-orange transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -177,31 +123,33 @@ export default function CorporatePage() {
           >
             <Sparkles className="mx-auto text-spot-navy mb-4" size={40} />
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy font-bold mb-4">
-              Surprise & Delight Pop-Ups
+              {popUps.heading}
             </h2>
             <p className="text-spot-navy/80 max-w-2xl mx-auto text-lg">
-              Want to create unexpected joy in your workplace? Our pop-up events bring delicious food
-              and memorable moments to any location.
+              {popUps.description}
             </p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {popUpTypes.map((type, index) => (
-              <motion.div
-                key={type.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-spot-navy rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white/20"
-              >
-                <div className={`w-12 h-12 ${type.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
-                  <type.icon className="text-white" size={24} />
-                </div>
-                <h3 className="font-display text-lg text-white mb-2">{type.title}</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">{type.description}</p>
-              </motion.div>
-            ))}
+            {popUps.popUpTypes.map((type, index) => {
+              const Icon = iconMap[type.icon] ?? Sparkles
+              return (
+                <motion.div
+                  key={type.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-spot-navy rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white/20"
+                >
+                  <div className={`w-12 h-12 ${type.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
+                    <Icon className="text-white" size={24} />
+                  </div>
+                  <h3 className="font-display text-lg text-white mb-2">{type.title}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">{type.description}</p>
+                </motion.div>
+              )
+            })}
           </div>
 
           <motion.div
@@ -210,8 +158,8 @@ export default function CorporatePage() {
             viewport={{ once: true }}
             className="text-center mt-10"
           >
-            <Link href="/contact" className="bg-spot-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-spot-navy-light transition-colors inline-flex items-center gap-2">
-              Book A Pop-Up <ArrowRight size={18} />
+            <Link href={popUps.ctaLink} className="bg-spot-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-spot-navy-light transition-colors inline-flex items-center gap-2">
+              {popUps.ctaText} <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>
@@ -227,41 +175,38 @@ export default function CorporatePage() {
               viewport={{ once: true }}
             >
               <h2 className="font-display text-4xl md:text-5xl text-white mb-6">
-                Why Pop-Ups <span className="text-spot-orange">Work Magic</span>
+                {whyPopUpsWork.headlineLine1} <span className="text-spot-orange">{whyPopUpsWork.headlineHighlight}</span>
               </h2>
               <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                There&apos;s something special about unexpected food experiences.
-                Pop-up events create excitement, build community, and give people
-                something to talk about.
+                {whyPopUpsWork.description}
               </p>
 
               <div className="space-y-4">
-                {[
-                  { icon: Star, title: 'Unique Experience', description: 'Pop-ups create buzz and excitement that regular catering can\'t match.' },
-                  { icon: Heart, title: 'Community Connection', description: 'Perfect for building relationships with employees, neighbors, or customers.' },
-                  { icon: Sparkles, title: 'Memorable Moments', description: 'Unexpected food experiences create lasting memories and talking points.' },
-                ].map((benefit, index) => (
-                  <motion.div
-                    key={benefit.title}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-colors"
-                  >
-                    <div className="w-12 h-12 bg-spot-orange rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <benefit.icon className="text-white" size={24} />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-lg text-white mb-1">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-gray-300 text-sm">
-                        {benefit.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                {whyPopUpsWork.benefits.map((benefit, index) => {
+                  const Icon = iconMap[benefit.icon] ?? Star
+                  return (
+                    <motion.div
+                      key={benefit.title}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-colors"
+                    >
+                      <div className="w-12 h-12 bg-spot-orange rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <Icon className="text-white" size={24} />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg text-white mb-1">
+                          {benefit.title}
+                        </h3>
+                        <p className="text-gray-300 text-sm">
+                          {benefit.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )
+                })}
               </div>
             </motion.div>
 
@@ -273,7 +218,7 @@ export default function CorporatePage() {
             >
               <div className="rounded-2xl overflow-hidden border-4 border-white/30 shadow-2xl">
                 <Image
-                  src="/images/Char Cups Catering.jpg"
+                  src={whyPopUpsWork.image}
                   alt="Pop-up event catering"
                   width={600}
                   height={400}
@@ -303,15 +248,14 @@ export default function CorporatePage() {
               viewport={{ once: true }}
             >
               <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-6">
-                Why Denver Companies Choose <span className="text-spot-orange">The Spot</span>
+                {whyChooseUs.headlineLine1} <span className="text-spot-orange">{whyChooseUs.headlineHighlight}</span>
               </h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                We&apos;re not just caterers — we&apos;re your partners in making every corporate event
-                a success. We handle the heavy lifting so you can focus on what matters most.
+                {whyChooseUs.intro}
               </p>
 
               <ul className="space-y-4 mb-8">
-                {whyChooseUs.map((item, index) => (
+                {whyChooseUs.bullets.map((item, index) => (
                   <motion.li
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -326,8 +270,8 @@ export default function CorporatePage() {
                 ))}
               </ul>
 
-              <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-                Get Started <ArrowRight size={18} />
+              <Link href={whyChooseUs.ctaLink} className="btn-primary inline-flex items-center gap-2">
+                {whyChooseUs.ctaText} <ArrowRight size={18} />
               </Link>
             </motion.div>
 
@@ -338,7 +282,7 @@ export default function CorporatePage() {
               className="relative"
             >
               <Image
-                src="/images/IMG_4319.jpg"
+                src={whyChooseUs.image}
                 alt="Corporate catering spread"
                 width={600}
                 height={400}
@@ -348,8 +292,8 @@ export default function CorporatePage() {
                 <div className="flex items-center gap-3">
                   <Award className="text-spot-orange" size={32} />
                   <div>
-                    <div className="font-display text-lg">Certified</div>
-                    <div className="text-sm text-gray-300">MWBE • DBE • EBE</div>
+                    <div className="font-display text-lg">{whyChooseUs.certificationsTitle}</div>
+                    <div className="text-sm text-gray-300">{whyChooseUs.certificationsSubtitle}</div>
                   </div>
                 </div>
               </div>
@@ -367,18 +311,17 @@ export default function CorporatePage() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Ready to Elevate Your <span className="text-spot-orange">Corporate Events</span>?
+              {finalCta.headlineLine1} <span className="text-spot-orange">{finalCta.headlineHighlight}</span>?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let&apos;s chat about your upcoming event. We&apos;ll create a custom menu that
-              fits your budget, timeline, and taste preferences.
+              {finalCta.subheadline}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-primary">
-                Request A Quote
+              <Link href={finalCta.ctaPrimaryLink} className="btn-primary">
+                {finalCta.ctaPrimary}
               </Link>
-              <a href="tel:925-699-6629" className="btn-outline border-white text-white hover:bg-white hover:text-spot-navy">
-                Call 925-699-6629
+              <a href={`tel:${finalCta.phoneNumber}`} className="btn-outline border-white text-white hover:bg-white hover:text-spot-navy">
+                {finalCta.phoneText}
               </a>
             </div>
           </motion.div>

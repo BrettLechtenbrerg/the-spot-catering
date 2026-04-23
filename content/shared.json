@@ -1,0 +1,62 @@
+{
+  "contact": {
+    "phone": "925-699-6629",
+    "email": "spotcafes@gmail.com",
+    "location": "Denver, Colorado"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/thespotcafes",
+    "instagram": "https://www.instagram.com/spotcafes/"
+  },
+  "header": {
+    "logo": "/images/Spot Cafe and Catering logo.jpg",
+    "logoAlt": "The Spot Catering",
+    "topBarBadge1": "Woman-Owned",
+    "topBarBadge2": "MWBE Certified",
+    "ctaLabel": "Book Now",
+    "ctaLink": "/contact",
+    "navigation": [
+      { "name": "Home", "href": "/" },
+      { "name": "Corporate", "href": "/corporate" },
+      { "name": "Services", "href": "/services" },
+      { "name": "Themed Events", "href": "/themes" },
+      { "name": "Gallery", "href": "/gallery" },
+      { "name": "Menus", "href": "/menus" },
+      { "name": "About", "href": "/about" },
+      { "name": "Contact", "href": "/contact" }
+    ]
+  },
+  "footer": {
+    "tagline": "Denver's Corporate Catering Queen. We know how to hit the spot with professional, creative, and delicious catering for your corporate events.",
+    "taglineHighlight": "hit the spot",
+    "quickLinksHeading": "Quick Links",
+    "quickLinks": [
+      { "name": "Corporate Catering", "href": "/corporate" },
+      { "name": "Themed Events", "href": "/themes" },
+      { "name": "Pop-Up Events", "href": "/pop-up" },
+      { "name": "Menus & Pricing", "href": "/menus" },
+      { "name": "About Us", "href": "/about" },
+      { "name": "Contact", "href": "/contact" }
+    ],
+    "servicesHeading": "Our Services",
+    "services": [
+      "Breakfast Boards",
+      "Lunch Catering",
+      "Coffee Service",
+      "Happy Hour",
+      "Themed Meals",
+      "Holiday Events"
+    ],
+    "contactHeading": "Contact Us",
+    "certificationsHeading": "Certifications",
+    "certifications": [
+      { "abbr": "MWBE", "name": "Minority Women's Business Enterprise" },
+      { "abbr": "DBE", "name": "Disadvantaged Business Enterprise" },
+      { "abbr": "EBE", "name": "Emerging Business Enterprise" },
+      { "abbr": "SBEC", "name": "Small Business Enterprise Concessionaire" }
+    ],
+    "copyrightName": "The Spot Catering",
+    "bottomTagline": "MNS Worldwide LLC — Majority Woman-Owned Business",
+    "bottomTaglineHighlight": "Majority Woman-Owned Business"
+  }
+}

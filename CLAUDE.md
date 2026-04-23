@@ -58,18 +58,23 @@ Orange-Red:        #D34F1D  (spot-orange-red - warm highlights)
 
 ## Website Pages
 
-| Page | Route | Status | Features |
-|------|-------|--------|----------|
-| Home | `/` | ✅ Complete | Hero with featured image, services, stats, menu preview, CTAs |
-| Corporate | `/corporate` | ✅ Complete | Services grid with greyscale images, benefits, certifications |
-| Themed Events | `/themes` | ✅ Complete | 8 theme cards with greyscale images, holiday list, 3-step process |
-| **Gallery** | `/gallery` | ✅ Complete | **17 real food photos, masonry grid, category filters, lightbox modal** |
-| Pop-Up Events | `/pop-up` | ✅ Complete | 4 pop-up types with greyscale images, benefits, social CTAs |
-| Menus | `/menus` | ✅ Complete | 4 categories with gradient cards + images (no prices), extras |
-| About | `/about` | ✅ Complete | Personal story, timeline, Mandy's photo, values, certifications |
-| Privacy | `/privacy` | ✅ Complete | Privacy policy with Colorado Privacy Act compliance |
-| Terms | `/terms` | ✅ Complete | Terms of service with catering-specific clauses |
-| Contact | `/contact` | ✅ Complete | Form, contact info, social links |
+All pages are JSON-driven — each imports `content/<name>.json` at build time.
+Edit content via `/power-hub`; everything deploys automatically.
+
+| Page | Route | Content file | Features |
+|------|-------|--------------|----------|
+| Home | `/` | `content/home.json` | Hero, services, stats, testimonials, menu preview, CTAs |
+| Corporate | `/corporate` | `content/corporate.json` | Services grid with greyscale images, pop-ups, benefits |
+| Services | `/services` | `content/services.json` | Grab-and-go, bartending, royal treatment, CTAs |
+| Themed Events | `/themes` | `content/themes.json` | 8 theme cards, holiday list, 3-step process |
+| Gallery | `/gallery` | `content/gallery.json` | Masonry grid, category filters, lightbox modal |
+| Menus | `/menus` | `content/menus.json` | 4 categories with gradient cards + images, extras |
+| About | `/about` | `content/about.json` | Personal story, timeline, Mandy's photo, values |
+| Crock Spot | `/crock-spot` | `content/crock-spot.json` | Food-truck partner page |
+| Privacy | `/privacy` | `content/privacy.json` | Privacy policy, Colorado Privacy Act compliance |
+| Terms | `/terms` | `content/terms.json` | Terms of service, catering-specific clauses |
+| Contact | `/contact` | `content/contact.json` | Form, contact info, social links |
+| (shell) | header + footer | `content/shared.json` | Nav, contact, socials, footer links |
 
 ## Visual Design Features
 
@@ -232,4 +237,45 @@ This pivot happened one month before COVID hit. As the dining landscape changed,
 
 ---
 
-**Last Updated**: April 23, 2026 (project relocated to ~/Code/the-spot-catering)
+**Last Updated**: April 23, 2026 (Power Hub CMS added — all page content now lives in /content/*.json)
+
+---
+
+## Power Hub CMS (added April 2026)
+
+The site now ships with a password-protected CMS at **`/power-hub`**.
+Staff log in, edit content, hit **Save & Deploy**, and the live site updates in ~5 min.
+
+### URLs
+- Login: `/power-hub`
+- Dashboard: `/power-hub/dashboard`
+- Content editor: `/power-hub/dashboard/content` (+ `/content/[file]` for each file)
+- Media library: `/power-hub/dashboard/media`
+- Settings (change password): `/power-hub/dashboard/settings`
+
+### Default login
+`thespot` / `thespot2026` — change on first login from Settings.
+
+### How it works
+- All page content lives in `content/*.json` (one per page + `shared.json` + `credentials.json`).
+- Public pages import their JSON at build time and render dynamically — no hardcoded strings.
+- Power Hub API routes commit changes to GitHub via the Contents API.
+- Vercel auto-deploys on every push to `main`.
+- No database, no third-party CMS, no paid services — just GitHub + Vercel.
+
+### Required env var
+`GITHUB_TOKEN` — Classic PAT with `repo` scope on `BrettLechtenbrerg/the-spot-catering`.
+Set in Vercel Env Vars (Production + Preview + Development) and locally in `.env.local`.
+
+### Power Hub file map
+- `app/power-hub/` — login + dashboard pages + scoped CSS
+- `app/api/power-hub/` — `content` / `credentials` / `media` / `upload` route handlers
+- `components/power-hub/` — Sidebar + Header UI
+- `content/` — JSON source of truth for every page
+
+### Branding
+- Primary: `#FAAA44` (orange). Secondary: `#262262` (navy). Accent: `#9E1F63` (purple).
+- Icon: `Utensils` (Lucide). `robots: noindex` — not indexed by search engines.
+
+### Editable content files
+`home.json` · `about.json` · `contact.json` · `corporate.json` · `crock-spot.json` · `gallery.json` · `menus.json` · `services.json` · `themes.json` · `privacy.json` · `terms.json` · `shared.json` (nav/footer/contact) · `credentials.json` (login — edited via Settings only)

@@ -19,58 +19,47 @@ import {
   ArrowRight,
   Sparkles,
   Heart,
-  Award
+  Award,
+  type LucideIcon,
 } from 'lucide-react'
+import servicesContent from '@/content/services.json'
 
-const grabGoItems = [
-  { icon: Sandwich, name: 'Fresh Sandwiches' },
-  { icon: Salad, name: 'Healthy Salads' },
-  { icon: Coffee, name: 'Wraps & Bowls' },
-  { icon: Cookie, name: 'Snacks & Treats' },
-  { icon: GlassWater, name: 'Beverages' },
-  { icon: Heart, name: 'Healthy Options' },
-]
-
-const grabGoBenefits = [
-  'Curated selection of Colorado-based vendors',
-  'Fresh items delivered and stocked regularly',
-  'Perfect for offices without a full-service cafe',
-  'Customizable to your team\'s preferences',
-  'Supporting local Colorado purveyors',
-  'Hassle-free — we handle everything',
-]
-
-const bartendingServices = [
-  {
-    title: 'Corporate Happy Hours',
-    description: 'End the workday right with professionally crafted cocktails and mocktails for your team.',
-  },
-  {
-    title: 'Holiday Parties',
-    description: 'Make your holiday celebrations memorable with festive drinks and expert bartending.',
-  },
-  {
-    title: 'Client Events',
-    description: 'Impress clients with a premium bar experience that reflects your company\'s excellence.',
-  },
-  {
-    title: 'Team Celebrations',
-    description: 'Milestones, promotions, and wins deserve a toast — we\'ll make it special.',
-  },
-]
+// Icon mapping — converts JSON string to Lucide component
+const iconMap: Record<string, LucideIcon> = {
+  ShoppingBag,
+  Coffee,
+  Sandwich,
+  Salad,
+  Cookie,
+  Wine,
+  GlassWater,
+  Users,
+  Clock,
+  MapPin,
+  Sparkles,
+  Heart,
+  Award,
+}
 
 export default function ServicesPage() {
+  const { hero, grabGo, divider, bartending, royalTreatment, finalCta } = servicesContent
+
+  const GrabGoBadgeIcon = iconMap[grabGo.badgeIcon] ?? ShoppingBag
+  const BenefitsCardIcon = iconMap[grabGo.benefitsCard.icon] ?? MapPin
+  const BenefitsFloatingIcon = iconMap[grabGo.benefitsCard.floatingIcon] ?? ShoppingBag
+  const BartendingBadgeIcon = iconMap[bartending.badgeIcon] ?? Wine
+
   return (
     <>
       <HeroSection
-        title="Beyond Catering"
-        highlight="Full-Service Solutions"
-        subtitle="From stocking your office kitchen to bartending your next event — The Spot has you covered with services that go beyond traditional catering."
-        backgroundImage="/images/IMG_4205.jpg"
-        ctaText="Get A Quote"
-        ctaLink="/contact"
-        secondaryCtaText="View Menus"
-        secondaryCtaLink="/menus"
+        title={hero.title}
+        highlight={hero.highlight}
+        subtitle={hero.subtitle}
+        backgroundImage={hero.backgroundImage}
+        ctaText={hero.ctaText}
+        ctaLink={hero.ctaLink}
+        secondaryCtaText={hero.secondaryCtaText}
+        secondaryCtaLink={hero.secondaryCtaLink}
       />
 
       {/* Grab & Go Section */}
@@ -83,45 +72,45 @@ export default function ServicesPage() {
               viewport={{ once: true }}
             >
               <div className="inline-flex items-center gap-2 bg-spot-orange/10 text-spot-orange px-4 py-2 rounded-full mb-6">
-                <ShoppingBag size={18} />
-                <span className="text-sm font-semibold">Corporate Kitchen Stocking</span>
+                <GrabGoBadgeIcon size={18} />
+                <span className="text-sm font-semibold">{grabGo.badgeText}</span>
               </div>
 
               <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-6">
-                Grab & Go <span className="text-spot-orange">Solutions</span>
+                {grabGo.headlineLine1} <span className="text-spot-orange">{grabGo.headlineHighlight}</span>
               </h2>
 
               <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-                Does your office need food options but not a full-service cafe? We&apos;ve got you covered!
-                The Spot stocks corporate office spaces with fresh, delicious grab & go items
-                for your team&apos;s kitchen or break room.
+                {grabGo.paragraph1}
               </p>
 
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                From sandwiches and salads to wraps, snacks, and drinks — we&apos;ll keep your
-                grab & go case filled with quality options your team will love. We&apos;ve curated
-                our favorite vendors, all <strong className="text-spot-navy">Colorado-based</strong>,
-                because we believe in staying local and supporting our community.
+                {grabGo.paragraph2Prefix}
+                <strong className="text-spot-navy">{grabGo.paragraph2Emphasis}</strong>
+                {grabGo.paragraph2Suffix}
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-                {grabGoItems.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-2 bg-gray-50 rounded-xl px-4 py-3"
-                  >
-                    <item.icon size={20} className="text-spot-orange" />
-                    <span className="text-sm font-medium text-spot-navy">{item.name}</span>
-                  </motion.div>
-                ))}
+                {grabGo.items.map((item, index) => {
+                  const ItemIcon = iconMap[item.icon] ?? Sandwich
+                  return (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center gap-2 bg-gray-50 rounded-xl px-4 py-3"
+                    >
+                      <ItemIcon size={20} className="text-spot-orange" />
+                      <span className="text-sm font-medium text-spot-navy">{item.name}</span>
+                    </motion.div>
+                  )
+                })}
               </div>
 
-              <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-                Stock My Office <ArrowRight size={18} />
+              <Link href={grabGo.ctaLink} className="btn-primary inline-flex items-center gap-2">
+                {grabGo.ctaText} <ArrowRight size={18} />
               </Link>
             </motion.div>
 
@@ -134,17 +123,16 @@ export default function ServicesPage() {
               {/* Benefits Card */}
               <div className="bg-gradient-to-br from-spot-navy to-spot-purple rounded-3xl p-8 text-white">
                 <div className="flex items-center gap-3 mb-6">
-                  <MapPin className="text-spot-orange" size={28} />
-                  <h3 className="font-display text-2xl">Colorado Proud</h3>
+                  <BenefitsCardIcon className="text-spot-orange" size={28} />
+                  <h3 className="font-display text-2xl">{grabGo.benefitsCard.title}</h3>
                 </div>
 
                 <p className="text-gray-300 mb-8">
-                  We work exclusively with Colorado-based purveyors because quality matters
-                  and community matters more.
+                  {grabGo.benefitsCard.description}
                 </p>
 
                 <ul className="space-y-4">
-                  {grabGoBenefits.map((benefit, index) => (
+                  {grabGo.benefitsCard.benefits.map((benefit, index) => (
                     <motion.li
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
@@ -166,7 +154,7 @@ export default function ServicesPage() {
                 transition={{ repeat: Infinity, duration: 4 }}
                 className="absolute -top-4 -right-4 bg-spot-orange rounded-2xl shadow-xl p-4"
               >
-                <ShoppingBag className="text-white" size={24} />
+                <BenefitsFloatingIcon className="text-white" size={24} />
               </motion.div>
             </motion.div>
           </div>
@@ -183,10 +171,10 @@ export default function ServicesPage() {
             className="text-center"
           >
             <h3 className="font-display text-3xl md:text-4xl text-spot-navy font-bold">
-              More Than Just Catering
+              {divider.headline}
             </h3>
             <p className="text-spot-navy/80 mt-2">
-              — Full-service solutions for every corporate need
+              {divider.subtext}
             </p>
           </motion.div>
         </div>
@@ -205,8 +193,8 @@ export default function ServicesPage() {
               {/* Bartending Certification */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-white p-4">
                 <Image
-                  src="/images/bartending-cert.png"
-                  alt="Colorado Responsible Alcohol Beverage Vendor Training Certificate - Mandy Smith"
+                  src={bartending.certificationImage}
+                  alt={bartending.certificationAlt}
                   width={600}
                   height={450}
                   className="w-full object-contain rounded-2xl"
@@ -221,7 +209,7 @@ export default function ServicesPage() {
               >
                 <div className="flex items-center gap-2">
                   <Award className="text-white" size={20} />
-                  <span className="font-bold text-white text-sm">Certified</span>
+                  <span className="font-bold text-white text-sm">{bartending.certifiedBadgeText}</span>
                 </div>
               </motion.div>
 
@@ -233,7 +221,7 @@ export default function ServicesPage() {
               >
                 <div className="flex items-center gap-2">
                   <Wine className="text-spot-purple" size={24} />
-                  <span className="font-bold text-spot-navy">Cheers!</span>
+                  <span className="font-bold text-spot-navy">{bartending.floatingText}</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -245,24 +233,22 @@ export default function ServicesPage() {
               className="order-1 lg:order-2"
             >
               <div className="inline-flex items-center gap-2 bg-spot-purple/10 text-spot-purple px-4 py-2 rounded-full mb-6">
-                <Wine size={18} />
-                <span className="text-sm font-semibold">Bartending Services</span>
+                <BartendingBadgeIcon size={18} />
+                <span className="text-sm font-semibold">{bartending.badgeText}</span>
               </div>
 
               <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-6">
-                Raise The Bar <span className="text-spot-orange">At Your Event</span>
+                {bartending.headlineLine1} <span className="text-spot-orange">{bartending.headlineHighlight}</span>
               </h2>
 
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                Take your corporate events to the next level with professional bartending services.
-                Mandy is <strong className="text-spot-navy">Colorado Certified</strong> in Responsible
-                Alcohol Beverage Vendor Training — so whether it&apos;s a happy hour, holiday party,
-                or client event, you get skilled, professional service with the same excellence
-                and fun energy that defines The Spot.
+                {bartending.descriptionPrefix}
+                <strong className="text-spot-navy">{bartending.descriptionEmphasis}</strong>
+                {bartending.descriptionSuffix}
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                {bartendingServices.map((service, index) => (
+                {bartending.services.map((service, index) => (
                   <motion.div
                     key={service.title}
                     initial={{ opacity: 0, y: 20 }}
@@ -278,11 +264,11 @@ export default function ServicesPage() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-                  Book Bartending <ArrowRight size={18} />
+                <Link href={bartending.ctaPrimaryLink} className="btn-primary inline-flex items-center gap-2">
+                  {bartending.ctaPrimaryText} <ArrowRight size={18} />
                 </Link>
-                <Link href="/menus" className="btn-secondary inline-flex items-center gap-2">
-                  View Happy Hour Menu <ArrowRight size={18} />
+                <Link href={bartending.ctaSecondaryLink} className="btn-secondary inline-flex items-center gap-2">
+                  {bartending.ctaSecondaryText} <ArrowRight size={18} />
                 </Link>
               </div>
             </motion.div>
@@ -300,46 +286,33 @@ export default function ServicesPage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              The <span className="text-spot-orange">Royal Treatment</span> Extends
+              {royalTreatment.headlineLine1} <span className="text-spot-orange">{royalTreatment.headlineHighlight}</span> {royalTreatment.headlineLine2}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Every service we offer comes with the same values that make The Spot different.
+              {royalTreatment.subheadline}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Clock,
-                title: 'Always On Time',
-                description: 'Grab & go stocked on schedule. Bartenders arrive early and ready.',
-              },
-              {
-                icon: Sparkles,
-                title: 'Excellence Everywhere',
-                description: 'From product selection to service delivery — quality never wavers.',
-              },
-              {
-                icon: Users,
-                title: 'We Work With You',
-                description: 'Customized solutions that fit your space, team, and budget.',
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center bg-white rounded-2xl p-8 shadow-lg"
-              >
-                <div className="w-16 h-16 bg-spot-orange rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="text-white" size={32} />
-                </div>
-                <h3 className="font-display text-xl text-spot-navy mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
-              </motion.div>
-            ))}
+            {royalTreatment.items.map((item, index) => {
+              const ItemIcon = iconMap[item.icon] ?? Clock
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center bg-white rounded-2xl p-8 shadow-lg"
+                >
+                  <div className="w-16 h-16 bg-spot-orange rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <ItemIcon className="text-white" size={32} />
+                  </div>
+                  <h3 className="font-display text-xl text-spot-navy mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -353,18 +326,17 @@ export default function ServicesPage() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Let&apos;s Talk <span className="text-spot-orange">Services</span>
+              {finalCta.headlineLine1} <span className="text-spot-orange">{finalCta.headlineHighlight}</span>
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Whether you need your office kitchen stocked or bartenders for your next event,
-              Mandy and the team are ready to help.
+              {finalCta.subheadline}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-primary">
-                Get A Quote
+              <Link href={finalCta.ctaPrimaryLink} className="btn-primary">
+                {finalCta.ctaPrimary}
               </Link>
-              <a href="tel:925-699-6629" className="btn-outline border-white text-white hover:bg-white hover:text-spot-navy">
-                Call 925-699-6629
+              <a href={`tel:${finalCta.phoneNumber}`} className="btn-outline border-white text-white hover:bg-white hover:text-spot-navy">
+                {finalCta.phoneText}
               </a>
             </div>
           </motion.div>

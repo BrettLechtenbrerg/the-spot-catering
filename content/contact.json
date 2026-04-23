@@ -1,0 +1,103 @@
+{
+  "hero": {
+    "title": "Let's Make Your Event",
+    "highlight": "Hit The Spot",
+    "subtitle": "Ready for the royal treatment? Get in touch with Denver's Corporate Catering Queen and let's create something unforgettable together.",
+    "backgroundImage": "/images/20240417_110447.jpg"
+  },
+  "getInTouch": {
+    "headlineLine1": "Get In",
+    "headlineHighlight": "Touch",
+    "body": "Have questions? Ready to book? Just want to chat about food? We'd love to hear from you!"
+  },
+  "contactInfo": [
+    {
+      "icon": "Phone",
+      "title": "Phone",
+      "value": "925-699-6629",
+      "href": "tel:925-699-6629"
+    },
+    {
+      "icon": "Mail",
+      "title": "Email",
+      "value": "spotcafes@gmail.com",
+      "href": "mailto:spotcafes@gmail.com"
+    },
+    {
+      "icon": "MapPin",
+      "title": "Location",
+      "value": "Denver, Colorado",
+      "href": null
+    },
+    {
+      "icon": "Clock",
+      "title": "Response Time",
+      "value": "Within 24 hours",
+      "href": null
+    }
+  ],
+  "social": {
+    "heading": "Follow Us",
+    "facebook": "https://www.facebook.com/thespotcafes",
+    "instagram": "https://www.instagram.com/spotcafes/"
+  },
+  "form": {
+    "heading": "Request A Quote",
+    "eventTypes": [
+      "Corporate Meeting",
+      "Team Training",
+      "Board Meeting",
+      "Team Appreciation",
+      "Themed Event",
+      "Holiday Party",
+      "Pop-Up Event",
+      "Happy Hour",
+      "Other"
+    ],
+    "fields": {
+      "name": {
+        "label": "Your Name *",
+        "placeholder": "John Smith"
+      },
+      "email": {
+        "label": "Email Address *",
+        "placeholder": "john@company.com"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "(555) 123-4567"
+      },
+      "company": {
+        "label": "Company Name",
+        "placeholder": "Acme Inc."
+      },
+      "eventType": {
+        "label": "Event Type *",
+        "placeholder": "Select an event type"
+      },
+      "eventDate": {
+        "label": "Event Date"
+      },
+      "guestCount": {
+        "label": "Estimated Guest Count",
+        "placeholder": "25"
+      },
+      "message": {
+        "label": "Tell Us About Your Event *",
+        "placeholder": "Tell us about your event, any dietary requirements, theme ideas, or questions you have..."
+      }
+    },
+    "submitLabel": "Send Message"
+  },
+  "success": {
+    "heading": "Message Sent!",
+    "body": "Thanks for reaching out! Mandy will get back to you within 24 hours.",
+    "buttonLabel": "Send Another Message"
+  },
+  "quickContact": {
+    "heading": "Need a Quick Answer?",
+    "subtext": "Call or text Mandy directly for immediate assistance.",
+    "phoneNumber": "925-699-6629",
+    "phoneLabel": "925-699-6629"
+  }
+}

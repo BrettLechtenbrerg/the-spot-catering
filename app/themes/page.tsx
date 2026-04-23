@@ -14,93 +14,38 @@ import {
   Palmtree,
   Crown,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  type LucideIcon,
 } from 'lucide-react'
+import themesContent from '@/content/themes.json'
 
-const themes = [
-  {
-    icon: Flame,
-    title: 'Taco & Chili Bars',
-    description: 'Build-your-own taco stations and hearty chili bars that bring the fiesta to your event.',
-    color: 'bg-orange-500',
-    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=300&fit=crop', // Fiesta/party scene
-  },
-  {
-    icon: Sun,
-    title: 'BBQ Cookout',
-    description: 'Smoky, savory BBQ spreads with all the classic fixings. Perfect for summer gatherings.',
-    color: 'bg-red-500',
-    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop', // Outdoor BBQ gathering
-  },
-  {
-    icon: Beer,
-    title: 'Oktoberfest',
-    description: 'Bratwurst, pretzels, and German-inspired fare. Prost to great food!',
-    color: 'bg-amber-600',
-    image: 'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=400&h=300&fit=crop', // Oktoberfest beer celebration
-  },
-  {
-    icon: Palmtree,
-    title: 'Luau Party',
-    description: 'Tropical flavors and island vibes. Hawaiian shirts optional but encouraged!',
-    color: 'bg-teal-500',
-    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=300&fit=crop', // Tropical party celebration
-  },
-  {
-    icon: TreePine,
-    title: 'Holiday Celebrations',
-    description: 'Thanksgiving feasts, Christmas dinners, and New Year\'s spreads done right.',
-    color: 'bg-green-600',
-    image: 'https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=400&h=300&fit=crop', // Holiday decorations
-  },
-  {
-    icon: Heart,
-    title: 'Valentine\'s & Love',
-    description: 'Romantic spreads for team appreciation or special celebrations.',
-    color: 'bg-pink-500',
-    image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400&h=300&fit=crop', // Romantic setting
-  },
-  {
-    icon: Crown,
-    title: 'Mardi Gras',
-    description: 'Laissez les bons temps rouler! Cajun flavors, king cake, and New Orleans flair.',
-    color: 'bg-purple-600',
-    image: 'https://images.unsplash.com/photo-1550184658-ff6132a71714?w=400&h=300&fit=crop', // Mardi Gras celebration
-  },
-  {
-    icon: Sparkles,
-    title: 'Custom Themes',
-    description: 'Have a unique idea? We love creating custom themed experiences!',
-    color: 'bg-purple-500',
-    image: 'https://images.unsplash.com/photo-1496843916299-590492c751f4?w=400&h=300&fit=crop', // Party celebration
-  },
-]
-
-const holidays = [
-  'New Year\'s Day',
-  'Mardi Gras',
-  'Valentine\'s Day',
-  'St. Patrick\'s Day',
-  'Cinco de Mayo',
-  'Fourth of July',
-  'Halloween',
-  'Thanksgiving',
-  'Christmas',
-  'Hanukkah',
-]
+// Icon mapping — converts JSON string to Lucide component
+const iconMap: Record<string, LucideIcon> = {
+  PartyPopper,
+  Flame,
+  TreePine,
+  Sun,
+  Beer,
+  Heart,
+  Palmtree,
+  Crown,
+  Sparkles,
+}
 
 export default function ThemesPage() {
+  const { hero, themesGrid, holidays, process, finalCta } = themesContent
+
   return (
     <>
       <HeroSection
-        title="Themed Events"
-        highlight="That Create Memories"
-        subtitle="From taco bars to Oktoberfest, holiday feasts to luau parties — we bring your themed event vision to life with incredible food and presentation."
-        backgroundImage="/images/IMG_4319.jpg"
-        ctaText="Plan Your Theme"
-        ctaLink="/contact"
-        secondaryCtaText="See Menus"
-        secondaryCtaLink="/menus"
+        title={hero.title}
+        highlight={hero.highlight}
+        subtitle={hero.subtitle}
+        backgroundImage={hero.backgroundImage}
+        ctaText={hero.ctaText}
+        ctaLink={hero.ctaLink}
+        secondaryCtaText={hero.secondaryCtaText}
+        secondaryCtaLink={hero.secondaryCtaLink}
       />
 
       {/* Themes Grid */}
@@ -113,50 +58,52 @@ export default function ThemesPage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              Popular <span className="text-spot-orange">Themed Events</span>
+              {themesGrid.headlineLine1} <span className="text-spot-orange">{themesGrid.headlineHighlight}</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We&apos;ve catered hundreds of themed events. Here are some of our most requested —
-              but the sky&apos;s the limit!
+              {themesGrid.subheadline}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {themes.map((theme, index) => (
-              <motion.div
-                key={theme.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[240px]"
-              >
-                {/* Background Image with Color */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={theme.image}
-                    alt={theme.title}
-                    fill
-                    className="object-cover grayscale-[25%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                  />
-                  {/* Lighter Overlay for more color */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/90 via-spot-navy/50 to-spot-navy/20 group-hover:from-spot-navy/85 group-hover:via-spot-navy/40 group-hover:to-transparent transition-all duration-300" />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
-                  <div className={`w-12 h-12 ${theme.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
-                    <theme.icon className="text-white" size={24} />
+            {themesGrid.items.map((theme, index) => {
+              const Icon = iconMap[theme.icon] ?? Sparkles
+              return (
+                <motion.div
+                  key={theme.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-[240px]"
+                >
+                  {/* Background Image with Color */}
+                  <div className="absolute inset-0">
+                    <Image
+                      src={theme.image}
+                      alt={theme.title}
+                      fill
+                      className="object-cover grayscale-[25%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                    />
+                    {/* Lighter Overlay for more color */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/90 via-spot-navy/50 to-spot-navy/20 group-hover:from-spot-navy/85 group-hover:via-spot-navy/40 group-hover:to-transparent transition-all duration-300" />
                   </div>
-                  <h3 className="font-display text-xl font-bold mb-2 group-hover:text-spot-orange transition-colors">
-                    {theme.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {theme.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+
+                  {/* Content */}
+                  <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
+                    <div className={`w-12 h-12 ${theme.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
+                      <Icon className="text-white" size={24} />
+                    </div>
+                    <h3 className="font-display text-xl font-bold mb-2 group-hover:text-spot-orange transition-colors">
+                      {theme.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {theme.description}
+                    </p>
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -171,10 +118,10 @@ export default function ThemesPage() {
             className="text-center"
           >
             <h3 className="font-display text-3xl text-spot-navy font-bold mb-8">
-              Holiday Events We Love Catering
+              {holidays.headline}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
-              {holidays.map((holiday) => (
+              {holidays.items.map((holiday) => (
                 <span
                   key={holiday}
                   className="bg-white/90 text-spot-navy px-4 py-3 rounded-full font-medium text-sm shadow-md text-center"
@@ -197,28 +144,12 @@ export default function ThemesPage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              How We Create Your <span className="text-spot-orange">Perfect Theme</span>
+              {process.headlineLine1} <span className="text-spot-orange">{process.headlineHighlight}</span>
             </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                step: '01',
-                title: 'Tell Us Your Vision',
-                description: 'Share your theme idea, event details, and guest count. We love hearing your creative ideas!',
-              },
-              {
-                step: '02',
-                title: 'We Design The Menu',
-                description: 'We\'ll craft a custom menu that perfectly matches your theme with options for every dietary need.',
-              },
-              {
-                step: '03',
-                title: 'We Bring The Party',
-                description: 'We handle setup, presentation, and cleanup. You focus on enjoying your event!',
-              },
-            ].map((item, index) => (
+            {process.steps.map((item, index) => (
               <motion.div
                 key={item.step}
                 initial={{ opacity: 0, y: 30 }}
@@ -252,14 +183,13 @@ export default function ThemesPage() {
           >
             <PartyPopper className="mx-auto text-spot-orange mb-6" size={48} />
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Ready to Party?
+              {finalCta.headline}
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let&apos;s create something amazing together. Tell us about your themed event
-              and we&apos;ll make it unforgettable!
+              {finalCta.subheadline}
             </p>
-            <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-              Start Planning <ArrowRight size={18} />
+            <Link href={finalCta.ctaLink} className="btn-primary inline-flex items-center gap-2">
+              {finalCta.ctaText} <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>

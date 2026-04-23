@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "title": "Themed Events",
+    "highlight": "That Create Memories",
+    "subtitle": "From taco bars to Oktoberfest, holiday feasts to luau parties — we bring your themed event vision to life with incredible food and presentation.",
+    "backgroundImage": "/images/IMG_4319.jpg",
+    "ctaText": "Plan Your Theme",
+    "ctaLink": "/contact",
+    "secondaryCtaText": "See Menus",
+    "secondaryCtaLink": "/menus"
+  },
+  "themesGrid": {
+    "headlineLine1": "Popular",
+    "headlineHighlight": "Themed Events",
+    "subheadline": "We've catered hundreds of themed events. Here are some of our most requested — but the sky's the limit!",
+    "items": [
+      {
+        "icon": "Flame",
+        "title": "Taco & Chili Bars",
+        "description": "Build-your-own taco stations and hearty chili bars that bring the fiesta to your event.",
+        "color": "bg-orange-500",
+        "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=300&fit=crop"
+      },
+      {
+        "icon": "Sun",
+        "title": "BBQ Cookout",
+        "description": "Smoky, savory BBQ spreads with all the classic fixings. Perfect for summer gatherings.",
+        "color": "bg-red-500",
+        "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop"
+      },
+      {
+        "icon": "Beer",
+        "title": "Oktoberfest",
+        "description": "Bratwurst, pretzels, and German-inspired fare. Prost to great food!",
+        "color": "bg-amber-600",
+        "image": "https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=400&h=300&fit=crop"
+      },
+      {
+        "icon": "Palmtree",
+        "title": "Luau Party",
+        "description": "Tropical flavors and island vibes. Hawaiian shirts optional but encouraged!",
+        "color": "bg-teal-500",
+        "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=300&fit=crop"
+      },
+      {
+        "icon": "TreePine",
+        "title": "Holiday Celebrations",
+        "description": "Thanksgiving feasts, Christmas dinners, and New Year's spreads done right.",
+        "color": "bg-green-600",
+        "image": "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=400&h=300&fit=crop"
+      },
+      {
+        "icon": "Heart",
+        "title": "Valentine's & Love",
+        "description": "Romantic spreads for team appreciation or special celebrations.",
+        "color": "bg-pink-500",
+        "image": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400&h=300&fit=crop"
+      },
+      {
+        "icon": "Crown",
+        "title": "Mardi Gras",
+        "description": "Laissez les bons temps rouler! Cajun flavors, king cake, and New Orleans flair.",
+        "color": "bg-purple-600",
+        "image": "https://images.unsplash.com/photo-1550184658-ff6132a71714?w=400&h=300&fit=crop"
+      },
+      {
+        "icon": "Sparkles",
+        "title": "Custom Themes",
+        "description": "Have a unique idea? We love creating custom themed experiences!",
+        "color": "bg-purple-500",
+        "image": "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=400&h=300&fit=crop"
+      }
+    ]
+  },
+  "holidays": {
+    "headline": "Holiday Events We Love Catering",
+    "items": [
+      "New Year's Day",
+      "Mardi Gras",
+      "Valentine's Day",
+      "St. Patrick's Day",
+      "Cinco de Mayo",
+      "Fourth of July",
+      "Halloween",
+      "Thanksgiving",
+      "Christmas",
+      "Hanukkah"
+    ]
+  },
+  "process": {
+    "headlineLine1": "How We Create Your",
+    "headlineHighlight": "Perfect Theme",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Tell Us Your Vision",
+        "description": "Share your theme idea, event details, and guest count. We love hearing your creative ideas!"
+      },
+      {
+        "step": "02",
+        "title": "We Design The Menu",
+        "description": "We'll craft a custom menu that perfectly matches your theme with options for every dietary need."
+      },
+      {
+        "step": "03",
+        "title": "We Bring The Party",
+        "description": "We handle setup, presentation, and cleanup. You focus on enjoying your event!"
+      }
+    ]
+  },
+  "finalCta": {
+    "headline": "Ready to Party?",
+    "subheadline": "Let's create something amazing together. Tell us about your themed event and we'll make it unforgettable!",
+    "ctaText": "Start Planning",
+    "ctaLink": "/contact"
+  }
+}

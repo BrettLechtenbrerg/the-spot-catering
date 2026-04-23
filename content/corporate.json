@@ -1,0 +1,138 @@
+{
+  "hero": {
+    "title": "Corporate Catering",
+    "highlight": "That Hits The Spot",
+    "subtitle": "From team trainings to board meetings, we make corporate events deliciously memorable. Let us handle the food while you focus on business.",
+    "backgroundImage": "/images/IMG_4205.jpg",
+    "ctaText": "Request A Quote",
+    "ctaLink": "/contact",
+    "secondaryCtaText": "View Menus",
+    "secondaryCtaLink": "/menus"
+  },
+  "services": {
+    "headlineLine1": "We're",
+    "headlineHighlight": "Spot On",
+    "headlineLine2": "For Any Corporate Event",
+    "subheadline": "Whatever your corporate catering needs, we've got you covered with professional service and amazing food.",
+    "items": [
+      {
+        "icon": "Users",
+        "title": "Team Training Events",
+        "description": "Keep your team energized and focused during training sessions with our perfectly timed meal service.",
+        "image": "/images/20221114_134142.jpg"
+      },
+      {
+        "icon": "Building2",
+        "title": "Board Meetings",
+        "description": "Impress stakeholders with premium catering that reflects your company's commitment to excellence.",
+        "image": "/images/IMG_4205.jpg"
+      },
+      {
+        "icon": "Calendar",
+        "title": "Team Appreciation",
+        "description": "Show your team they're valued with special catering for recognition events and milestones.",
+        "image": "/images/20220528_185532.jpg"
+      },
+      {
+        "icon": "Coffee",
+        "title": "Breakfast Meetings",
+        "description": "Start the day right with our famous breakfast boards and coffee service. More espresso, less depresso!",
+        "image": "/images/Char Cups Catering.jpg"
+      },
+      {
+        "icon": "Utensils",
+        "title": "Working Lunches",
+        "description": "Productive meetings deserve great food. Our boxed lunches and buffets keep things moving.",
+        "image": "/images/Full Menu photo.jpg"
+      },
+      {
+        "icon": "Sparkles",
+        "title": "Client Events",
+        "description": "Make lasting impressions on your clients with catering that shows you care about every detail.",
+        "image": "/images/IMG_4319.jpg"
+      }
+    ]
+  },
+  "popUps": {
+    "heading": "Surprise & Delight Pop-Ups",
+    "description": "Want to create unexpected joy in your workplace? Our pop-up events bring delicious food and memorable moments to any location.",
+    "popUpTypes": [
+      {
+        "icon": "Calendar",
+        "title": "Holiday Pop-Ups",
+        "description": "Special seasonal experiences around major holidays. Think Valentine's treats, Halloween spooky snacks, and festive holiday spreads.",
+        "color": "bg-red-500"
+      },
+      {
+        "icon": "MapPin",
+        "title": "Office Building Events",
+        "description": "Bring excitement to your building lobby or common areas with a surprise pop-up catering experience.",
+        "color": "bg-blue-500"
+      },
+      {
+        "icon": "Zap",
+        "title": "Retreats & Trainings",
+        "description": "Keep your team energized during off-site retreats and all-day training sessions with perfectly timed meals.",
+        "color": "bg-amber-500"
+      },
+      {
+        "icon": "Users",
+        "title": "Community Events",
+        "description": "We love being part of local Denver events, festivals, and community gatherings. Great food brings people together!",
+        "color": "bg-teal-500"
+      }
+    ],
+    "ctaText": "Book A Pop-Up",
+    "ctaLink": "/contact"
+  },
+  "whyPopUpsWork": {
+    "headlineLine1": "Why Pop-Ups",
+    "headlineHighlight": "Work Magic",
+    "description": "There's something special about unexpected food experiences. Pop-up events create excitement, build community, and give people something to talk about.",
+    "benefits": [
+      {
+        "icon": "Star",
+        "title": "Unique Experience",
+        "description": "Pop-ups create buzz and excitement that regular catering can't match."
+      },
+      {
+        "icon": "Heart",
+        "title": "Community Connection",
+        "description": "Perfect for building relationships with employees, neighbors, or customers."
+      },
+      {
+        "icon": "Sparkles",
+        "title": "Memorable Moments",
+        "description": "Unexpected food experiences create lasting memories and talking points."
+      }
+    ],
+    "image": "/images/Char Cups Catering.jpg"
+  },
+  "whyChooseUs": {
+    "headlineLine1": "Why Denver Companies Choose",
+    "headlineHighlight": "The Spot",
+    "intro": "We're not just caterers — we're your partners in making every corporate event a success. We handle the heavy lifting so you can focus on what matters most.",
+    "bullets": [
+      "Always on time or ahead of schedule — you'll never stress about timing",
+      "We do what we say, when we say — integrity you can count on",
+      "Fun, positive energy that elevates every corporate event",
+      "We work with your needs and budget — not the other way around",
+      "Excellence from first call to final cleanup",
+      "Creative menus for any theme — the sky's the limit!"
+    ],
+    "ctaText": "Get Started",
+    "ctaLink": "/contact",
+    "image": "/images/IMG_4319.jpg",
+    "certificationsTitle": "Certified",
+    "certificationsSubtitle": "MWBE • DBE • EBE"
+  },
+  "finalCta": {
+    "headlineLine1": "Ready to Elevate Your",
+    "headlineHighlight": "Corporate Events",
+    "subheadline": "Let's chat about your upcoming event. We'll create a custom menu that fits your budget, timeline, and taste preferences.",
+    "ctaPrimary": "Request A Quote",
+    "ctaPrimaryLink": "/contact",
+    "phoneText": "Call 925-699-6629",
+    "phoneNumber": "925-699-6629"
+  }
+}

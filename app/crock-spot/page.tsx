@@ -7,7 +7,6 @@ import {
   Truck,
   Clock,
   Users,
-  CheckCircle,
   ArrowRight,
   Award,
   Utensils,
@@ -15,63 +14,28 @@ import {
   FileCheck,
   Leaf,
   ChefHat,
-  Zap
+  Zap,
+  type LucideIcon,
 } from 'lucide-react'
+import crockSpotContent from '@/content/crock-spot.json'
 
-const menuHighlights = [
-  {
-    title: 'Build-A-Bowl',
-    description: 'Choose your base, protein, sauce, and toppings. Served in 25 seconds or less!',
-    icon: Utensils,
-  },
-  {
-    title: 'Breakfast Options',
-    description: 'English & Colorado style buffets, continental boards, bagel boards, and breakfast burritos.',
-    icon: ChefHat,
-  },
-  {
-    title: 'BYO Bars',
-    description: 'Taco, tostada, nacho, chili, and mac n cheese bars with all the fixings.',
-    icon: Star,
-  },
-  {
-    title: 'Grazing Tables',
-    description: 'Stunning charcuterie spreads with cheeses, fruits, crackers, and hot appetizers.',
-    icon: Leaf,
-  },
-]
-
-const whyCrockSpot = [
-  {
-    icon: Clock,
-    title: 'Lightning Fast Service',
-    description: 'Our quick-serve concept serves guests in 25 seconds or less — perfect for time-sensitive events.',
-  },
-  {
-    icon: Users,
-    title: 'High Volume Capacity',
-    description: 'We can serve up to 100 people per hour from our food trucks. No long lines, no waiting.',
-  },
-  {
-    icon: FileCheck,
-    title: 'Government Contract Ready',
-    description: 'Fully equipped to handle government contracts with proper certifications and compliance.',
-  },
-  {
-    icon: Truck,
-    title: 'Mobile Convenience',
-    description: '15 years of food truck experience. We bring the kitchen to you — anywhere in Denver Metro.',
-  },
-]
-
-const serviceTypes = [
-  { name: 'Food Truck Service', price: '$16-18/person', description: 'Our signature mobile experience' },
-  { name: 'Buffet Style', price: '$18-20/person', description: 'Indoor setup with full service' },
-  { name: 'Breakfast Buffets', price: '$15-17/person', description: 'English or Colorado style' },
-  { name: 'Lunch Boxes', price: '$17.50/person', description: 'Grab-n-go artisan boxes' },
-]
+// Icon mapping — converts JSON string to Lucide component
+const iconMap: Record<string, LucideIcon> = {
+  Truck,
+  Clock,
+  Users,
+  Award,
+  Utensils,
+  Star,
+  FileCheck,
+  Leaf,
+  ChefHat,
+  Zap,
+}
 
 export default function CrockSpotPage() {
+  const { hero, familyBanner, whyCrockSpot, menuSection, governmentSection, finalCta } = crockSpotContent
+
   return (
     <>
       {/* Hero Section */}
@@ -79,8 +43,8 @@ export default function CrockSpotPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/crockspot-truck.jpg"
-            alt="Crock Spot Food Truck"
+            src={hero.backgroundImage}
+            alt={hero.backgroundAlt}
             fill
             className="object-cover"
             priority
@@ -105,8 +69,8 @@ export default function CrockSpotPage() {
                 className="mb-8"
               >
                 <Image
-                  src="/images/crock-spot-logo-white.png"
-                  alt="Crock Spot - Slow Cooked Gourmet Cuisine"
+                  src={hero.logoImage}
+                  alt={hero.logoAlt}
                   width={350}
                   height={150}
                   className="w-auto h-auto max-w-[350px]"
@@ -119,7 +83,7 @@ export default function CrockSpotPage() {
                 transition={{ delay: 0.3 }}
                 className="text-2xl md:text-3xl text-[#F49220] font-bold mb-4"
               >
-                Let Us Crock Your World
+                {hero.tagline}
               </motion.p>
 
               <motion.p
@@ -128,8 +92,9 @@ export default function CrockSpotPage() {
                 transition={{ delay: 0.4 }}
                 className="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed"
               >
-                Voted <span className="text-[#F49220] font-semibold">&quot;Best Food Truck in Denver&quot;</span> by 5280 Magazine.
-                Slow-cooked gourmet cuisine that fills you up without bogging you down.
+                {hero.subheadlinePrefix}
+                <span className="text-[#F49220] font-semibold">{hero.subheadlineHighlight}</span>
+                {hero.subheadlineSuffix}
               </motion.p>
 
               <motion.div
@@ -139,18 +104,18 @@ export default function CrockSpotPage() {
                 className="flex flex-wrap gap-4"
               >
                 <a
-                  href="mailto:Steven@thecrockspot.com"
+                  href={hero.ctaPrimaryHref}
                   className="bg-[#F49220] text-[#2F2744] px-8 py-4 rounded-lg font-bold hover:bg-[#F49220]/90 transition-colors inline-flex items-center gap-2"
                 >
-                  Book Crock Spot <ArrowRight size={18} />
+                  {hero.ctaPrimary} <ArrowRight size={18} />
                 </a>
                 <a
-                  href="https://www.thecrockspot.com"
+                  href={hero.ctaSecondaryHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-[#2F2744] transition-colors"
                 >
-                  Visit Website
+                  {hero.ctaSecondary}
                 </a>
               </motion.div>
             </motion.div>
@@ -165,23 +130,20 @@ export default function CrockSpotPage() {
               <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
                 <div className="text-center text-white mb-6">
                   <Award className="mx-auto text-[#F49220] mb-4" size={48} />
-                  <p className="font-display text-2xl font-bold">Award-Winning</p>
-                  <p className="text-[#F49220]">Food Truck Catering</p>
+                  <p className="font-display text-2xl font-bold">{hero.badgeTitle}</p>
+                  <p className="text-[#F49220]">{hero.badgeSubtitle}</p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 bg-white/10 rounded-xl p-4">
-                    <Truck className="text-[#F49220]" size={24} />
-                    <span>15+ Years Food Truck Experience</span>
-                  </div>
-                  <div className="flex items-center gap-3 bg-white/10 rounded-xl p-4">
-                    <Zap className="text-[#F49220]" size={24} />
-                    <span>100 People Per Hour Capacity</span>
-                  </div>
-                  <div className="flex items-center gap-3 bg-white/10 rounded-xl p-4">
-                    <FileCheck className="text-[#F49220]" size={24} />
-                    <span>Government Contract Ready</span>
-                  </div>
+                  {hero.badgeItems.map((item) => {
+                    const Icon = iconMap[item.icon] ?? Truck
+                    return (
+                      <div key={item.text} className="flex items-center gap-3 bg-white/10 rounded-xl p-4">
+                        <Icon className="text-[#F49220]" size={24} />
+                        <span>{item.text}</span>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
 
@@ -208,11 +170,10 @@ export default function CrockSpotPage() {
             className="text-center"
           >
             <p className="font-display text-2xl md:text-3xl text-spot-navy font-bold">
-              A Family Affair — Steven &amp; Mandy Smith
+              {familyBanner.headline}
             </p>
             <p className="text-spot-navy/80 mt-2">
-              Crock Spot is owned by Steven Smith, husband of The Spot&apos;s own Mandy Smith.
-              Two great catering options, one family passion for great food!
+              {familyBanner.description}
             </p>
           </motion.div>
         </div>
@@ -228,35 +189,37 @@ export default function CrockSpotPage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              Why Choose <span className="text-[#F49220]">Crock Spot</span>
+              {whyCrockSpot.headlineLine1} <span className="text-[#F49220]">{whyCrockSpot.headlineHighlight}</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Fast, delicious, and built for high-volume events. Perfect for corporate gatherings,
-              government contracts, and large-scale catering.
+              {whyCrockSpot.subheadline}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyCrockSpot.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-[#614B8A] rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="text-white" size={32} />
-                </div>
-                <h3 className="font-display text-xl text-spot-navy mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
+            {whyCrockSpot.items.map((item, index) => {
+              const Icon = iconMap[item.icon] ?? Clock
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="w-16 h-16 bg-[#614B8A] rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Icon className="text-white" size={32} />
+                  </div>
+                  <h3 className="font-display text-xl text-spot-navy mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -271,29 +234,30 @@ export default function CrockSpotPage() {
               viewport={{ once: true }}
             >
               <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-6">
-                The <span className="text-[#F49220]">Crock Spot Menu</span>
+                {menuSection.headlineLine1} <span className="text-[#F49220]">{menuSection.headlineHighlight}</span>
               </h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                Our &quot;choose your own adventure&quot; concept lets guests customize their perfect meal.
-                Slow-cooked proteins over healthy grain bases, topped with international sauces.
-                All dietary needs welcome — including vegetarian and vegan options!
+                {menuSection.description}
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4">
-                {menuHighlights.map((item, index) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white rounded-xl p-5 shadow-sm border border-gray-100"
-                  >
-                    <item.icon className="text-[#F49220] mb-3" size={28} />
-                    <h4 className="font-display text-lg text-spot-navy mb-1">{item.title}</h4>
-                    <p className="text-gray-600 text-sm">{item.description}</p>
-                  </motion.div>
-                ))}
+                {menuSection.highlights.map((item, index) => {
+                  const Icon = iconMap[item.icon] ?? Utensils
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-white rounded-xl p-5 shadow-sm border border-gray-100"
+                    >
+                      <Icon className="text-[#F49220] mb-3" size={28} />
+                      <h4 className="font-display text-lg text-spot-navy mb-1">{item.title}</h4>
+                      <p className="text-gray-600 text-sm">{item.description}</p>
+                    </motion.div>
+                  )
+                })}
               </div>
             </motion.div>
 
@@ -304,9 +268,9 @@ export default function CrockSpotPage() {
               className="relative"
             >
               <div className="bg-[#2F2744] rounded-3xl p-8 text-white">
-                <h3 className="font-display text-2xl mb-6 text-center">Service Options</h3>
+                <h3 className="font-display text-2xl mb-6 text-center">{menuSection.serviceOptionsTitle}</h3>
                 <div className="space-y-4">
-                  {serviceTypes.map((service, index) => (
+                  {menuSection.serviceTypes.map((service, index) => (
                     <motion.div
                       key={service.name}
                       initial={{ opacity: 0, x: -20 }}
@@ -325,7 +289,7 @@ export default function CrockSpotPage() {
                 </div>
 
                 <p className="text-center text-gray-400 text-sm mt-6">
-                  Custom menus available for any event size
+                  {menuSection.serviceOptionsFootnote}
                 </p>
               </div>
 
@@ -337,7 +301,7 @@ export default function CrockSpotPage() {
               >
                 <div className="flex items-center gap-2">
                   <Truck className="text-white" size={20} />
-                  <span className="font-bold text-white text-sm">Mobile!</span>
+                  <span className="font-bold text-white text-sm">{menuSection.mobileBadgeText}</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -356,23 +320,17 @@ export default function CrockSpotPage() {
           >
             <FileCheck className="mx-auto mb-4" size={48} />
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Government Contract Ready
+              {governmentSection.headline}
             </h2>
             <p className="text-gray-200 max-w-2xl mx-auto mb-8">
-              Crock Spot is fully equipped to handle government contracts and large-scale corporate events.
-              We have the capacity, the certifications, and 15+ years of experience delivering
-              high-volume catering with precision timing.
+              {governmentSection.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <div className="bg-white/20 px-6 py-3 rounded-full">
-                <span className="font-semibold">100+ People/Hour</span>
-              </div>
-              <div className="bg-white/20 px-6 py-3 rounded-full">
-                <span className="font-semibold">25-Second Service</span>
-              </div>
-              <div className="bg-white/20 px-6 py-3 rounded-full">
-                <span className="font-semibold">Flexible Locations</span>
-              </div>
+              {governmentSection.pills.map((pill) => (
+                <div key={pill} className="bg-white/20 px-6 py-3 rounded-full">
+                  <span className="font-semibold">{pill}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -387,21 +345,20 @@ export default function CrockSpotPage() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Ready to <span className="text-[#F49220]">Crock</span>?
+              {finalCta.headlineLine1} <span className="text-[#F49220]">{finalCta.headlineHighlight}</span>{finalCta.headlineSuffix}
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Whether it&apos;s a corporate lunch, government event, or community gathering —
-              Crock Spot brings award-winning food truck catering to you.
+              {finalCta.subheadline}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="mailto:Steven@thecrockspot.com"
+                href={finalCta.ctaPrimaryHref}
                 className="bg-[#F49220] text-[#2F2744] px-8 py-4 rounded-lg font-bold hover:bg-[#F49220]/90 transition-colors inline-flex items-center gap-2"
               >
-                Email Steven@thecrockspot.com
+                {finalCta.ctaPrimary}
               </a>
-              <Link href="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-[#2F2744]">
-                Contact The Spot
+              <Link href={finalCta.ctaSecondaryHref} className="btn-outline border-white text-white hover:bg-white hover:text-[#2F2744]">
+                {finalCta.ctaSecondary}
               </Link>
             </div>
           </motion.div>

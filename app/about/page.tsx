@@ -13,89 +13,24 @@ import {
   Award,
   ArrowRight,
   Quote,
-  Crown
+  Crown,
+  type LucideIcon,
 } from 'lucide-react'
+import aboutContent from '@/content/about.json'
 
-const timeline = [
-  {
-    year: 'The Beginning',
-    title: 'Sales & Marketing at Crock Spot',
-    description: 'Mandy started her journey in the food industry working in sales and marketing, learning the ins and outs of the business.',
-    image: '/images/20220528_185532.jpg',
-  },
-  {
-    year: 'The Opportunity',
-    title: 'Saw an Empty Cafe',
-    description: 'At a catering job, Mandy spotted an empty cafe space. She saw the potential and took the leap — taking "the spot."',
-    image: '/images/Char Cups Catering.jpg',
-  },
-  {
-    year: 'Growth',
-    title: 'One Became Three',
-    description: 'That single location grew into three successful restaurant locations, building a reputation for great food and service.',
-    image: '/images/Full Menu photo.jpg',
-  },
-  {
-    year: 'The Pivot',
-    title: 'Following Her Passion',
-    description: 'Mandy\'s love for catering led to a strategic decision: downsize to one restaurant and focus on what she loved most — making people feel special through creative catering experiences.',
-    image: '/images/IMG_4205.jpg',
-  },
-  {
-    year: 'March 2020',
-    title: 'One Month Before COVID',
-    description: 'The timing seemed impossible. But as the dining landscape changed, Mandy saw opportunity instead of obstacles and rolled with it.',
-    image: '/images/20221114_134142.jpg',
-  },
-  {
-    year: 'Today',
-    title: 'The Corporate Catering Queen',
-    description: 'A thriving woman-owned corporate catering business, serving Denver\'s top companies and creating memorable experiences every day.',
-    image: '/images/IMG_4319.jpg',
-  },
-]
-
-const values = [
-  {
-    icon: Clock,
-    title: 'Timeliness',
-    description: 'Always on time or ahead of schedule, so our clients never have to stress.',
-  },
-  {
-    icon: Shield,
-    title: 'Integrity',
-    description: 'We do what we say we will do, when we say we will do it. Period.',
-  },
-  {
-    icon: Smile,
-    title: 'Fun & Positivity',
-    description: 'We bring a fun, positive demeanor to every client interaction and themed event we create.',
-  },
-  {
-    icon: Handshake,
-    title: 'Workability',
-    description: 'We work with you and your needs and budget — not the other way around.',
-  },
-  {
-    icon: Trophy,
-    title: 'Excellence',
-    description: 'From the ease of booking to delicious food to stunning presentation — excellence is everything.',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Creativity',
-    description: 'We can create just about anything for our clients. The sky\'s the limit!',
-  },
-]
-
-const certifications = [
-  { abbr: 'MWBE', name: 'Minority Women\'s Business Enterprise' },
-  { abbr: 'DBE', name: 'Disadvantaged Business Enterprise' },
-  { abbr: 'EBE', name: 'Emerging Business Enterprise' },
-  { abbr: 'SBEC', name: 'Small Business Enterprise Concessionaire' },
-]
+// Icon mapping — converts JSON string to Lucide component
+const iconMap: Record<string, LucideIcon> = {
+  Clock,
+  Shield,
+  Smile,
+  Handshake,
+  Trophy,
+  Lightbulb,
+}
 
 export default function AboutPage() {
+  const { hero, mission, story, journey, values, certifications, finalCta } = aboutContent
+
   return (
     <>
       {/* Custom Hero Section with Featured Image */}
@@ -103,7 +38,7 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/20220528_185532.jpg"
+            src={hero.backgroundImage}
             alt="Catering event"
             fill
             className="object-cover"
@@ -129,7 +64,7 @@ export default function AboutPage() {
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6"
               >
                 <Crown size={18} className="text-spot-orange" />
-                <span className="text-sm font-medium">Denver&apos;s Corporate Catering Queen</span>
+                <span className="text-sm font-medium">{hero.badge}</span>
               </motion.div>
 
               <motion.h1
@@ -138,9 +73,9 @@ export default function AboutPage() {
                 transition={{ delay: 0.3 }}
                 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
               >
-                Meet The Corporate
+                {hero.headlineLine1}
                 <br />
-                <span className="text-spot-orange">Catering Queen</span>
+                <span className="text-spot-orange">{hero.headlineLine2}</span>
               </motion.h1>
 
               <motion.p
@@ -149,9 +84,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.4 }}
                 className="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed"
               >
-                The Corporate Catering Queen who treats every client like
-                <span className="text-spot-orange font-semibold"> royalty</span>.
-                This is the story of passion, persistence, and making people feel special.
+                {hero.subheadline}
               </motion.p>
 
               <motion.div
@@ -160,11 +93,11 @@ export default function AboutPage() {
                 transition={{ delay: 0.5 }}
                 className="flex flex-wrap gap-4"
               >
-                <Link href="/contact" className="btn-primary flex items-center gap-2">
-                  Work With Us <ArrowRight size={18} />
+                <Link href={hero.ctaPrimaryLink} className="btn-primary flex items-center gap-2">
+                  {hero.ctaPrimary} <ArrowRight size={18} />
                 </Link>
-                <Link href="/menus" className="btn-outline border-white text-white hover:bg-white hover:text-spot-navy">
-                  View Our Menus
+                <Link href={hero.ctaSecondaryLink} className="btn-outline border-white text-white hover:bg-white hover:text-spot-navy">
+                  {hero.ctaSecondary}
                 </Link>
               </motion.div>
             </motion.div>
@@ -181,7 +114,7 @@ export default function AboutPage() {
                   {/* Mandy's Photo */}
                   <div className="relative w-full h-[480px] rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/images/mandy-about.jpg"
+                      src={hero.featuredImage}
                       alt="Mandy Smith - The Corporate Catering Queen"
                       fill
                       className="object-contain"
@@ -190,8 +123,8 @@ export default function AboutPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/30 to-transparent" />
                   </div>
                   <div className="mt-6 text-center text-white">
-                    <p className="font-display text-2xl mb-2">Mandy Smith</p>
-                    <p className="text-spot-orange font-semibold">Founder & CEO</p>
+                    <p className="font-display text-2xl mb-2">{hero.featuredImageCaption}</p>
+                    <p className="text-spot-orange font-semibold">{hero.featuredImageSubcaption}</p>
                   </div>
                 </div>
 
@@ -230,9 +163,9 @@ export default function AboutPage() {
           >
             <Quote className="mx-auto text-spot-navy/30 mb-4" size={48} />
             <p className="font-display text-3xl md:text-4xl text-spot-navy font-bold max-w-3xl mx-auto">
-              &ldquo;We make food fun, social, and special for everyone.&rdquo;
+              &ldquo;{mission.quote}&rdquo;
             </p>
-            <p className="text-spot-navy/80 mt-4 font-medium">— Mandy Smith, Founder</p>
+            <p className="text-spot-navy/80 mt-4 font-medium">{mission.attribution}</p>
           </motion.div>
         </div>
       </section>
@@ -249,55 +182,17 @@ export default function AboutPage() {
               className="lg:col-span-3 prose prose-lg max-w-none"
             >
               <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-8">
-                The Story Behind <span className="text-spot-orange">The Spot</span>
+                {story.headlineLine1} <span className="text-spot-orange">{story.headlineHighlight}</span>
               </h2>
 
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Every great business starts with a moment of clarity. For Mandy Smith, that moment came
-                during a catering job when she spotted an empty cafe space. While others might have seen
-                just four walls, Mandy saw <em>opportunity</em>. She saw potential. She saw &quot;the spot.&quot;
-              </p>
-
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                But Mandy&apos;s journey didn&apos;t start there. She had already spent years in the food industry,
-                cutting her teeth in sales and marketing at Crock Spot. It was there she learned not just
-                about food, but about <strong className="text-spot-navy">people</strong> — what makes them feel
-                welcomed, what makes an event memorable, and most importantly, what makes people feel special.
-              </p>
-
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                When she finally took the leap and claimed that empty cafe, something magical happened.
-                One location became two. Then three. Mandy had built not just a business, but a reputation
-                for exceptional food and warm, genuine service that Denver couldn&apos;t get enough of.
-              </p>
-
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                But here&apos;s the thing about Mandy — she follows her heart. And her heart kept pulling her
-                toward catering. There was something about those corporate events, the team celebrations,
-                the holiday parties that lit her up in a way restaurants never quite did. So she made a
-                bold decision: <strong className="text-spot-navy">downsize to one restaurant and go all-in on catering</strong>.
-              </p>
-
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                The timing? March 2020 — exactly one month before the world changed forever. But where
-                others saw disaster, Mandy saw opportunity. As the dining landscape shifted, she pivoted,
-                adapted, and actually <em>thrived</em>. She served the National Guard meals for 36 consecutive
-                days during the pandemic. She became the go-to caterer for companies navigating the new
-                normal of corporate gatherings.
-              </p>
-
-              <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Today, Mandy Smith is known as Denver&apos;s Corporate Catering Queen — and like any good queen,
-                she treats her clients like <strong className="text-spot-navy">royalty</strong>. Every event
-                receives the royal treatment: always on time, always with integrity, always with that signature
-                fun and positivity that makes The Spot different. Her company, MNS Worldwide LLC, is a certified
-                MWBE, DBE, EBE, and SBEC — but more than any certification, it&apos;s Mandy&apos;s commitment to
-                excellence and creativity that sets The Spot apart.
-              </p>
+              {story.paragraphs.map((paragraph, index) => (
+                <p key={index} className="text-gray-600 text-lg leading-relaxed mb-6">
+                  {paragraph}
+                </p>
+              ))}
 
               <p className="text-spot-navy text-xl font-semibold italic">
-                &quot;I didn&apos;t just find a spot. I created a place where every client is treated like royalty,
-                every event becomes a memory, and every meal becomes a moment worth celebrating.&quot;
+                &quot;{story.closingQuote}&quot;
               </p>
             </motion.div>
 
@@ -313,16 +208,16 @@ export default function AboutPage() {
                 {/* Mandy's Photo */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/meet-mandy.jpg"
-                    alt="Mandy Smith - Founder of The Spot Catering"
+                    src={story.sideImage.src}
+                    alt={story.sideImage.alt}
                     width={400}
                     height={500}
                     className="w-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-spot-navy/50 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">
-                    <p className="font-display text-2xl font-bold">Mandy Smith</p>
-                    <p className="text-spot-orange">Founder & CEO</p>
+                    <p className="font-display text-2xl font-bold">{story.sideImage.caption}</p>
+                    <p className="text-spot-orange">{story.sideImage.subcaption}</p>
                   </div>
                 </div>
 
@@ -339,8 +234,8 @@ export default function AboutPage() {
                   className="absolute -bottom-8 -right-8 bg-white rounded-2xl shadow-xl p-6"
                 >
                   <div className="text-center">
-                    <p className="font-display text-3xl text-spot-orange font-bold">15+</p>
-                    <p className="text-gray-600 text-sm">Years of Experience</p>
+                    <p className="font-display text-3xl text-spot-orange font-bold">{story.sideImage.statValue}</p>
+                    <p className="text-gray-600 text-sm">{story.sideImage.statLabel}</p>
                   </div>
                 </motion.div>
               </div>
@@ -359,10 +254,10 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              The <span className="text-spot-orange">Journey</span>
+              {journey.headlineLine1} <span className="text-spot-orange">{journey.headlineHighlight}</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              From sales and marketing to building Denver&apos;s premier corporate catering company — here&apos;s how it all unfolded.
+              {journey.subheadline}
             </p>
           </motion.div>
 
@@ -371,7 +266,7 @@ export default function AboutPage() {
             <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-spot-orange via-spot-purple to-spot-navy transform md:-translate-x-1/2" />
 
             <div className="space-y-16">
-              {timeline.map((item, index) => (
+              {journey.timeline.map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 30 }}
@@ -441,35 +336,37 @@ export default function AboutPage() {
           >
             <Crown className="mx-auto text-spot-orange mb-4" size={48} />
             <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-4">
-              The <span className="text-spot-orange">Royal Treatment</span>
+              {values.headlineLine1} <span className="text-spot-orange">{values.headlineHighlight}</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              As the Corporate Catering Queen, Mandy treats every client like royalty.
-              These are the values that make it happen.
+              {values.subheadline}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-spot-orange rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="text-white" size={32} />
-                </div>
-                <h3 className="font-display text-xl text-spot-navy mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
+            {values.items.map((value, index) => {
+              const Icon = iconMap[value.icon] ?? Clock
+              return (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="w-16 h-16 bg-spot-orange rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Icon className="text-white" size={32} />
+                  </div>
+                  <h3 className="font-display text-xl text-spot-navy mb-2">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {value.description}
+                  </p>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -485,16 +382,14 @@ export default function AboutPage() {
             >
               <Award className="text-spot-orange mb-4" size={48} />
               <h2 className="font-display text-4xl md:text-5xl text-spot-navy mb-6">
-                Certified & <span className="text-spot-orange">Proud</span>
+                {certifications.headlineLine1} <span className="text-spot-orange">{certifications.headlineHighlight}</span>
               </h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                As a woman-owned business, we&apos;re proud to hold multiple certifications
-                that recognize our commitment to diversity and excellence. Our LLC,
-                MNS Worldwide, is a Majority Woman Owned Business.
+                {certifications.description}
               </p>
 
               <div className="grid grid-cols-2 gap-4">
-                {certifications.map((cert) => (
+                {certifications.items.map((cert) => (
                   <div
                     key={cert.abbr}
                     className="bg-gray-50 rounded-xl p-4 text-center"
@@ -517,8 +412,8 @@ export default function AboutPage() {
               className="relative"
             >
               <Image
-                src="/images/IMG_28681.jpg"
-                alt="The Spot Catering team"
+                src={certifications.image}
+                alt={certifications.imageAlt}
                 width={600}
                 height={400}
                 className="rounded-2xl shadow-2xl"
@@ -537,14 +432,13 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Let&apos;s Create Something <span className="text-spot-orange">Special Together</span>
+              {finalCta.headlineLine1} <span className="text-spot-orange">{finalCta.headlineHighlight}</span>
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Ready to work with Denver&apos;s Corporate Catering Queen?
-              Let&apos;s chat about your next event!
+              {finalCta.subheadline}
             </p>
-            <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-              Get In Touch <ArrowRight size={18} />
+            <Link href={finalCta.ctaLink} className="btn-primary inline-flex items-center gap-2">
+              {finalCta.ctaText} <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>

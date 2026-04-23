@@ -5,9 +5,18 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import HeroSection from '@/components/HeroSection'
-import { X, ArrowRight, Utensils, Sparkles } from 'lucide-react'
+import { X, ArrowRight, Utensils, Sparkles, type LucideIcon } from 'lucide-react'
+import galleryContent from '@/content/gallery.json'
 
-type Category = 'all' | 'grazing' | 'breakfast' | 'lunch' | 'holiday' | 'desserts'
+// Icon mapping — converts JSON string to Lucide component
+const iconMap: Record<string, LucideIcon> = {
+  X,
+  ArrowRight,
+  Utensils,
+  Sparkles,
+}
+
+type Category = string
 
 interface GalleryImage {
   src: string
@@ -18,279 +27,10 @@ interface GalleryImage {
   tall?: boolean
 }
 
-const galleryImages: GalleryImage[] = [
-  {
-    src: '/images/gallery/live-edge-grazing.jpg',
-    alt: 'Live edge wood grazing board with edible flowers',
-    category: ['grazing'],
-    title: 'Artisan Grazing Board',
-    description: 'Stunning live-edge wood board adorned with cheeses, fruits, nuts, and edible flowers.',
-    tall: true,
-  },
-  {
-    src: '/images/gallery/charcuterie-cups.jpg',
-    alt: 'Individual charcuterie cups',
-    category: ['grazing'],
-    title: 'Charcuterie Cups',
-    description: 'Elegant individual portions perfect for corporate events and cocktail hours.',
-  },
-  {
-    src: '/images/gallery/breakfast-board-parfaits.jpg',
-    alt: 'Breakfast board with yogurt parfaits',
-    category: ['breakfast'],
-    title: 'Parfait Paradise',
-    description: 'Yogurt parfaits with fresh berries, granola, pastries, and egg bites.',
-  },
-  {
-    src: '/images/gallery/holiday-wreath-display.jpg',
-    alt: 'Holiday wreath appetizer display',
-    category: ['holiday', 'grazing'],
-    title: 'Holiday Wreath Display',
-    description: 'Festive antipasto arranged in a stunning wreath shape with rosemary accents.',
-    tall: true,
-  },
-  {
-    src: '/images/gallery/full-menu-spread.jpg',
-    alt: 'Full menu spread',
-    category: ['lunch'],
-    title: 'The Full Spread',
-    description: 'Wraps, salads, smoothies, croissants, and more — a complete catering experience.',
-  },
-  {
-    src: '/images/gallery/grazing-table-epic.jpg',
-    alt: 'Epic grazing table setup',
-    category: ['grazing'],
-    title: 'Epic Grazing Table',
-    description: 'An Instagram-worthy spread that wows guests before they take a single bite.',
-    tall: true,
-  },
-  {
-    src: '/images/gallery/christmas-desserts.jpg',
-    alt: 'Christmas dessert display',
-    category: ['holiday', 'desserts'],
-    title: 'Holiday Sweets',
-    description: 'Red velvet cookies, cake pops, truffles, and festive treats.',
-  },
-  {
-    src: '/images/gallery/wrap-trays-variety.jpg',
-    alt: 'Variety of wrap trays',
-    category: ['lunch'],
-    title: 'Wrap It Up',
-    description: 'Buffalo chicken, caesar, and more — all beautifully arranged.',
-    tall: true,
-  },
-  {
-    src: '/images/gallery/double-grazing-boards.jpg',
-    alt: 'Double grazing boards outdoor',
-    category: ['grazing'],
-    title: 'Al Fresco Boards',
-    description: 'Beautiful outdoor setup with brie, grapes, pesto, and fresh herbs.',
-  },
-  {
-    src: '/images/gallery/breakfast-board-croissants.jpg',
-    alt: 'Breakfast board with croissants',
-    category: ['breakfast'],
-    title: 'Rise & Shine Board',
-    description: 'Buttery croissants, egg bites, danish pastries, crispy bacon, and fresh fruit.',
-  },
-  {
-    src: '/images/gallery/casino-night-spread.jpg',
-    alt: 'Casino night themed event spread',
-    category: ['grazing', 'lunch'],
-    title: 'Casino Night Spread',
-    description: 'High-stakes presentation for an unforgettable themed event.',
-    tall: true,
-  },
-  {
-    src: '/images/gallery/couscous-salad.jpg',
-    alt: 'Colorful Mediterranean couscous salad',
-    category: ['lunch'],
-    title: 'Mediterranean Couscous',
-    description: 'Vibrant pearl couscous with tomatoes, peppers, feta, and olives.',
-  },
-  {
-    src: '/images/gallery/grab-go-salad.jpg',
-    alt: 'Grab and go salad',
-    category: ['lunch'],
-    title: 'Grab & Go Salads',
-    description: 'Fresh, colorful salads ready for busy corporate lunches.',
-  },
-  {
-    src: '/images/gallery/wrap-platter-chips.jpg',
-    alt: 'Wrap platter with chips',
-    category: ['lunch'],
-    title: 'Corporate Wrap Platter',
-    description: 'Classic catering done right with variety and presentation.',
-  },
-  {
-    src: '/images/gallery/boxed-lunches-rice.jpg',
-    alt: 'Individual boxed rice lunches',
-    category: ['lunch'],
-    title: 'Boxed Rice Bowls',
-    description: 'Individually packaged bowls with protein, rice, and vibrant veggies.',
-    tall: true,
-  },
-  {
-    src: '/images/gallery/latte-art.jpg',
-    alt: 'Latte art coffee',
-    category: ['breakfast'],
-    title: 'More Espresso, Less Depresso',
-    description: 'Beautiful latte art to start your meeting off right. ☕',
-  },
-  // --- New additions ---
-  {
-    src: '/images/food/breakfast-buffet.jpg',
-    alt: 'Breakfast buffet spread',
-    category: ['breakfast'],
-    title: 'Breakfast Buffet',
-    description: 'A full breakfast buffet with pastries, fruit, and morning favorites — the perfect way to fuel a productive day.',
-  },
-  {
-    src: '/images/food/breakfast-catering.jpg',
-    alt: 'Corporate breakfast catering',
-    category: ['breakfast'],
-    title: 'Corporate Breakfast',
-    description: 'Polished morning catering built for meetings, trainings, and team kickoffs.',
-    tall: true,
-  },
-  {
-    src: '/images/food/breakfast-catering-2.jpg',
-    alt: 'Morning breakfast spread',
-    category: ['breakfast'],
-    title: 'Morning Spread',
-    description: 'Fresh, hearty morning fare presented with care.',
-  },
-  {
-    src: '/images/food/brunch-catering.jpg',
-    alt: 'Brunch catering display',
-    category: ['breakfast'],
-    title: 'Brunch Catering',
-    description: 'The best of breakfast and lunch — perfect for late-morning events and weekend gatherings.',
-  },
-  {
-    src: '/images/food/coffee-catering.jpg',
-    alt: 'Coffee catering service',
-    category: ['breakfast'],
-    title: 'Coffee Service',
-    description: 'In-room coffee service to keep the energy — and ideas — flowing.',
-  },
-  {
-    src: '/images/food/soup-bar.jpg',
-    alt: 'Soup bar catering',
-    category: ['lunch'],
-    title: 'Soup Bar',
-    description: 'A cozy, comforting soup bar with fresh-baked breads and bright toppings.',
-    tall: true,
-  },
-  {
-    src: '/images/food/wrap-and-sandwich-platter.jpg',
-    alt: 'Wrap and sandwich platter',
-    category: ['lunch'],
-    title: 'Wrap & Sandwich Platter',
-    description: 'A classic corporate lunch platter with variety, color, and beautiful presentation.',
-  },
-  {
-    src: '/images/food/full-menu.jpg',
-    alt: 'Full catering menu spread',
-    category: ['lunch', 'grazing'],
-    title: 'Full Menu Spread',
-    description: 'A complete catering experience — the full menu, beautifully laid out.',
-    tall: true,
-  },
-  {
-    src: '/images/food/dessert-bars.jpg',
-    alt: 'Assorted dessert bars',
-    category: ['desserts'],
-    title: 'Dessert Bars',
-    description: 'House-made dessert bars — rich, indulgent, and impossible to resist.',
-  },
-  {
-    src: '/images/food/desserts.jpg',
-    alt: 'Sweet treats dessert display',
-    category: ['desserts'],
-    title: 'Sweet Treats',
-    description: 'A curated spread of sweets to close out your event on a high note.',
-  },
-  {
-    src: '/images/food/charcuterie-holiday.jpg',
-    alt: 'Holiday charcuterie display',
-    category: ['holiday', 'grazing'],
-    title: 'Holiday Charcuterie',
-    description: 'A festive charcuterie spread styled for the season.',
-    tall: true,
-  },
-  {
-    src: '/images/food/caramel-apple-bar.jpg',
-    alt: 'Caramel apple bar',
-    category: ['desserts', 'holiday'],
-    title: 'Caramel Apple Bar',
-    description: 'Make-your-own caramel apples — a crowd-pleasing fall favorite.',
-  },
-  {
-    src: '/images/events/halloween-catering.jpg',
-    alt: 'Halloween themed catering spread',
-    category: ['holiday'],
-    title: 'Halloween Spread',
-    description: 'A spooky-chic themed spread that turns any office party into a memorable event.',
-  },
-  {
-    src: '/images/events/mardi-gras.jpg',
-    alt: 'Mardi Gras themed catering',
-    category: ['holiday'],
-    title: 'Mardi Gras Feast',
-    description: 'Bold colors, big flavors — a festive Mardi Gras catering experience.',
-    tall: true,
-  },
-  {
-    src: '/images/events/snowmen-skewers.jpg',
-    alt: 'Snowmen fruit skewers',
-    category: ['holiday', 'desserts'],
-    title: 'Snowmen Skewers',
-    description: 'Adorable winter-themed fruit skewers — a festive touch guests will remember.',
-  },
-  // --- Latest additions ---
-  {
-    src: '/images/gallery/mandy-feature-1.jpg',
-    alt: 'The Spot Catering featured creation',
-    category: ['grazing'],
-    title: 'Signature Creation',
-    description: 'One of Mandy\'s latest featured spreads — thoughtfully styled and beautifully presented.',
-    tall: true,
-  },
-  {
-    src: '/images/gallery/mandy-feature-2.jpg',
-    alt: 'The Spot Catering event spread',
-    category: ['grazing', 'lunch'],
-    title: 'Event Spotlight',
-    description: 'A recent catering showcase — fresh, vibrant, and made to impress.',
-  },
-  {
-    src: '/images/gallery/mandy-feature-3.jpg',
-    alt: 'The Spot Catering display',
-    category: ['grazing', 'lunch'],
-    title: 'Fresh Off The Line',
-    description: 'Another gorgeous spread from Mandy\'s kitchen — catering done with heart and style.',
-  },
-  {
-    src: '/images/gallery/mandy-feature-4.jpg',
-    alt: 'The Spot Catering detail shot',
-    category: ['grazing'],
-    title: 'Crafted With Care',
-    description: 'Every detail matters — from plating to presentation, The Spot hits the spot every time.',
-    tall: true,
-  },
-]
-
-const categories: { id: Category; label: string }[] = [
-  { id: 'all', label: 'All' },
-  { id: 'grazing', label: 'Grazing Boards' },
-  { id: 'breakfast', label: 'Breakfast' },
-  { id: 'lunch', label: 'Lunch' },
-  { id: 'holiday', label: 'Holiday' },
-  { id: 'desserts', label: 'Desserts' },
-]
-
 export default function GalleryPage() {
+  const { hero, categories, images, emptyState, hoverCta, finalCta } = galleryContent
+  const galleryImages = images as GalleryImage[]
+
   const [activeCategory, setActiveCategory] = useState<Category>('all')
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
@@ -298,17 +38,21 @@ export default function GalleryPage() {
     ? galleryImages
     : galleryImages.filter(img => img.category.includes(activeCategory))
 
+  const EmptyIcon = iconMap[emptyState.icon] ?? Utensils
+  const HoverIcon = iconMap[hoverCta.icon] ?? Sparkles
+  const FinalCtaIcon = iconMap[finalCta.icon] ?? Utensils
+
   return (
     <>
       <HeroSection
-        title="Feast Your Eyes"
-        highlight="On Our Creations"
-        subtitle="Every dish tells a story. Every spread is a masterpiece. See why Denver's top companies trust The Spot to make their events unforgettable."
-        backgroundImage="/images/gallery/live-edge-grazing.jpg"
-        ctaText="Book Your Event"
-        ctaLink="/contact"
-        secondaryCtaText="View Menus"
-        secondaryCtaLink="/menus"
+        title={hero.title}
+        highlight={hero.highlight}
+        subtitle={hero.subtitle}
+        backgroundImage={hero.backgroundImage}
+        ctaText={hero.ctaText}
+        ctaLink={hero.ctaLink}
+        secondaryCtaText={hero.secondaryCtaText}
+        secondaryCtaLink={hero.secondaryCtaLink}
       />
 
       {/* Category Filters */}
@@ -384,7 +128,7 @@ export default function GalleryPage() {
                         {image.description}
                       </p>
                       <span className="inline-flex items-center gap-1 text-spot-orange text-sm font-medium mt-3">
-                        <Sparkles size={14} /> Click to expand
+                        <HoverIcon size={14} /> {hoverCta.text}
                       </span>
                     </div>
                   </div>
@@ -396,8 +140,8 @@ export default function GalleryPage() {
           {/* Empty State */}
           {filteredImages.length === 0 && (
             <div className="text-center py-20">
-              <Utensils className="mx-auto text-gray-300 mb-4" size={48} />
-              <p className="text-gray-500 text-lg">No images in this category yet!</p>
+              <EmptyIcon className="mx-auto text-gray-300 mb-4" size={48} />
+              <p className="text-gray-500 text-lg">{emptyState.message}</p>
             </div>
           )}
         </div>
@@ -463,16 +207,15 @@ export default function GalleryPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Utensils className="mx-auto text-spot-orange mb-6" size={48} />
+            <FinalCtaIcon className="mx-auto text-spot-orange mb-6" size={48} />
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Ready to Create Something Beautiful?
+              {finalCta.headline}
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let&apos;s craft an unforgettable spread for your next event.
-              Your guests won&apos;t just eat — they&apos;ll experience.
+              {finalCta.subheadline}
             </p>
-            <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-              Start Planning <ArrowRight size={18} />
+            <Link href={finalCta.ctaLink} className="btn-primary inline-flex items-center gap-2">
+              {finalCta.ctaText} <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>

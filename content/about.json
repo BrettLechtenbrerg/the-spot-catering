@@ -1,0 +1,141 @@
+{
+  "hero": {
+    "badge": "Denver's Corporate Catering Queen",
+    "headlineLine1": "Meet The Corporate",
+    "headlineLine2": "Catering Queen",
+    "subheadline": "The Corporate Catering Queen who treats every client like royalty. This is the story of passion, persistence, and making people feel special.",
+    "ctaPrimary": "Work With Us",
+    "ctaPrimaryLink": "/contact",
+    "ctaSecondary": "View Our Menus",
+    "ctaSecondaryLink": "/menus",
+    "backgroundImage": "/images/20220528_185532.jpg",
+    "featuredImage": "/images/mandy-about.jpg",
+    "featuredImageCaption": "Mandy Smith",
+    "featuredImageSubcaption": "Founder & CEO"
+  },
+  "mission": {
+    "quote": "We make food fun, social, and special for everyone.",
+    "attribution": "— Mandy Smith, Founder"
+  },
+  "story": {
+    "headlineLine1": "The Story Behind",
+    "headlineHighlight": "The Spot",
+    "paragraphs": [
+      "Every great business starts with a moment of clarity. For Mandy Smith, that moment came during a catering job when she spotted an empty cafe space. While others might have seen just four walls, Mandy saw opportunity. She saw potential. She saw \"the spot.\"",
+      "But Mandy's journey didn't start there. She had already spent years in the food industry, cutting her teeth in sales and marketing at Crock Spot. It was there she learned not just about food, but about people — what makes them feel welcomed, what makes an event memorable, and most importantly, what makes people feel special.",
+      "When she finally took the leap and claimed that empty cafe, something magical happened. One location became two. Then three. Mandy had built not just a business, but a reputation for exceptional food and warm, genuine service that Denver couldn't get enough of.",
+      "But here's the thing about Mandy — she follows her heart. And her heart kept pulling her toward catering. There was something about those corporate events, the team celebrations, the holiday parties that lit her up in a way restaurants never quite did. So she made a bold decision: downsize to one restaurant and go all-in on catering.",
+      "The timing? March 2020 — exactly one month before the world changed forever. But where others saw disaster, Mandy saw opportunity. As the dining landscape shifted, she pivoted, adapted, and actually thrived. She served the National Guard meals for 36 consecutive days during the pandemic. She became the go-to caterer for companies navigating the new normal of corporate gatherings.",
+      "Today, Mandy Smith is known as Denver's Corporate Catering Queen — and like any good queen, she treats her clients like royalty. Every event receives the royal treatment: always on time, always with integrity, always with that signature fun and positivity that makes The Spot different. Her company, MNS Worldwide LLC, is a certified MWBE, DBE, EBE, and SBEC — but more than any certification, it's Mandy's commitment to excellence and creativity that sets The Spot apart."
+    ],
+    "closingQuote": "I didn't just find a spot. I created a place where every client is treated like royalty, every event becomes a memory, and every meal becomes a moment worth celebrating.",
+    "sideImage": {
+      "src": "/images/meet-mandy.jpg",
+      "alt": "Mandy Smith - Founder of The Spot Catering",
+      "caption": "Mandy Smith",
+      "subcaption": "Founder & CEO",
+      "statValue": "15+",
+      "statLabel": "Years of Experience"
+    }
+  },
+  "journey": {
+    "headlineLine1": "The",
+    "headlineHighlight": "Journey",
+    "subheadline": "From sales and marketing to building Denver's premier corporate catering company — here's how it all unfolded.",
+    "timeline": [
+      {
+        "year": "The Beginning",
+        "title": "Sales & Marketing at Crock Spot",
+        "description": "Mandy started her journey in the food industry working in sales and marketing, learning the ins and outs of the business.",
+        "image": "/images/20220528_185532.jpg"
+      },
+      {
+        "year": "The Opportunity",
+        "title": "Saw an Empty Cafe",
+        "description": "At a catering job, Mandy spotted an empty cafe space. She saw the potential and took the leap — taking \"the spot.\"",
+        "image": "/images/Char Cups Catering.jpg"
+      },
+      {
+        "year": "Growth",
+        "title": "One Became Three",
+        "description": "That single location grew into three successful restaurant locations, building a reputation for great food and service.",
+        "image": "/images/Full Menu photo.jpg"
+      },
+      {
+        "year": "The Pivot",
+        "title": "Following Her Passion",
+        "description": "Mandy's love for catering led to a strategic decision: downsize to one restaurant and focus on what she loved most — making people feel special through creative catering experiences.",
+        "image": "/images/IMG_4205.jpg"
+      },
+      {
+        "year": "March 2020",
+        "title": "One Month Before COVID",
+        "description": "The timing seemed impossible. But as the dining landscape changed, Mandy saw opportunity instead of obstacles and rolled with it.",
+        "image": "/images/20221114_134142.jpg"
+      },
+      {
+        "year": "Today",
+        "title": "The Corporate Catering Queen",
+        "description": "A thriving woman-owned corporate catering business, serving Denver's top companies and creating memorable experiences every day.",
+        "image": "/images/IMG_4319.jpg"
+      }
+    ]
+  },
+  "values": {
+    "headlineLine1": "The",
+    "headlineHighlight": "Royal Treatment",
+    "subheadline": "As the Corporate Catering Queen, Mandy treats every client like royalty. These are the values that make it happen.",
+    "items": [
+      {
+        "icon": "Clock",
+        "title": "Timeliness",
+        "description": "Always on time or ahead of schedule, so our clients never have to stress."
+      },
+      {
+        "icon": "Shield",
+        "title": "Integrity",
+        "description": "We do what we say we will do, when we say we will do it. Period."
+      },
+      {
+        "icon": "Smile",
+        "title": "Fun & Positivity",
+        "description": "We bring a fun, positive demeanor to every client interaction and themed event we create."
+      },
+      {
+        "icon": "Handshake",
+        "title": "Workability",
+        "description": "We work with you and your needs and budget — not the other way around."
+      },
+      {
+        "icon": "Trophy",
+        "title": "Excellence",
+        "description": "From the ease of booking to delicious food to stunning presentation — excellence is everything."
+      },
+      {
+        "icon": "Lightbulb",
+        "title": "Creativity",
+        "description": "We can create just about anything for our clients. The sky's the limit!"
+      }
+    ]
+  },
+  "certifications": {
+    "headlineLine1": "Certified &",
+    "headlineHighlight": "Proud",
+    "description": "As a woman-owned business, we're proud to hold multiple certifications that recognize our commitment to diversity and excellence. Our LLC, MNS Worldwide, is a Majority Woman Owned Business.",
+    "image": "/images/IMG_28681.jpg",
+    "imageAlt": "The Spot Catering team",
+    "items": [
+      { "abbr": "MWBE", "name": "Minority Women's Business Enterprise" },
+      { "abbr": "DBE", "name": "Disadvantaged Business Enterprise" },
+      { "abbr": "EBE", "name": "Emerging Business Enterprise" },
+      { "abbr": "SBEC", "name": "Small Business Enterprise Concessionaire" }
+    ]
+  },
+  "finalCta": {
+    "headlineLine1": "Let's Create Something",
+    "headlineHighlight": "Special Together",
+    "subheadline": "Ready to work with Denver's Corporate Catering Queen? Let's chat about your next event!",
+    "ctaText": "Get In Touch",
+    "ctaLink": "/contact"
+  }
+}
