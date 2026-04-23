@@ -1,6 +1,6 @@
 {
   "hero": {
-    "badge": "Denver's Corporate Catering Queen",
+    "badge": "Denver's Corporate Catering Queen.",
     "headlineLine1": "Meet The Corporate",
     "headlineLine2": "Catering Queen",
     "subheadline": "The Corporate Catering Queen who treats every client like royalty. This is the story of passion, persistence, and making people feel special.",
@@ -125,10 +125,22 @@
     "image": "/images/IMG_28681.jpg",
     "imageAlt": "The Spot Catering team",
     "items": [
-      { "abbr": "MWBE", "name": "Minority Women's Business Enterprise" },
-      { "abbr": "DBE", "name": "Disadvantaged Business Enterprise" },
-      { "abbr": "EBE", "name": "Emerging Business Enterprise" },
-      { "abbr": "SBEC", "name": "Small Business Enterprise Concessionaire" }
+      {
+        "abbr": "MWBE",
+        "name": "Minority Women's Business Enterprise"
+      },
+      {
+        "abbr": "DBE",
+        "name": "Disadvantaged Business Enterprise"
+      },
+      {
+        "abbr": "EBE",
+        "name": "Emerging Business Enterprise"
+      },
+      {
+        "abbr": "SBEC",
+        "name": "Small Business Enterprise Concessionaire"
+      }
     ]
   },
   "finalCta": {
