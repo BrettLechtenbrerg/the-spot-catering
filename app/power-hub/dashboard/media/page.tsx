@@ -19,7 +19,9 @@ import {
   AlertCircle,
   RefreshCw,
   Lock,
+  ImagePlus,
 } from 'lucide-react';
+import AddToGalleryModal from '@/components/power-hub/AddToGalleryModal';
 
 interface MediaFile {
   id: string;
@@ -46,6 +48,7 @@ export default function MediaPage() {
   const [uploadError, setUploadError] = useState('');
   const [loadError, setLoadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState('');
+  const [galleryImage, setGalleryImage] = useState<MediaFile | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -438,11 +441,12 @@ export default function MediaPage() {
                   </div>
                   <div className="flex gap-2">
                     <button
-                      onClick={() => copyUrl(file.url)}
+                      onClick={() => setGalleryImage(file)}
                       className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-[#FAAA44] text-white text-sm rounded-lg hover:bg-[#E89A35] transition-colors"
+                      title="Add this image to the public Gallery page"
                     >
-                      {copiedUrl === file.url ? <Check size={14} /> : <Copy size={14} />}
-                      {copiedUrl === file.url ? 'Copied!' : 'Copy URL'}
+                      <ImagePlus size={14} />
+                      Add to Gallery
                     </button>
                     {file.editable ? (
                       <button
@@ -515,10 +519,22 @@ export default function MediaPage() {
                   </div>
                   <button
                     onClick={() => copyUrl(file.url)}
-                    className="flex items-center gap-1.5 px-3 py-2 bg-[#FAAA44] text-white text-sm rounded-lg hover:bg-[#E89A35] transition-colors"
+                    className="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                    title="Copy URL"
                   >
-                    {copiedUrl === file.url ? <Check size={14} /> : <Copy size={14} />}
-                    {copiedUrl === file.url ? 'Copied!' : 'Copy URL'}
+                    {copiedUrl === file.url ? (
+                      <Check size={16} className="text-green-600" />
+                    ) : (
+                      <Copy size={16} className="text-gray-600" />
+                    )}
+                  </button>
+                  <button
+                    onClick={() => setGalleryImage(file)}
+                    className="flex items-center gap-1.5 px-3 py-2 bg-[#FAAA44] text-white text-sm rounded-lg hover:bg-[#E89A35] transition-colors"
+                    title="Add this image to the public Gallery page"
+                  >
+                    <ImagePlus size={14} />
+                    Add to Gallery
                   </button>
                   {file.editable ? (
                     <button
@@ -542,6 +558,12 @@ export default function MediaPage() {
           </div>
         )}
       </div>
+
+      <AddToGalleryModal
+        open={galleryImage !== null}
+        onClose={() => setGalleryImage(null)}
+        image={galleryImage}
+      />
     </div>
   );
 }
