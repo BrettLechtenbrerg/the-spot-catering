@@ -2,7 +2,14 @@ import { NextResponse } from 'next/server';
 
 //==============================================================================
 // POWER HUB - Media API Route
-// Lists images from the GitHub repository (public/images/uploads folder)
+// Lists all images from the GitHub repository under public/images/ (recursive).
+//
+// Two "sources":
+//   - editable=true:  files in public/images/uploads/ (uploaded via Power Hub,
+//                     can be deleted from the Media tab)
+//   - editable=false: files elsewhere in public/images/ (shipped with the
+//                     site; listed read-only so the owner can copy URLs
+//                     and reuse them in content)
 //==============================================================================
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -10,13 +17,27 @@ const GITHUB_OWNER = 'BrettLechtenbrerg';
 const GITHUB_REPO = 'the-spot-catering';
 const GITHUB_BRANCH = 'main';
 
-interface GitHubFile {
-  name: string;
-  path: string;
+interface GitTreeEntry {
+  path: string; // e.g. "public/images/food/coffee-catering.jpg"
+  mode: string;
+  type: 'blob' | 'tree' | 'commit';
   sha: string;
-  size: number;
-  type: string;
-  download_url: string;
+  size?: number;
+  url: string;
+}
+
+interface GitTreeResponse {
+  sha: string;
+  url: string;
+  tree: GitTreeEntry[];
+  truncated: boolean;
+}
+
+const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
+
+function isImage(path: string): boolean {
+  const lower = path.toLowerCase();
+  return IMAGE_EXTENSIONS.some((ext) => lower.endsWith(ext));
 }
 
 export async function GET(): Promise<NextResponse> {
@@ -28,8 +49,10 @@ export async function GET(): Promise<NextResponse> {
   }
 
   try {
-    const response = await fetch(
-      `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/public/images/uploads?ref=${GITHUB_BRANCH}`,
+    // Use the Git Trees API with ?recursive=1 to list every file under the
+    // branch in a single call, then filter client-side.
+    const treeResponse = await fetch(
+      `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`,
       {
         headers: {
           Authorization: `Bearer ${GITHUB_TOKEN}`,
@@ -39,48 +62,74 @@ export async function GET(): Promise<NextResponse> {
       },
     );
 
-    // Folder doesn't exist yet — return empty list
-    if (response.status === 404) {
-      return NextResponse.json({ media: [] });
-    }
-
-    if (!response.ok) {
-      const error = await response.json().catch(() => ({}));
+    if (!treeResponse.ok) {
+      const error = await treeResponse.json().catch(() => ({}));
       return NextResponse.json({
-        error: `GitHub API error: ${error.message || response.status}`,
+        error: `GitHub API error: ${error.message || treeResponse.status}`,
         media: [],
       });
     }
 
-    const files: GitHubFile[] = await response.json();
+    const data: GitTreeResponse = await treeResponse.json();
 
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
-    const imageFiles = files.filter(
-      (file) =>
-        file.type === 'file' &&
-        imageExtensions.some((ext) => file.name.toLowerCase().endsWith(ext)),
+    // Keep only image blobs living under public/images/
+    const imageEntries = data.tree.filter(
+      (entry) =>
+        entry.type === 'blob' &&
+        entry.path.startsWith('public/images/') &&
+        isImage(entry.path),
     );
 
-    const media = imageFiles.map((file) => {
-      const timestampMatch = file.name.match(/^(\d+)-/);
-      const timestamp = timestampMatch ? parseInt(timestampMatch[1]) : Date.now();
+    const media = imageEntries.map((entry) => {
+      // entry.path  = "public/images/food/coffee-catering.jpg"
+      // publicPath  = "/images/food/coffee-catering.jpg"  (used in JSON content)
+      const publicPath = entry.path.replace(/^public/, '');
+      const relative = entry.path.replace(/^public\/images\//, ''); // "food/coffee-catering.jpg"
+      const filename = relative.split('/').pop() || relative;
+      const folder = relative.includes('/')
+        ? relative.slice(0, relative.lastIndexOf('/'))
+        : '';
+      const editable = folder === 'uploads';
+
+      // For uploads, extract the timestamp prefix so we can sort newest-first
+      // and show a "display name" without the timestamp.
+      let displayName = filename;
+      let timestamp = 0;
+      if (editable) {
+        const match = filename.match(/^(\d+)-(.*)$/);
+        if (match) {
+          timestamp = parseInt(match[1]);
+          displayName = match[2];
+        }
+      }
 
       return {
-        id: file.sha,
-        name: file.name.replace(/^\d+-/, ''),
-        url: `/images/uploads/${file.name}`,
-        previewUrl: `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/public/images/uploads/${file.name}`,
-        size: formatFileSize(file.size),
-        uploaded: formatDate(new Date(timestamp)),
+        id: entry.sha,
+        name: displayName,
+        url: publicPath,
+        previewUrl: `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${entry.path}`,
+        size: formatFileSize(entry.size ?? 0),
+        uploaded: editable && timestamp ? formatDate(new Date(timestamp)) : '',
+        folder: folder || 'root',
+        editable,
         timestamp,
       };
     });
 
-    media.sort((a, b) => b.timestamp - a.timestamp);
+    // Sort: uploads first (newest first), then the rest alphabetically by path
+    media.sort((a, b) => {
+      if (a.editable && b.editable) return b.timestamp - a.timestamp;
+      if (a.editable) return -1;
+      if (b.editable) return 1;
+      return a.url.localeCompare(b.url);
+    });
 
-    const cleanMedia = media.map(({ timestamp: _timestamp, ...rest }) => rest);
+    const cleanMedia = media.map(({ timestamp: _t, ...rest }) => rest);
 
-    return NextResponse.json({ media: cleanMedia });
+    return NextResponse.json({
+      media: cleanMedia,
+      truncated: data.truncated,
+    });
   } catch (error) {
     console.error('Error listing media:', error);
     return NextResponse.json({ error: String(error), media: [] }, { status: 500 });

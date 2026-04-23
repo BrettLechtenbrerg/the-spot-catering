@@ -18,6 +18,7 @@ import {
   Loader2,
   AlertCircle,
   RefreshCw,
+  Lock,
 } from 'lucide-react';
 
 interface MediaFile {
@@ -27,7 +28,11 @@ interface MediaFile {
   previewUrl?: string;
   size: string;
   uploaded: string;
+  folder?: string;
+  editable?: boolean;
 }
+
+type FilterMode = 'all' | 'uploads' | 'system';
 
 export default function MediaPage() {
   const [media, setMedia] = useState<MediaFile[]>([]);
@@ -37,6 +42,7 @@ export default function MediaPage() {
   const [isDragging, setIsDragging] = useState(false);
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filterMode, setFilterMode] = useState<FilterMode>('all');
   const [uploadError, setUploadError] = useState('');
   const [loadError, setLoadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState('');
@@ -102,6 +108,8 @@ export default function MediaPage() {
           previewUrl: data.previewUrl,
           size: (file.size / 1024).toFixed(1) + ' KB',
           uploaded: 'Just now',
+          folder: 'uploads',
+          editable: true,
         };
 
         setMedia((prev) => [newFile, ...prev]);
@@ -155,9 +163,24 @@ export default function MediaPage() {
     }
   };
 
-  const filteredMedia = media.filter((file) =>
-    file.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+  const filteredMedia = media.filter((file) => {
+    // Filter by mode
+    if (filterMode === 'uploads' && !file.editable) return false;
+    if (filterMode === 'system' && file.editable) return false;
+    // Filter by search
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      return (
+        file.name.toLowerCase().includes(q) ||
+        (file.folder || '').toLowerCase().includes(q) ||
+        file.url.toLowerCase().includes(q)
+      );
+    }
+    return true;
+  });
+
+  const uploadsCount = media.filter((f) => f.editable).length;
+  const systemCount = media.filter((f) => !f.editable).length;
 
   return (
     <div>
@@ -292,6 +315,46 @@ export default function MediaPage() {
           <p className="text-sm text-gray-400 mt-1">or click to browse</p>
         </div>
 
+        {/* Filter chips */}
+        {!loading && media.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2 mb-6">
+            <button
+              onClick={() => setFilterMode('all')}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                filterMode === 'all'
+                  ? 'bg-[#FAAA44] text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              All ({media.length})
+            </button>
+            <button
+              onClick={() => setFilterMode('uploads')}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                filterMode === 'uploads'
+                  ? 'bg-[#FAAA44] text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              My Uploads ({uploadsCount})
+            </button>
+            <button
+              onClick={() => setFilterMode('system')}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                filterMode === 'system'
+                  ? 'bg-[#FAAA44] text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Site Images ({systemCount})
+            </button>
+            <div className="ml-2 text-xs text-gray-500 flex items-center gap-1">
+              <Lock size={12} />
+              Site images are read-only — copy the URL to reuse them in content
+            </div>
+          </div>
+        )}
+
         {loading && (
           <div className="text-center py-12">
             <Loader2 size={48} className="mx-auto text-[#FAAA44] animate-spin mb-4" />
@@ -303,9 +366,19 @@ export default function MediaPage() {
           <div className="text-center py-12">
             <Upload size={48} className="mx-auto text-gray-300 mb-4" />
             <p className="text-gray-500">
-              {searchQuery ? 'No files match your search' : 'No files uploaded yet'}
+              {searchQuery
+                ? 'No files match your search'
+                : filterMode === 'uploads'
+                  ? 'No uploads yet'
+                  : filterMode === 'system'
+                    ? 'No site images found'
+                    : 'No files found'}
             </p>
-            <p className="text-sm text-gray-400 mt-2">Upload an image to get started</p>
+            <p className="text-sm text-gray-400 mt-2">
+              {filterMode === 'uploads'
+                ? 'Drop an image above to upload your first file'
+                : 'Use the drop zone above to add a new image'}
+            </p>
           </div>
         )}
 
@@ -320,10 +393,26 @@ export default function MediaPage() {
                     alt={file.name}
                     className="w-full h-full object-cover"
                   />
+                  {/* Folder / source badge */}
+                  {file.folder && (
+                    <span
+                      className={`absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-medium flex items-center gap-1 ${
+                        file.editable
+                          ? 'bg-[#FAAA44] text-white'
+                          : 'bg-black/60 text-white backdrop-blur-sm'
+                      }`}
+                    >
+                      {!file.editable && <Lock size={10} />}
+                      {file.folder}
+                    </span>
+                  )}
                 </div>
-                <p className="text-sm font-medium truncate mb-1">{file.name}</p>
+                <p className="text-sm font-medium truncate mb-1" title={file.name}>
+                  {file.name}
+                </p>
                 <p className="text-xs text-gray-400 mb-3">
-                  {file.size} - {file.uploaded}
+                  {file.size}
+                  {file.uploaded ? ` • ${file.uploaded}` : ''}
                 </p>
 
                 <div className="space-y-2">
@@ -355,13 +444,22 @@ export default function MediaPage() {
                       {copiedUrl === file.url ? <Check size={14} /> : <Copy size={14} />}
                       {copiedUrl === file.url ? 'Copied!' : 'Copy URL'}
                     </button>
-                    <button
-                      onClick={() => deleteFile(file.id, file.url)}
-                      className="p-2 border border-gray-200 rounded-lg hover:bg-red-50 hover:border-red-200 transition-colors"
-                      title="Delete"
-                    >
-                      <Trash2 size={14} className="text-red-500" />
-                    </button>
+                    {file.editable ? (
+                      <button
+                        onClick={() => deleteFile(file.id, file.url)}
+                        className="p-2 border border-gray-200 rounded-lg hover:bg-red-50 hover:border-red-200 transition-colors"
+                        title="Delete"
+                      >
+                        <Trash2 size={14} className="text-red-500" />
+                      </button>
+                    ) : (
+                      <div
+                        className="p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-300"
+                        title="System image — cannot be deleted from Power Hub"
+                      >
+                        <Lock size={14} />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -384,9 +482,24 @@ export default function MediaPage() {
                     className="w-12 h-12 rounded-lg object-cover flex-shrink-0"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="font-medium truncate">{file.name}</p>
+                    <div className="flex items-center gap-2">
+                      <p className="font-medium truncate">{file.name}</p>
+                      {file.folder && (
+                        <span
+                          className={`px-2 py-0.5 rounded-full text-[10px] font-medium flex items-center gap-1 flex-shrink-0 ${
+                            file.editable
+                              ? 'bg-[#FAAA44]/10 text-[#9E1F63]'
+                              : 'bg-gray-100 text-gray-600'
+                          }`}
+                        >
+                          {!file.editable && <Lock size={10} />}
+                          {file.folder}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-sm text-gray-500">
-                      {file.size} - {file.uploaded}
+                      {file.size}
+                      {file.uploaded ? ` • ${file.uploaded}` : ''}
                     </p>
                   </div>
                 </div>
@@ -407,12 +520,22 @@ export default function MediaPage() {
                     {copiedUrl === file.url ? <Check size={14} /> : <Copy size={14} />}
                     {copiedUrl === file.url ? 'Copied!' : 'Copy URL'}
                   </button>
-                  <button
-                    onClick={() => deleteFile(file.id, file.url)}
-                    className="p-2 hover:bg-red-100 rounded-lg transition-colors"
-                  >
-                    <Trash2 size={16} className="text-red-500" />
-                  </button>
+                  {file.editable ? (
+                    <button
+                      onClick={() => deleteFile(file.id, file.url)}
+                      className="p-2 hover:bg-red-100 rounded-lg transition-colors"
+                      title="Delete"
+                    >
+                      <Trash2 size={16} className="text-red-500" />
+                    </button>
+                  ) : (
+                    <div
+                      className="p-2 text-gray-300"
+                      title="System image — cannot be deleted from Power Hub"
+                    >
+                      <Lock size={16} />
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
