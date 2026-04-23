@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Sidebar from '@/components/power-hub/Sidebar';
 import HelpButton from '@/components/power-hub/HelpButton';
+import { HelpProvider } from '@/components/power-hub/HelpContext';
 
 export default function DashboardLayout({
   children,
@@ -40,10 +41,12 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="flex w-full min-h-screen bg-gray-50">
-      <Sidebar />
-      <main className="flex-1 overflow-auto">{children}</main>
-      <HelpButton />
-    </div>
+    <HelpProvider>
+      <div className="flex w-full min-h-screen bg-gray-50">
+        <Sidebar />
+        <main className="flex-1 overflow-auto">{children}</main>
+        <HelpButton />
+      </div>
+    </HelpProvider>
   );
 }

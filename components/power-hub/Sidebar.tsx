@@ -9,7 +9,9 @@ import {
   Settings,
   LogOut,
   Utensils,
+  HelpCircle,
 } from 'lucide-react';
+import { useHelp } from './HelpContext';
 
 const menuItems = [
   { name: 'Dashboard', href: '/power-hub/dashboard', icon: LayoutDashboard },
@@ -21,6 +23,7 @@ const menuItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { open: openHelp } = useHelp();
 
   const handleLogout = () => {
     localStorage.removeItem('the_spot_power_hub_auth');
@@ -66,6 +69,23 @@ export default function Sidebar() {
               </li>
             );
           })}
+
+          {/* Help — opens the shared help modal. Styled distinctly from the
+              nav links (outlined pill) so it reads as an action, not a route. */}
+          <li className="pt-3 mt-3 border-t border-white/10">
+            <button
+              type="button"
+              onClick={openHelp}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all font-medium border border-white/20"
+              aria-label="Open help"
+            >
+              <HelpCircle size={20} />
+              <span>Help</span>
+              <kbd className="ml-auto text-[10px] px-1.5 py-0.5 bg-white/10 border border-white/20 rounded font-mono">
+                ?
+              </kbd>
+            </button>
+          </li>
         </ul>
       </nav>
 
