@@ -237,7 +237,7 @@ This pivot happened one month before COVID hit. As the dining landscape changed,
 
 ---
 
-**Last Updated**: April 23, 2026 (Power Hub CMS added — all page content now lives in /content/*.json)
+**Last Updated**: April 23, 2026 (Power Hub v1 complete — CMS, unified Media library, Add-to-Gallery, Add-to-Menu, universal Help system)
 
 ---
 
@@ -265,13 +265,30 @@ Staff log in, edit content, hit **Save & Deploy**, and the live site updates in 
 
 ### Required env var
 `GITHUB_TOKEN` — Classic PAT with `repo` scope on `BrettLechtenbrerg/the-spot-catering`.
-Set in Vercel Env Vars (Production + Preview + Development) and locally in `.env.local`.
+Set in Vercel Env Vars (Production + Preview). Vercel blocks sensitive env vars in Development — that's expected; mirror the token locally in `.env.local` via `vercel env pull`.
 
 ### Power Hub file map
-- `app/power-hub/` — login + dashboard pages + scoped CSS
-- `app/api/power-hub/` — `content` / `credentials` / `media` / `upload` route handlers
-- `components/power-hub/` — Sidebar + Header UI
+- `app/power-hub/` — login (`/power-hub`) + authenticated dashboard pages
+- `app/api/power-hub/` — all server routes:
+  - `content/` — list/read/save JSON files
+  - `credentials/` — read/update login creds
+  - `media/` — recursive image listing (GitHub Trees API; returns `editable` flag)
+  - `upload/` — POST (uploads to `public/images/uploads/`) / DELETE
+  - `gallery/` — POST appends entry to `gallery.json`
+  - `menu/` — GET categories / POST appends item to a menu category
+- `components/power-hub/` — UI:
+  - `Sidebar.tsx`, `Header.tsx` — dashboard chrome (both call `useHelp()` for their Help buttons)
+  - `HelpContext.tsx`, `HelpButton.tsx`, `helpContent.ts` — universal context-aware help modal (? shortcut)
+  - `AddToGalleryModal.tsx`, `AddToMenuModal.tsx` — one-click publish modals from Media
 - `content/` — JSON source of truth for every page
+
+### Feature summary
+- **Content editor**: recursive JSON form, array reorder (orange up/down arrows), add/delete items, string vs textarea auto-detection, SHA-based conflict prevention.
+- **Media library**: one unified view of every image under `public/images/` (root + subfolders). System images shown read-only (lock icon); uploads are deletable. Filter chips (All / My Uploads / Site Images). Each tile has one-click **Gallery** and **Menu** publish actions.
+- **Add to Gallery**: picks categories, optional tall-layout toggle, duplicate protection.
+- **Add to Menu**: picks category live from `menus.json`, adds name + description + image, duplicate protection within a category.
+- **Help**: 3 entry points (floating orange pill, sidebar button, purple header button), context-aware content per page, keyboard `?` shortcut, `Esc` to close.
+- **Settings**: username + password lives in `content/credentials.json`, updated atomically with SHA.
 
 ### Branding
 - Primary: `#FAAA44` (orange). Secondary: `#262262` (navy). Accent: `#9E1F63` (purple).

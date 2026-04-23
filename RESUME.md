@@ -104,8 +104,21 @@ triggers a Vercel auto-deploy (~5 min to live).
 ### Pages inside the hub
 - **Dashboard** — stats + quick links to every public page
 - **Content** — lists every editable JSON file in `content/` (recursive editor with array reorder + add/delete)
-- **Media** — upload / list / delete / copy-URL for images in `public/images/uploads/`
-- **Settings** — change username + password
+- **Media** — unified library of every image in `public/images/`:
+  - Uploads (deletable) live in `public/images/uploads/`
+  - Existing site images (root + `food/`, `gallery/`, `events/`) shown read-only with a lock icon
+  - Filter chips: All / My Uploads / Site Images
+  - Each tile has two one-click publish actions:
+    - **Orange "Gallery"** → opens modal, appends to `content/gallery.json`
+    - **Navy "Menu"** → opens modal, appends to `content/menus.json` (pick category, name, description)
+  - Copy-URL button for pasting into any Content editor image field
+- **Settings** — change username + password (both stored in `content/credentials.json`)
+- **Help** — universal context-aware modal accessible 3 ways:
+  - Floating orange pill bottom-right of every page
+  - Outlined "Help" button at the bottom of the sidebar
+  - Purple "Help" button in the top header next to "View Live Site"
+  - Keyboard shortcut: `?` opens it, `Esc` closes
+  - Content is per-page (Dashboard / Content list / Content editor / Media / Settings)
 
 ### How it works
 - Content store: JSON files in `/content/` (one per page + `shared.json` + `credentials.json`). No database.
@@ -115,7 +128,7 @@ triggers a Vercel auto-deploy (~5 min to live).
 ### Required environment variable
 | Name | Purpose |
 |---|---|
-| `GITHUB_TOKEN` | Classic PAT with `repo` scope. Set in Vercel Env Vars (Production + Preview + Development) and in local `.env.local`. |
+| `GITHUB_TOKEN` | Classic PAT with `repo` scope. Set in Vercel Env Vars (Production + Preview) and mirrored locally in `.env.local`. Vercel blocks setting sensitive env vars in the Development environment — that's expected and fine. |
 
 Local pull of Vercel env vars:
 ```bash
@@ -123,10 +136,34 @@ vercel env pull .env.local
 ```
 
 ### Files — Power Hub quick map
-- `app/power-hub/` — login + dashboard pages
-- `app/api/power-hub/` — content / credentials / media / upload routes
-- `components/power-hub/` — Sidebar + Header UI components
+- `app/power-hub/` — login (`/power-hub`) + dashboard pages + scoped CSS
+- `app/api/power-hub/` — API routes:
+  - `content/` — GET list / GET file / PUT save
+  - `credentials/` — GET / PUT login creds
+  - `media/` — GET recursive image listing via GitHub Trees API (returns `editable` flag)
+  - `upload/` — POST image (to `uploads/`) / DELETE upload
+  - `gallery/` — POST appends entry to `gallery.json`
+  - `menu/` — GET categories / POST appends item to `menus.json`
+- `components/power-hub/` — UI components:
+  - `Sidebar.tsx`, `Header.tsx` — dashboard chrome
+  - `HelpContext.tsx`, `HelpButton.tsx`, `helpContent.ts` — universal help system
+  - `AddToGalleryModal.tsx`, `AddToMenuModal.tsx` — one-click publish modals
 - `content/*.json` — the editable source of truth for every page
+
+### Power Hub API surface
+| Method | Route | Purpose |
+|---|---|---|
+| GET  | `/api/power-hub/content` | List all content files |
+| GET  | `/api/power-hub/content?file=X.json` | Fetch one file + sha |
+| PUT  | `/api/power-hub/content` | Save file (requires sha for conflict prevention) |
+| GET  | `/api/power-hub/credentials` | Fetch creds (used at login) |
+| PUT  | `/api/power-hub/credentials` | Update username/password |
+| GET  | `/api/power-hub/media` | Recursive list of all images under `public/images/` |
+| POST | `/api/power-hub/upload` | Upload image to `public/images/uploads/` |
+| DELETE | `/api/power-hub/upload` | Delete an uploaded image |
+| POST | `/api/power-hub/gallery` | Append entry to `gallery.json` |
+| GET  | `/api/power-hub/menu` | List menu categories |
+| POST | `/api/power-hub/menu` | Append item to a menu category |
 
 ---
 
@@ -148,4 +185,4 @@ Mandy's branding originals live at: `/Users/brettlechtenberg/Desktop/Mandy Smith
 
 ---
 
-**Last updated**: 2026-04-23 (consolidated to single canonical location)
+**Last updated**: 2026-04-23 (Power Hub full feature set: content editor, unified Media library, Add-to-Gallery, Add-to-Menu, universal Help system)
