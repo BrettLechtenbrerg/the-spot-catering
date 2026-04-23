@@ -10,18 +10,38 @@
     "secondaryCtaLink": "/menus"
   },
   "categories": [
-    { "id": "all", "label": "All" },
-    { "id": "grazing", "label": "Grazing Boards" },
-    { "id": "breakfast", "label": "Breakfast" },
-    { "id": "lunch", "label": "Lunch" },
-    { "id": "holiday", "label": "Holiday" },
-    { "id": "desserts", "label": "Desserts" }
+    {
+      "id": "all",
+      "label": "All"
+    },
+    {
+      "id": "grazing",
+      "label": "Grazing Boards"
+    },
+    {
+      "id": "breakfast",
+      "label": "Breakfast"
+    },
+    {
+      "id": "lunch",
+      "label": "Lunch"
+    },
+    {
+      "id": "holiday",
+      "label": "Holiday"
+    },
+    {
+      "id": "desserts",
+      "label": "Desserts"
+    }
   ],
   "images": [
     {
       "src": "/images/gallery/live-edge-grazing.jpg",
       "alt": "Live edge wood grazing board with edible flowers",
-      "category": ["grazing"],
+      "category": [
+        "grazing"
+      ],
       "title": "Artisan Grazing Board",
       "description": "Stunning live-edge wood board adorned with cheeses, fruits, nuts, and edible flowers.",
       "tall": true
@@ -29,21 +49,28 @@
     {
       "src": "/images/gallery/charcuterie-cups.jpg",
       "alt": "Individual charcuterie cups",
-      "category": ["grazing"],
+      "category": [
+        "grazing"
+      ],
       "title": "Charcuterie Cups",
       "description": "Elegant individual portions perfect for corporate events and cocktail hours."
     },
     {
       "src": "/images/gallery/breakfast-board-parfaits.jpg",
       "alt": "Breakfast board with yogurt parfaits",
-      "category": ["breakfast"],
+      "category": [
+        "breakfast"
+      ],
       "title": "Parfait Paradise",
       "description": "Yogurt parfaits with fresh berries, granola, pastries, and egg bites."
     },
     {
       "src": "/images/gallery/holiday-wreath-display.jpg",
       "alt": "Holiday wreath appetizer display",
-      "category": ["holiday", "grazing"],
+      "category": [
+        "holiday",
+        "grazing"
+      ],
       "title": "Holiday Wreath Display",
       "description": "Festive antipasto arranged in a stunning wreath shape with rosemary accents.",
       "tall": true
@@ -51,14 +78,18 @@
     {
       "src": "/images/gallery/full-menu-spread.jpg",
       "alt": "Full menu spread",
-      "category": ["lunch"],
+      "category": [
+        "lunch"
+      ],
       "title": "The Full Spread",
       "description": "Wraps, salads, smoothies, croissants, and more — a complete catering experience."
     },
     {
       "src": "/images/gallery/grazing-table-epic.jpg",
       "alt": "Epic grazing table setup",
-      "category": ["grazing"],
+      "category": [
+        "grazing"
+      ],
       "title": "Epic Grazing Table",
       "description": "An Instagram-worthy spread that wows guests before they take a single bite.",
       "tall": true
@@ -66,14 +97,19 @@
     {
       "src": "/images/gallery/christmas-desserts.jpg",
       "alt": "Christmas dessert display",
-      "category": ["holiday", "desserts"],
+      "category": [
+        "holiday",
+        "desserts"
+      ],
       "title": "Holiday Sweets",
       "description": "Red velvet cookies, cake pops, truffles, and festive treats."
     },
     {
       "src": "/images/gallery/wrap-trays-variety.jpg",
       "alt": "Variety of wrap trays",
-      "category": ["lunch"],
+      "category": [
+        "lunch"
+      ],
       "title": "Wrap It Up",
       "description": "Buffalo chicken, caesar, and more — all beautifully arranged.",
       "tall": true
@@ -81,21 +117,28 @@
     {
       "src": "/images/gallery/double-grazing-boards.jpg",
       "alt": "Double grazing boards outdoor",
-      "category": ["grazing"],
+      "category": [
+        "grazing"
+      ],
       "title": "Al Fresco Boards",
       "description": "Beautiful outdoor setup with brie, grapes, pesto, and fresh herbs."
     },
     {
       "src": "/images/gallery/breakfast-board-croissants.jpg",
       "alt": "Breakfast board with croissants",
-      "category": ["breakfast"],
+      "category": [
+        "breakfast"
+      ],
       "title": "Rise & Shine Board",
       "description": "Buttery croissants, egg bites, danish pastries, crispy bacon, and fresh fruit."
     },
     {
       "src": "/images/gallery/casino-night-spread.jpg",
       "alt": "Casino night themed event spread",
-      "category": ["grazing", "lunch"],
+      "category": [
+        "grazing",
+        "lunch"
+      ],
       "title": "Casino Night Spread",
       "description": "High-stakes presentation for an unforgettable themed event.",
       "tall": true
@@ -103,28 +146,36 @@
     {
       "src": "/images/gallery/couscous-salad.jpg",
       "alt": "Colorful Mediterranean couscous salad",
-      "category": ["lunch"],
+      "category": [
+        "lunch"
+      ],
       "title": "Mediterranean Couscous",
       "description": "Vibrant pearl couscous with tomatoes, peppers, feta, and olives."
     },
     {
       "src": "/images/gallery/grab-go-salad.jpg",
       "alt": "Grab and go salad",
-      "category": ["lunch"],
+      "category": [
+        "lunch"
+      ],
       "title": "Grab & Go Salads",
       "description": "Fresh, colorful salads ready for busy corporate lunches."
     },
     {
       "src": "/images/gallery/wrap-platter-chips.jpg",
       "alt": "Wrap platter with chips",
-      "category": ["lunch"],
+      "category": [
+        "lunch"
+      ],
       "title": "Corporate Wrap Platter",
       "description": "Classic catering done right with variety and presentation."
     },
     {
       "src": "/images/gallery/boxed-lunches-rice.jpg",
       "alt": "Individual boxed rice lunches",
-      "category": ["lunch"],
+      "category": [
+        "lunch"
+      ],
       "title": "Boxed Rice Bowls",
       "description": "Individually packaged bowls with protein, rice, and vibrant veggies.",
       "tall": true
@@ -132,21 +183,27 @@
     {
       "src": "/images/gallery/latte-art.jpg",
       "alt": "Latte art coffee",
-      "category": ["breakfast"],
+      "category": [
+        "breakfast"
+      ],
       "title": "More Espresso, Less Depresso",
       "description": "Beautiful latte art to start your meeting off right. ☕"
     },
     {
       "src": "/images/food/breakfast-buffet.jpg",
       "alt": "Breakfast buffet spread",
-      "category": ["breakfast"],
+      "category": [
+        "breakfast"
+      ],
       "title": "Breakfast Buffet",
       "description": "A full breakfast buffet with pastries, fruit, and morning favorites — the perfect way to fuel a productive day."
     },
     {
       "src": "/images/food/breakfast-catering.jpg",
       "alt": "Corporate breakfast catering",
-      "category": ["breakfast"],
+      "category": [
+        "breakfast"
+      ],
       "title": "Corporate Breakfast",
       "description": "Polished morning catering built for meetings, trainings, and team kickoffs.",
       "tall": true
@@ -154,28 +211,36 @@
     {
       "src": "/images/food/breakfast-catering-2.jpg",
       "alt": "Morning breakfast spread",
-      "category": ["breakfast"],
+      "category": [
+        "breakfast"
+      ],
       "title": "Morning Spread",
       "description": "Fresh, hearty morning fare presented with care."
     },
     {
       "src": "/images/food/brunch-catering.jpg",
       "alt": "Brunch catering display",
-      "category": ["breakfast"],
+      "category": [
+        "breakfast"
+      ],
       "title": "Brunch Catering",
       "description": "The best of breakfast and lunch — perfect for late-morning events and weekend gatherings."
     },
     {
       "src": "/images/food/coffee-catering.jpg",
       "alt": "Coffee catering service",
-      "category": ["breakfast"],
+      "category": [
+        "breakfast"
+      ],
       "title": "Coffee Service",
       "description": "In-room coffee service to keep the energy — and ideas — flowing."
     },
     {
       "src": "/images/food/soup-bar.jpg",
       "alt": "Soup bar catering",
-      "category": ["lunch"],
+      "category": [
+        "lunch"
+      ],
       "title": "Soup Bar",
       "description": "A cozy, comforting soup bar with fresh-baked breads and bright toppings.",
       "tall": true
@@ -183,14 +248,19 @@
     {
       "src": "/images/food/wrap-and-sandwich-platter.jpg",
       "alt": "Wrap and sandwich platter",
-      "category": ["lunch"],
+      "category": [
+        "lunch"
+      ],
       "title": "Wrap & Sandwich Platter",
       "description": "A classic corporate lunch platter with variety, color, and beautiful presentation."
     },
     {
       "src": "/images/food/full-menu.jpg",
       "alt": "Full catering menu spread",
-      "category": ["lunch", "grazing"],
+      "category": [
+        "lunch",
+        "grazing"
+      ],
       "title": "Full Menu Spread",
       "description": "A complete catering experience — the full menu, beautifully laid out.",
       "tall": true
@@ -198,21 +268,28 @@
     {
       "src": "/images/food/dessert-bars.jpg",
       "alt": "Assorted dessert bars",
-      "category": ["desserts"],
+      "category": [
+        "desserts"
+      ],
       "title": "Dessert Bars",
       "description": "House-made dessert bars — rich, indulgent, and impossible to resist."
     },
     {
       "src": "/images/food/desserts.jpg",
       "alt": "Sweet treats dessert display",
-      "category": ["desserts"],
+      "category": [
+        "desserts"
+      ],
       "title": "Sweet Treats",
       "description": "A curated spread of sweets to close out your event on a high note."
     },
     {
       "src": "/images/food/charcuterie-holiday.jpg",
       "alt": "Holiday charcuterie display",
-      "category": ["holiday", "grazing"],
+      "category": [
+        "holiday",
+        "grazing"
+      ],
       "title": "Holiday Charcuterie",
       "description": "A festive charcuterie spread styled for the season.",
       "tall": true
@@ -220,21 +297,28 @@
     {
       "src": "/images/food/caramel-apple-bar.jpg",
       "alt": "Caramel apple bar",
-      "category": ["desserts", "holiday"],
+      "category": [
+        "desserts",
+        "holiday"
+      ],
       "title": "Caramel Apple Bar",
       "description": "Make-your-own caramel apples — a crowd-pleasing fall favorite."
     },
     {
       "src": "/images/events/halloween-catering.jpg",
       "alt": "Halloween themed catering spread",
-      "category": ["holiday"],
+      "category": [
+        "holiday"
+      ],
       "title": "Halloween Spread",
       "description": "A spooky-chic themed spread that turns any office party into a memorable event."
     },
     {
       "src": "/images/events/mardi-gras.jpg",
       "alt": "Mardi Gras themed catering",
-      "category": ["holiday"],
+      "category": [
+        "holiday"
+      ],
       "title": "Mardi Gras Feast",
       "description": "Bold colors, big flavors — a festive Mardi Gras catering experience.",
       "tall": true
@@ -242,14 +326,19 @@
     {
       "src": "/images/events/snowmen-skewers.jpg",
       "alt": "Snowmen fruit skewers",
-      "category": ["holiday", "desserts"],
+      "category": [
+        "holiday",
+        "desserts"
+      ],
       "title": "Snowmen Skewers",
       "description": "Adorable winter-themed fruit skewers — a festive touch guests will remember."
     },
     {
       "src": "/images/gallery/mandy-feature-1.jpg",
       "alt": "The Spot Catering featured creation",
-      "category": ["grazing"],
+      "category": [
+        "grazing"
+      ],
       "title": "Signature Creation",
       "description": "One of Mandy's latest featured spreads — thoughtfully styled and beautifully presented.",
       "tall": true
@@ -257,24 +346,41 @@
     {
       "src": "/images/gallery/mandy-feature-2.jpg",
       "alt": "The Spot Catering event spread",
-      "category": ["grazing", "lunch"],
+      "category": [
+        "grazing",
+        "lunch"
+      ],
       "title": "Event Spotlight",
       "description": "A recent catering showcase — fresh, vibrant, and made to impress."
     },
     {
       "src": "/images/gallery/mandy-feature-3.jpg",
       "alt": "The Spot Catering display",
-      "category": ["grazing", "lunch"],
+      "category": [
+        "grazing",
+        "lunch"
+      ],
       "title": "Fresh Off The Line",
       "description": "Another gorgeous spread from Mandy's kitchen — catering done with heart and style."
     },
     {
       "src": "/images/gallery/mandy-feature-4.jpg",
       "alt": "The Spot Catering detail shot",
-      "category": ["grazing"],
+      "category": [
+        "grazing"
+      ],
       "title": "Crafted With Care",
       "description": "Every detail matters — from plating to presentation, The Spot hits the spot every time.",
       "tall": true
+    },
+    {
+      "src": "/images/uploads/1776950233035-hogies.png",
+      "alt": "Hogies",
+      "category": [
+        "lunch"
+      ],
+      "title": "Hogies",
+      "description": "Amazing custom sandwiches for your event."
     }
   ],
   "emptyState": {
