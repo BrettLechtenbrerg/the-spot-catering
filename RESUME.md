@@ -76,7 +76,7 @@ See `CLAUDE.md` for full brand colors, typography, pages, and component map.
 
 ---
 
-## Current Status (as of 2026-04-23)
+## Current Status (as of 2026-04-24)
 
 All 11 pages built & deployed:
 Home · Corporate · Services · Themes · Gallery · Menus · About · Crock Spot · Privacy · Terms · Contact.
@@ -86,8 +86,10 @@ Home · Corporate · Services · Themes · Gallery · Menus · About · Crock Sp
 through the Power Hub UI — each save is a commit to GitHub on `main`, which
 triggers a Vercel auto-deploy (~5 min to live).
 
+**Contact form is live and wired to Go High Level** (see section below).
+Submissions create/update a GHL contact and email Mandy internally.
+
 ### Open to-do
-- [ ] Contact form backend (currently frontend-only — does NOT send email)
 - [ ] Analytics integration (no GA / Vercel Analytics yet)
 - [ ] Custom domain setup (still on `vercel.app`)
 - [ ] Verify with Mandy: Lunch menu claim about "serving National Guard meals for 36 days during the Pandemic"
@@ -167,6 +169,81 @@ vercel env pull .env.local
 
 ---
 
+## Contact Form → Go High Level
+
+The Request A Quote form on `/contact` POSTs to `/api/contact`, which
+validates input and forwards it to a GHL inbound-webhook workflow. The
+webhook URL is kept server-side (not in the browser bundle).
+
+### Flow
+1. User submits the form on `/contact`
+2. Browser POSTs JSON to `/api/contact` (Next.js route)
+3. Server validates required fields + email format, splits full name into
+   first/last, and POSTs to `GHL_WEBHOOK_URL`
+4. GHL workflow **"Get A Quote"** fires:
+   - **Create Contact** — maps all 10 fields (5 standard + 5 custom)
+   - **Internal Notification** — emails Mandy Smith with full lead details
+
+### GHL setup (already done)
+- **Workflow name**: Get A Quote (Published)
+- **Trigger**: Inbound Webhook
+- **Standard fields mapped**: First Name, Last Name, Email, Phone, Business Name
+- **Custom fields created on the Contact object**:
+  | Name | Type | Unique key |
+  |---|---|---|
+  | Event Type | Dropdown (Single) — 9 options | `contact.event_type` |
+  | Event Date | Date Picker | `contact.event_date` |
+  | Guest Count | Number | `contact.guest_count` |
+  | Estimated Budget | Dropdown (Single) — 7 options | `contact.budget_range` *(name shown in GHL: "Budget Range")* |
+  | Event Message | Multi Line | `contact.message` |
+- **Internal notification**: emails Mandy Smith from `spotcafes@gmail.com`
+
+### Payload sent to GHL
+```json
+{
+  "firstName": "...", "lastName": "...", "fullName": "...",
+  "email": "...", "phone": "...", "company": "...",
+  "eventType": "...", "eventDate": "...",
+  "guestCount": "...", "budget": "...", "message": "...",
+  "source": "the-spot-catering.vercel.app",
+  "formName": "Request A Quote",
+  "pageUrl": "...",
+  "submittedAt": "ISO-8601 UTC"
+}
+```
+In GHL these are referenced as `{{inboundWebhookRequest.<fieldName>}}`.
+
+### Required environment variable
+| Name | Purpose |
+|---|---|
+| `GHL_WEBHOOK_URL` | The Go High Level inbound webhook URL for the "Get A Quote" workflow. Set in Vercel Env Vars (Production + Preview) and mirrored in `.env.local`. |
+
+### Files
+- `app/api/contact/route.ts` — POST endpoint: validates + splits name + forwards to GHL
+- `app/contact/page.tsx` — form UI with loading state, error banner, and success screen
+- `content/contact.json` — all form copy, event type options, budget ranges (editable in Power Hub)
+
+### Testing the webhook manually
+```bash
+# Send a raw test payload directly to the GHL webhook (bypasses our API):
+curl -X POST "$GHL_WEBHOOK_URL" -H 'Content-Type: application/json' -d '{
+  "firstName": "Test", "lastName": "Lead", "fullName": "Test Lead",
+  "email": "test@example.com", "phone": "555-0199",
+  "company": "Test Co", "eventType": "Holiday Party",
+  "eventDate": "2026-12-15", "guestCount": "50",
+  "budget": "$2,500 – $5,000", "message": "Test",
+  "source": "manual", "formName": "Request A Quote",
+  "pageUrl": "manual-test", "submittedAt": "2026-04-24T00:00:00Z"
+}'
+
+# Or test the full flow through the deployed API:
+curl -X POST 'https://the-spot-catering.vercel.app/api/contact' \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Test Lead","email":"test@example.com","eventType":"Holiday Party","message":"hi"}'
+```
+
+---
+
 ## Assets Source
 
 Mandy's branding originals live at: `/Users/brettlechtenberg/Desktop/Mandy Smith/`
@@ -185,4 +262,4 @@ Mandy's branding originals live at: `/Users/brettlechtenberg/Desktop/Mandy Smith
 
 ---
 
-**Last updated**: 2026-04-23 (Power Hub full feature set: content editor, unified Media library, Add-to-Gallery, Add-to-Menu, universal Help system)
+**Last updated**: 2026-04-24 (Contact form wired to Go High Level: `/api/contact` → GHL "Get A Quote" workflow → Create Contact with 10 mapped fields + internal email to Mandy)
