@@ -39,12 +39,51 @@ export default function ContactPage() {
     message: '',
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // For now, just show success message
-    // In production, this would send to an API
-    setIsSubmitted(true)
+    setIsSubmitting(true)
+    setSubmitError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        setSubmitError(
+          data.error ||
+            'Something went wrong. Please try again or call us at 925-699-6629.',
+        )
+        return
+      }
+
+      setIsSubmitted(true)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        eventType: '',
+        eventDate: '',
+        guestCount: '',
+        budget: '',
+        message: '',
+      })
+    } catch (err) {
+      console.error('Contact form submit error:', err)
+      setSubmitError(
+        'Network error. Please check your connection and try again, or call us at 925-699-6629.',
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -310,12 +349,22 @@ export default function ContactPage() {
                     </div>
                   </div>
 
+                  {submitError && (
+                    <div
+                      role="alert"
+                      className="mt-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+                    >
+                      {submitError}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="mt-6 btn-primary w-full flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="mt-6 btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <Send size={18} />
-                    {form.submitLabel}
+                    {isSubmitting ? 'Sending…' : form.submitLabel}
                   </button>
                 </form>
               )}
