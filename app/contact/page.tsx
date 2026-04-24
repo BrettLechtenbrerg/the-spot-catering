@@ -35,6 +35,7 @@ export default function ContactPage() {
     eventType: '',
     eventDate: '',
     guestCount: '',
+    budget: '',
     message: '',
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -258,7 +259,7 @@ export default function ContactPage() {
                     </div>
 
                     {/* Guest Count */}
-                    <div className="md:col-span-2">
+                    <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {form.fields.guestCount.label}
                       </label>
@@ -270,6 +271,26 @@ export default function ContactPage() {
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors"
                         placeholder={form.fields.guestCount.placeholder}
                       />
+                    </div>
+
+                    {/* Estimated Budget */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {form.fields.budget.label}
+                      </label>
+                      <select
+                        name="budget"
+                        value={formData.budget}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-spot-orange focus:border-spot-orange transition-colors"
+                      >
+                        <option value="">{form.fields.budget.placeholder}</option>
+                        {form.budgetRanges.map((range) => (
+                          <option key={range} value={range}>
+                            {range}
+                          </option>
+                        ))}
+                      </select>
                     </div>
 
                     {/* Message */}

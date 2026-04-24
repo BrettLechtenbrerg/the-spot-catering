@@ -54,6 +54,15 @@
       "Happy Hour",
       "Other"
     ],
+    "budgetRanges": [
+      "Under $500",
+      "$500 – $1,000",
+      "$1,000 – $2,500",
+      "$2,500 – $5,000",
+      "$5,000 – $10,000",
+      "$10,000+",
+      "Not sure yet"
+    ],
     "fields": {
       "name": {
         "label": "Your Name *",
@@ -81,6 +90,10 @@
       "guestCount": {
         "label": "Estimated Guest Count",
         "placeholder": "25"
+      },
+      "budget": {
+        "label": "Estimated Budget",
+        "placeholder": "Select a budget range"
       },
       "message": {
         "label": "Tell Us About Your Event *",
