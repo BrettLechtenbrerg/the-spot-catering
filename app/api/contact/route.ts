@@ -87,9 +87,9 @@ export async function POST(request: NextRequest) {
       guestCount: (body.guestCount ?? '').trim(),
       budget: (body.budget ?? '').trim(),
       message,
-      source: 'the-spot-catering.vercel.app',
+      source: 'denversbestcaterer.com',
       formName: 'Request A Quote',
-      pageUrl: request.headers.get('referer') ?? 'https://the-spot-catering.vercel.app/contact',
+      pageUrl: request.headers.get('referer') ?? 'https://denversbestcaterer.com/contact',
       submittedAt: new Date().toISOString(),
     };
 

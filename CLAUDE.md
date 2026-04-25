@@ -3,7 +3,8 @@
 ## Project Overview
 Official website for **The Spot Catering** - Denver's Corporate Catering Queen, owned by Mandy Smith.
 
-- **Live Site**: https://the-spot-catering.vercel.app
+- **Live Site**: https://denversbestcaterer.com (custom domain via GoDaddy → Vercel)
+- **Vercel URL**: https://the-spot-catering-ky72.vercel.app (still works)
 - **GitHub**: https://github.com/BrettLechtenbrerg/the-spot-catering
 - **Vercel Project**: the-spot-catering (bretts-projects-3e254e58)
 - **Future Home**: Will move to Mandy's GitHub (CrockSpotCatering) when complete

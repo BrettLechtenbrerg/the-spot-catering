@@ -36,7 +36,8 @@ Read RESUME.md first.
 
 | Service | Account / Project | URL |
 |---|---|---|
-| **Live site** | — | https://the-spot-catering.vercel.app |
+| **Live site** | denversbestcaterer.com (GoDaddy DNS → Vercel) | https://denversbestcaterer.com |
+| **Vercel URL** | (still works as fallback) | https://the-spot-catering-ky72.vercel.app |
 | **GitHub** | `BrettLechtenbrerg` (note the typo: Lechten**brerg**, not Lechten**berg**) | https://github.com/BrettLechtenbrerg/the-spot-catering |
 | **Vercel team** | `bretts-projects-3e254e58` (team_TP2l0A1jczMx76uLuijabKp3) | https://vercel.com/bretts-projects-3e254e58/the-spot-catering-ky72 |
 | **Vercel project** | `the-spot-catering` (prj_4A6ZgaNzdp8O0107sRLYLh6aiNsG) | — |
@@ -91,7 +92,7 @@ Submissions create/update a GHL contact and email Mandy internally.
 
 ### Open to-do
 - [ ] Analytics integration (no GA / Vercel Analytics yet)
-- [ ] Custom domain setup (still on `vercel.app`)
+- [x] ~~Custom domain setup~~ — **DONE 2026-04-25**: `denversbestcaterer.com` live (apex canonical, www → apex 308 redirect, Let's Encrypt SSL)
 - [ ] Verify with Mandy: Lunch menu claim about "serving National Guard meals for 36 days during the Pandemic"
 - [ ] Transfer repo to Mandy's GitHub (`CrockSpotCatering`) when ready
 
@@ -205,7 +206,7 @@ webhook URL is kept server-side (not in the browser bundle).
   "email": "...", "phone": "...", "company": "...",
   "eventType": "...", "eventDate": "...",
   "guestCount": "...", "budget": "...", "message": "...",
-  "source": "the-spot-catering.vercel.app",
+  "source": "denversbestcaterer.com",
   "formName": "Request A Quote",
   "pageUrl": "...",
   "submittedAt": "ISO-8601 UTC"
@@ -237,7 +238,7 @@ curl -X POST "$GHL_WEBHOOK_URL" -H 'Content-Type: application/json' -d '{
 }'
 
 # Or test the full flow through the deployed API:
-curl -X POST 'https://the-spot-catering.vercel.app/api/contact' \
+curl -X POST 'https://denversbestcaterer.com/api/contact' \
   -H 'Content-Type: application/json' \
   -d '{"name":"Test Lead","email":"test@example.com","eventType":"Holiday Party","message":"hi"}'
 ```
@@ -262,4 +263,4 @@ Mandy's branding originals live at: `/Users/brettlechtenberg/Desktop/Mandy Smith
 
 ---
 
-**Last updated**: 2026-04-24 (Contact form wired to Go High Level: `/api/contact` → GHL "Get A Quote" workflow → Create Contact with 10 mapped fields + internal email to Mandy)
+**Last updated**: 2026-04-25 (Custom domain `denversbestcaterer.com` is live. GoDaddy DNS: A `@` → 76.76.21.21, CNAME `www` → cname.vercel-dns.com. Vercel: apex is canonical, `www` 308-redirects to apex via API. Code updated: `app/api/contact/route.ts` source/pageUrl, `content/terms.json` URL reference.)
