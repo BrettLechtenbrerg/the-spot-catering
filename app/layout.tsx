@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The Spot Catering | Denver Corporate Catering Queen',
     description: 'We know how to hit the spot! Premium corporate catering in Denver. Themed events, corporate meetings, team appreciation & more.',
-    url: 'https://thespotcatering.com',
+    url: 'https://denversbestcaterer.com',
     siteName: 'The Spot Catering',
     locale: 'en_US',
     type: 'website',
@@ -40,6 +42,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

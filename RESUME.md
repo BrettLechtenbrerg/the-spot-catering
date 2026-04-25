@@ -91,9 +91,9 @@ triggers a Vercel auto-deploy (~5 min to live).
 Submissions create/update a GHL contact and email Mandy internally.
 
 ### Open to-do
-- [ ] Analytics integration (no GA / Vercel Analytics yet)
+- [x] ~~Analytics integration~~ — **DONE 2026-04-25**: Vercel Analytics + Speed Insights wired in `app/layout.tsx` (auto-collected, view at https://vercel.com/bretts-projects-3e254e58/the-spot-catering-ky72/analytics)
 - [x] ~~Custom domain setup~~ — **DONE 2026-04-25**: `denversbestcaterer.com` live (apex canonical, www → apex 308 redirect, Let's Encrypt SSL)
-- [ ] Verify with Mandy: Lunch menu claim about "serving National Guard meals for 36 days during the Pandemic"
+- [x] ~~Verify with Mandy: National Guard / 36 days claim~~ — **CONFIRMED 2026-04-25** (Brett confirmed direct with Mandy; copy stays as-is in `content/about.json`)
 - [ ] Transfer repo to Mandy's GitHub (`CrockSpotCatering`) when ready
 
 ---
@@ -263,4 +263,4 @@ Mandy's branding originals live at: `/Users/brettlechtenberg/Desktop/Mandy Smith
 
 ---
 
-**Last updated**: 2026-04-25 (Custom domain `denversbestcaterer.com` is live. GoDaddy DNS: A `@` → 76.76.21.21, CNAME `www` → cname.vercel-dns.com. Vercel: apex is canonical, `www` 308-redirects to apex via API. Code updated: `app/api/contact/route.ts` source/pageUrl, `content/terms.json` URL reference.)
+**Last updated**: 2026-04-25 (Vercel Analytics + Speed Insights enabled in `app/layout.tsx`. National Guard / 36 days claim confirmed accurate by Mandy. OpenGraph URL fixed from non-owned `thespotcatering.com` to `denversbestcaterer.com`. Earlier today: custom domain `denversbestcaterer.com` went live — GoDaddy DNS A `@` → 76.76.21.21, CNAME `www` → cname.vercel-dns.com; Vercel apex canonical, `www` 308-redirects to apex.)

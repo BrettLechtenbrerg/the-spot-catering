@@ -139,10 +139,10 @@ Edit content via `/power-hub`; everything deploys automatically.
 - [x] Greyscale image cards on Corporate, Themes, Pop-Up pages
 - [x] Spicy gradient design on Menus page
 - [x] Footer logo fixed (no white square)
-- [ ] Contact form backend (currently frontend-only)
-- [ ] Analytics integration
-- [ ] Custom domain
-- [ ] Verify pandemic/National Guard reference with Mandy
+- [x] Contact form backend (live: `/api/contact` → GHL "Get A Quote" workflow)
+- [x] Analytics integration (Vercel Analytics + Speed Insights)
+- [x] Custom domain (denversbestcaterer.com, GoDaddy DNS → Vercel, SSL active)
+- [x] National Guard / pandemic reference verified with Mandy (2026-04-25)
 - [ ] Ready for Mandy's GitHub transfer
 
 ## Components
@@ -234,7 +234,7 @@ This pivot happened one month before COVID hit. As the dining landscape changed,
 - All external images use Unsplash URLs
 
 ### Pending Verification
-- **Pandemic Reference**: The Lunch menu mentions "serving the National Guard meals for 36 days straight during the Pandemic" - verify this is accurate with Mandy before launch
+- **Pandemic Reference**: The about page mentions Mandy "served the National Guard meals for 36 consecutive days during the pandemic" — confirmed accurate by Mandy on 2026-04-25
 
 ---
 
