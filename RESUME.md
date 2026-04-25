@@ -36,15 +36,52 @@ Read RESUME.md first.
 
 | Service | Account / Project | URL |
 |---|---|---|
+| Service | Account / Project | URL |
+|---|---|---|
 | **Live site** | denversbestcaterer.com (GoDaddy DNS → Vercel) | https://denversbestcaterer.com |
 | **Vercel URL** | (still works as fallback) | https://the-spot-catering-ky72.vercel.app |
 | **GitHub** | `BrettLechtenbrerg` (note the typo: Lechten**brerg**, not Lechten**berg**) | https://github.com/BrettLechtenbrerg/the-spot-catering |
 | **Vercel team** | `bretts-projects-3e254e58` (team_TP2l0A1jczMx76uLuijabKp3) | https://vercel.com/bretts-projects-3e254e58/the-spot-catering-ky72 |
 | **Vercel project** | `the-spot-catering` (prj_4A6ZgaNzdp8O0107sRLYLh6aiNsG) | — |
+| **Domain registrar** | GoDaddy (denversbestcaterer.com) | https://dcc.godaddy.com |
+| **Analytics** | Vercel Analytics + Speed Insights | https://vercel.com/bretts-projects-3e254e58/the-spot-catering-ky72/analytics |
 
 The project is already linked via `.vercel/project.json`, so `vercel` commands work without re-linking.
 
 Future move: repo will be transferred to Mandy's GitHub (`CrockSpotCatering`) when ready to hand off.
+
+### Domain DNS configuration (GoDaddy)
+
+These records are set on the `denversbestcaterer.com` zone at GoDaddy.
+Do not change them without updating Vercel first.
+
+| Type | Name | Value | Notes |
+|---|---|---|---|
+| A | `@` | `76.76.21.21` | Vercel apex anycast IP |
+| CNAME | `www` | `cname.vercel-dns.com` | Vercel www target |
+| NS | `@` | `ns55.domaincontrol.com` / `ns56.domaincontrol.com` | GoDaddy default — leave alone |
+| SOA, TXT (_dmarc), CNAME (pay, _domainconnect) | various | (GoDaddy defaults) | Leave alone |
+
+Domain Forwarding at GoDaddy: **OFF** (must stay off).
+
+### Vercel domain setup
+
+In the Vercel project, three domains are attached:
+- `denversbestcaterer.com` — **production / canonical**
+- `www.denversbestcaterer.com` — **308 redirect to apex**
+- `the-spot-catering-ky72.vercel.app` — default Vercel URL (fallback)
+
+The `www → apex` 308 redirect was set via the Vercel REST API (the dashboard
+UI was glitchy at launch). To re-set or change the redirect:
+
+```bash
+TOKEN=$(cat ~/Library/Application\ Support/com.vercel.cli/auth.json | grep -oE '"token"[^"]*"[^"]+"' | tail -1 | sed 's/.*"\([^"]*\)"$/\1/')
+curl -X PATCH \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"redirect":"denversbestcaterer.com","redirectStatusCode":308}' \
+  "https://api.vercel.com/v9/projects/prj_4A6ZgaNzdp8O0107sRLYLh6aiNsG/domains/www.denversbestcaterer.com?teamId=team_TP2l0A1jczMx76uLuijabKp3"
+```
 
 ---
 
@@ -77,23 +114,33 @@ See `CLAUDE.md` for full brand colors, typography, pages, and component map.
 
 ---
 
-## Current Status (as of 2026-04-24)
+## Current Status (as of 2026-04-25)
+
+**🎉 Site is fully live in production** at https://denversbestcaterer.com
 
 All 11 pages built & deployed:
 Home · Corporate · Services · Themes · Gallery · Menus · About · Crock Spot · Privacy · Terms · Contact.
 
-**Power Hub CMS** is now live at `/power-hub`. All page content is stored in
+**Power Hub CMS** is live at `/power-hub`. All page content is stored in
 `/content/*.json` and consumed at build time. Owners/staff edit content
 through the Power Hub UI — each save is a commit to GitHub on `main`, which
 triggers a Vercel auto-deploy (~5 min to live).
 
-**Contact form is live and wired to Go High Level** (see section below).
-Submissions create/update a GHL contact and email Mandy internally.
+**Contact form is live and wired to Go High Level**. Submissions create/update
+a GHL contact and email Mandy internally. (See "Contact Form → Go High Level"
+section below.)
+
+**Vercel Analytics + Speed Insights** are wired in `app/layout.tsx`. Data
+shows up at:
+- https://vercel.com/bretts-projects-3e254e58/the-spot-catering-ky72/analytics
+- https://vercel.com/bretts-projects-3e254e58/the-spot-catering-ky72/speed-insights
 
 ### Open to-do
-- [x] ~~Analytics integration~~ — **DONE 2026-04-25**: Vercel Analytics + Speed Insights wired in `app/layout.tsx` (auto-collected, view at https://vercel.com/bretts-projects-3e254e58/the-spot-catering-ky72/analytics)
+- [x] ~~Analytics integration~~ — **DONE 2026-04-25**: Vercel Analytics + Speed Insights wired
 - [x] ~~Custom domain setup~~ — **DONE 2026-04-25**: `denversbestcaterer.com` live (apex canonical, www → apex 308 redirect, Let's Encrypt SSL)
-- [x] ~~Verify with Mandy: National Guard / 36 days claim~~ — **CONFIRMED 2026-04-25** (Brett confirmed direct with Mandy; copy stays as-is in `content/about.json`)
+- [x] ~~Verify with Mandy: National Guard / 36 days claim~~ — **CONFIRMED 2026-04-25** (copy stays as-is in `content/about.json`)
+- [ ] Mandy: complete Google Business Profile setup (see `docs/handover/google-business-profile-setup.txt`)
+- [ ] Mandy: update Facebook + Instagram bio links + post launch announcement (see `docs/handover/facebook-instagram-update-guide.txt`)
 - [ ] Transfer repo to Mandy's GitHub (`CrockSpotCatering`) when ready
 
 ---
@@ -252,6 +299,23 @@ Mandy's branding originals live at: `/Users/brettlechtenberg/Desktop/Mandy Smith
 
 ---
 
+## Handover Docs for Mandy
+
+Client-facing setup guides live at `docs/handover/` (committed) and as `.txt`
+copies on Brett's Desktop (for pasting into Google Docs to share):
+
+- `docs/handover/google-business-profile-setup.txt` — step-by-step GBP setup
+  with exact business name, categories, service areas, hours, and a
+  pre-written 750-char description.
+- `docs/handover/facebook-instagram-update-guide.txt` — how to update FB +
+  IG bio links to the new domain, plus three launch-announcement caption
+  options and an Instagram Story playbook.
+
+If either guide is updated, also re-copy the latest version to Brett's
+Desktop so the Google Docs source matches.
+
+---
+
 ## Business Contact (for Reference)
 
 - Owner: Mandy Smith — "The Corporate Catering Queen"
@@ -263,4 +327,4 @@ Mandy's branding originals live at: `/Users/brettlechtenberg/Desktop/Mandy Smith
 
 ---
 
-**Last updated**: 2026-04-25 (Vercel Analytics + Speed Insights enabled in `app/layout.tsx`. National Guard / 36 days claim confirmed accurate by Mandy. OpenGraph URL fixed from non-owned `thespotcatering.com` to `denversbestcaterer.com`. Earlier today: custom domain `denversbestcaterer.com` went live — GoDaddy DNS A `@` → 76.76.21.21, CNAME `www` → cname.vercel-dns.com; Vercel apex canonical, `www` 308-redirects to apex.)
+**Last updated**: 2026-04-25 — **Full launch sync complete.** Custom domain `denversbestcaterer.com` is live via GoDaddy DNS → Vercel (apex canonical, `www` 308-redirects to apex via Vercel REST API). Vercel Analytics + Speed Insights wired in `app/layout.tsx`. OpenGraph URL fixed to live domain. National Guard / 36 days copy confirmed accurate by Mandy. Mandy handover docs (Google Business Profile + FB/IG) committed under `docs/handover/` and copied to Brett's Desktop. All 13 production routes verified live (HTTP 200/308). Local HEAD = origin/main HEAD = latest production deploy.

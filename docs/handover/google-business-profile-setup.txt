@@ -1,0 +1,213 @@
+THE SPOT CATERING — GOOGLE BUSINESS PROFILE SETUP
+==================================================
+
+Hi Mandy! Your new website is live at denversbestcaterer.com 🎉
+
+The single biggest free thing we can do to get you more local Denver
+leads from Google is set up (or update) your Google Business Profile.
+This is what makes you show up in Google Maps, in the "near me"
+results, and in the side panel when someone Googles your business.
+
+This guide walks you through it step by step. Plan for 20–30 minutes
+the first time. Verification can take a few days, so do this soon.
+
+---
+
+PART 1 — DO YOU ALREADY HAVE A LISTING?
+---------------------------------------
+
+Before creating anything new, check if Google already has a profile
+for The Spot Catering (it often auto-creates one from old data).
+
+1. Go to: https://www.google.com/maps
+2. Search: "The Spot Catering Denver"
+3. Look at what comes up:
+
+   • If you see a profile that looks like yours → go to PART 2A
+     (Claim the existing listing)
+
+   • If nothing relevant shows up → go to PART 2B
+     (Create a new listing)
+
+   • If you see an OLD or WRONG listing (wrong address, wrong phone,
+     "permanently closed", etc.) → go to PART 2A and claim it so
+     you can fix it. Don't create a duplicate.
+
+
+PART 2A — CLAIM AN EXISTING LISTING
+-----------------------------------
+
+1. Click the listing in Google Maps to open it
+2. Click "Claim this business" or "Own this business?"
+3. Sign in with the Gmail account you want to manage it with
+   → Recommended: spotcafes@gmail.com
+4. Follow Google's prompts to verify ownership (see PART 4)
+5. Once verified, go to PART 3 to fill in all the details
+
+
+PART 2B — CREATE A NEW LISTING
+------------------------------
+
+1. Go to: https://business.google.com/create
+2. Sign in with: spotcafes@gmail.com
+3. Business name: The Spot Catering
+4. When asked "What kind of business is this?":
+   - Choose: "Service business" (you go to clients, they don't come to you)
+   - This is important — it lets you serve a service area instead of
+     publishing a physical address
+5. Primary category: Caterer
+6. Continue to PART 3 to fill in details
+
+
+PART 3 — FILL IN YOUR PROFILE (THE IMPORTANT PART)
+--------------------------------------------------
+
+Use these EXACT values. Copy/paste where you can.
+
+BUSINESS NAME
+  The Spot Catering
+
+PRIMARY CATEGORY
+  Caterer
+
+ADDITIONAL CATEGORIES (add all that apply — Google lets you pick up to 9)
+  • Corporate Caterer
+  • Wedding Caterer (if you do them)
+  • Event Planner
+  • Box Lunch Supplier
+  • Personal Chef Service (only if applicable)
+
+SERVICE AREA
+  Pick "I serve customers at their locations" / "Service business"
+  Add these areas:
+    • Denver, CO
+    • Aurora, CO
+    • Lakewood, CO
+    • Centennial, CO
+    • Englewood, CO
+    • Greenwood Village, CO
+    • Cherry Creek, CO
+    • Boulder, CO
+    • Any other metro Denver areas you serve
+  (Don't list a physical street address publicly — service businesses
+  shouldn't. You'll still confirm your real address privately to Google
+  for verification, but it stays hidden on the listing.)
+
+PHONE NUMBER
+  925-699-6629
+
+WEBSITE
+  https://denversbestcaterer.com
+
+HOURS
+  Set the hours you take phone calls / inquiries. Example:
+    Monday–Friday    8:00 AM – 6:00 PM
+    Saturday         By appointment (or set actual hours)
+    Sunday           Closed (or by appointment)
+  You can change these any time.
+
+BUSINESS DESCRIPTION (paste this — fits Google's 750-char limit)
+  The Spot Catering is Denver's Corporate Catering Queen, owned and
+  operated by Mandy Smith. We specialize in premium corporate catering,
+  themed events, breakfast and lunch service, happy hours, and team
+  appreciation events across the Denver metro area. As a certified
+  woman-owned business (MWBE, DBE, EBE, SBEC), we bring creativity,
+  professionalism, and spot-on flavor to every event. From everyday
+  corporate lunches to large themed parties, we handle the details so
+  you can enjoy the experience. Book your event at denversbestcaterer.com
+  or call 925-699-6629.
+
+ATTRIBUTES (turn ON whatever applies — Google asks during setup or
+under the "Edit profile" → "More" section after)
+  • Identifies as woman-owned: YES
+  • Identifies as small business: YES
+  • Online appointments: YES (link to denversbestcaterer.com/contact)
+  • Online estimates / quotes: YES (same link)
+
+
+PART 4 — VERIFY YOUR BUSINESS
+-----------------------------
+
+Google has to confirm you actually own this business before the
+listing goes public. They'll offer one or more of these methods:
+
+  • Postcard by mail (most common, takes 5–14 days)
+  • Phone call with a verification code
+  • Text message
+  • Email
+  • Video verification (you record a short walkthrough)
+
+Pick whatever's offered — phone/text/email are fastest.
+
+If they ask for a postcard, the address you give them is private
+(not shown on the listing) but it does need to be a real address
+where you can receive mail.
+
+⚠️ Don't edit anything else on the profile until verification is
+complete — it can reset the process.
+
+
+PART 5 — AFTER VERIFICATION (THE BIG WINS)
+------------------------------------------
+
+Once your profile is verified and live, do these to maximize visibility:
+
+PHOTOS — Upload at least 10 great photos
+  • Your logo (square version)
+  • A cover photo (food spread or you in chef whites)
+  • 5–10 photos of food, setups, themed events
+  • A photo of you (Mandy) — Google promotes profiles with owner photos
+  Pull these from your existing site (denversbestcaterer.com/gallery)
+  or your phone. The more, the better.
+
+REQUEST REVIEWS
+  Click "Get more reviews" on your profile dashboard. Google gives
+  you a short link like https://g.page/r/... — text or email this to:
+    • Past corporate clients
+    • Happy event hosts
+    • Anyone who's complimented your food
+  Aim for 5+ reviews in the first month. Even 10 good reviews
+  dramatically boosts how often you show up in local searches.
+
+POSTS (free advertising)
+  Once a week, post an update on your profile:
+    • A photo from a recent event
+    • A seasonal menu special
+    • A holiday booking reminder
+    • A behind-the-scenes shot
+  These show up in your Google listing and keep it active in Google's eyes.
+
+PRODUCTS / SERVICES
+  Add your menus as "Services" with prices or "starting at" pricing:
+    • Corporate Lunch Catering
+    • Themed Event Catering
+    • Breakfast Catering
+    • Happy Hour Catering
+    • Crock Spot (your packaged offering)
+  Each one can have a photo + description + link to denversbestcaterer.com
+
+
+PART 6 — IF YOU GET STUCK
+-------------------------
+
+  • Profile help center: https://support.google.com/business
+  • Common issue: "Suspended" listing → usually a category mismatch
+    or address that conflicts with another listing. Edit and resubmit.
+  • Verification not arriving? Request a new postcard from your
+    profile dashboard.
+  • Brett can help walk through any of this if needed.
+
+
+THAT'S IT
+---------
+
+Once it's verified and you've added photos + a few reviews, you'll
+start showing up in Google Maps and local searches for things like:
+  "catering near me"
+  "Denver corporate caterer"
+  "themed event catering Denver"
+
+It's the highest-leverage free marketing channel you have. Worth the
+20-minute setup.
+
+— Set up by Brett, 2026-04-25
