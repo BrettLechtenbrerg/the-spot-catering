@@ -139,8 +139,14 @@ shows up at:
 - [x] ~~Analytics integration~~ — **DONE 2026-04-25**: Vercel Analytics + Speed Insights wired
 - [x] ~~Custom domain setup~~ — **DONE 2026-04-25**: `denversbestcaterer.com` live (apex canonical, www → apex 308 redirect, Let's Encrypt SSL)
 - [x] ~~Verify with Mandy: National Guard / 36 days claim~~ — **CONFIRMED 2026-04-25** (copy stays as-is in `content/about.json`)
+- [x] ~~Fix missing Happy Hour icon on home page~~ — **DONE 2026-04-25**: Tailwind JIT now scans `content/**/*.json` so CMS-only utility classes (`bg-spot-teal`) ship in the bundle
+- [x] ~~Replace Coffee icon with cheers/clinking-glasses on Happy Hour card~~ — **DONE 2026-04-25**: custom inline `Cheers` icon (two tilted Lucide `Wine` glasses) registered in `iconMap` at `app/page.tsx`
+- [x] ~~Site-wide icon + image audit~~ — **DONE 2026-04-25**: 96 icons / 80 local image refs / 91 production HTML image URLs verified; 4 Unsplash placeholders on `/themes` swapped for Mandy's authentic photos (taco-bar, mardi-gras, snowmen-skewers, casino-night)
+- [ ] Mandy: send authentic photos for the 4 remaining Themes placeholders — **BBQ Cookout, Oktoberfest, Luau Party, Valentine's & Love** (still on Unsplash; swap via Power Hub → Content → `themes.json`)
 - [ ] Mandy: complete Google Business Profile setup (see `docs/handover/google-business-profile-setup.txt`)
 - [ ] Mandy: update Facebook + Instagram bio links + post launch announcement (see `docs/handover/facebook-instagram-update-guide.txt`)
+- [ ] Add explicit OpenGraph `images: [...]` in `app/layout.tsx` so social shares render a thumbnail (currently no OG image)
+- [ ] Tighten `next.config.js` `images.remotePatterns` from `**` to specific allowed hosts (low priority — once all Unsplash placeholders are gone, can drop remote images entirely)
 - [ ] Transfer repo to Mandy's GitHub (`CrockSpotCatering`) when ready
 
 ---
@@ -327,4 +333,34 @@ Desktop so the Google Docs source matches.
 
 ---
 
-**Last updated**: 2026-04-25 — **Full launch sync complete.** Custom domain `denversbestcaterer.com` is live via GoDaddy DNS → Vercel (apex canonical, `www` 308-redirects to apex via Vercel REST API). Vercel Analytics + Speed Insights wired in `app/layout.tsx`. OpenGraph URL fixed to live domain. National Guard / 36 days copy confirmed accurate by Mandy. Mandy handover docs (Google Business Profile + FB/IG) committed under `docs/handover/` and copied to Brett's Desktop. All 13 production routes verified live (HTTP 200/308). Local HEAD = origin/main HEAD = latest production deploy.
+**Last updated**: 2026-04-25 — **Post-launch polish sync.**
+
+Built on top of the launch sync earlier in the day, this pass covered three
+production-only issues caught after going live:
+
+1. **Tailwind JIT was stripping classes referenced only from JSON.** The Happy
+   Hour card on `/` rendered as a transparent tile with an invisible white
+   icon because `bg-spot-teal` lived solely in `content/home.json`. Added
+   `./content/**/*.json` to `tailwind.config.ts`'s `content` array so JIT
+   picks up any class set via Power Hub. Verified all 18 JSON-referenced
+   utility classes (`bg-spot-*`, `bg-amber-*`, `bg-pink-*`, etc.) are present
+   in the production CSS bundle.
+2. **Happy Hour icon swap.** Lucide doesn't ship a clinking-glasses icon, so
+   added a small inline `Cheers` component to `app/page.tsx` that composes
+   two Lucide `Wine` glass paths tilted ±22° toward each other. Registered as
+   `"Cheers"` in `iconMap`; `content/home.json` now references it.
+3. **Stock-photo cleanup on `/themes`.** Eight Unsplash placeholders were
+   shipping in production. Replaced four with Mandy's authentic photos:
+   Taco & Chili Bars (`/images/taco-bar.png`), Holiday Celebrations
+   (`/images/events/snowmen-skewers.jpg`), Mardi Gras
+   (`/images/events/mardi-gras.jpg`), and Custom Themes
+   (`/images/gallery/casino-night-spread.jpg`). The other four (BBQ,
+   Oktoberfest, Luau, Valentine's) stay on Unsplash until Mandy sends real
+   photos — swappable via Power Hub.
+
+Also did a full site sweep: every icon string in all 13 content JSON files
+resolves (96 icons checked); every local image ref resolves on disk (80
+refs); every image URL on every production route resolves (91 unique refs
+across 12 routes). All 12 routes return HTTP 200, `www` → apex 308 still
+working. Local HEAD = `origin/main` HEAD = latest production deploy
+(`5113024`).

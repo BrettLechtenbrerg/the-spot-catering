@@ -143,6 +143,10 @@ Edit content via `/power-hub`; everything deploys automatically.
 - [x] Analytics integration (Vercel Analytics + Speed Insights)
 - [x] Custom domain (denversbestcaterer.com, GoDaddy DNS → Vercel, SSL active)
 - [x] National Guard / pandemic reference verified with Mandy (2026-04-25)
+- [x] Tailwind JIT scans `content/**/*.json` so CMS-only utility classes ship in the bundle (2026-04-25)
+- [x] Custom inline `Cheers` icon (two clinking glasses) for Happy Hour card on home page (2026-04-25)
+- [x] Themes page: 4 of 8 Unsplash placeholders swapped for Mandy's authentic photos (2026-04-25)
+- [ ] Themes page: 4 remaining Unsplash placeholders (BBQ, Oktoberfest, Luau, Valentine's) — Mandy to upload via Power Hub
 - [ ] Ready for Mandy's GitHub transfer
 
 ## Components
