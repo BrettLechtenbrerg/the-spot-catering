@@ -15,14 +15,55 @@ import {
   CheckCircle,
   type LucideIcon,
 } from 'lucide-react'
+import type { ComponentType, SVGProps } from 'react'
 import homeContent from '@/content/home.json'
 
-// Icon mapping — converts JSON string to Lucide component
-const iconMap: Record<string, LucideIcon> = {
+// Custom "Cheers" icon — two Lucide `Wine` glasses tilted toward each other
+// to depict a clinking/cheers motion. Lucide doesn't ship a cheers icon, so
+// this composes two copies of the official `wine.svg` path (scaled 0.55,
+// rotated ±18°) inside a 24×24 viewBox. Matches Lucide's stroke style and
+// accepts the same `size` + `className` props so it's a drop-in replacement.
+type IconProps = SVGProps<SVGSVGElement> & { size?: number | string }
+function Cheers({ size = 24, className, ...props }: IconProps) {
+  // Lucide "wine" glass paths, drawn in a 24x24 box centered at (12,12)
+  const winePaths = (
+    <g transform="translate(-12 -12)">
+      <path d="M8 22h8" />
+      <path d="M7 10h10" />
+      <path d="M12 15v7" />
+      <path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z" />
+    </g>
+  )
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      {...props}
+    >
+      {/* Left glass: scaled 0.55, rotated -22°, anchored bottom-left */}
+      <g transform="translate(7 14) rotate(-22) scale(0.55)">{winePaths}</g>
+      {/* Right glass: scaled 0.55, rotated +22°, anchored bottom-right */}
+      <g transform="translate(17 14) rotate(22) scale(0.55)">{winePaths}</g>
+    </svg>
+  )
+}
+
+// Icon mapping — converts JSON string to icon component (Lucide or custom)
+type IconComponent = LucideIcon | ComponentType<IconProps>
+const iconMap: Record<string, IconComponent> = {
   Building2,
   PartyPopper,
   Coffee,
   UtensilsCrossed,
+  Cheers,
 }
 
 // Menu style mapping
@@ -248,7 +289,7 @@ export default function HomePage() {
             className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
             {services.items.map((service) => {
-              const Icon = iconMap[service.icon] ?? Building2
+              const Icon = (iconMap[service.icon] ?? Building2) as IconComponent
               return (
                 <motion.div
                   key={service.title}
