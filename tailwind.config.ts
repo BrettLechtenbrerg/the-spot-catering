@@ -5,6 +5,10 @@ const config: Config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    // Include CMS-edited JSON so Tailwind JIT picks up classes referenced
+    // from content (e.g. `color: "bg-spot-teal"` in home.json). Without this,
+    // any class only referenced from JSON gets stripped from the bundle.
+    './content/**/*.json',
   ],
   theme: {
     extend: {
